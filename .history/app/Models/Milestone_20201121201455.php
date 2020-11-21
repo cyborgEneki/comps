@@ -9,7 +9,7 @@ class Milestone extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Milestone';
+    protected $table = 'Dim_Practice';
 
-    protected $fillable = ['milestone', 'target', 'status_justification', 'display'];
+    protected $fillable = ['name'];
 }

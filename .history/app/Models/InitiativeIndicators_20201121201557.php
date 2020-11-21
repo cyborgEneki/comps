@@ -11,13 +11,5 @@ class InitiativeIndicators extends Model
 
     protected $table = 'Fact_Initiative_Indicators';
 
-    protected $fillable = [
-        'initiative_key', 
-        'year_key', 
-        'practice_key', 
-        'target_value', 
-        'total_cost_budget', 
-        'total_funds_secured', 
-        'total_funds_anticipated'
-    ];
+    protected $fillable = ['initiative_key', 'year_key', 'practi'];
 }

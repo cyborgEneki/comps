@@ -11,5 +11,5 @@ class InitiativeCurrentData extends Model
 
     protected $table = 'Fact_Initiative_Current_Data';
 
-    protected $fillable = ['initiative_key', 'year_key', 'value'];
+    protected $fillable = ['initiative_key', 'year_key'];
 }

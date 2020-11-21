@@ -9,7 +9,7 @@ class PathwayOutcome extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Pathway_Outcome';
+    protected $table = 'Dim_Practice';
 
-    protected $fillable = ['statement', 'description', 'label', 'units', 'data_source', 'number_of_subcategories', 'identity'];
+    protected $fillable = ['name'];
 }

@@ -11,5 +11,5 @@ class Status extends Model
 
     protected $table = 'Dim_Status';
 
-    protected $fillable = ['status'];
+    protected $fillable = ['name'];
 }

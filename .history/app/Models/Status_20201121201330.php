@@ -9,7 +9,7 @@ class Status extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Status';
+    protected $table = 'Dim_Practice';
 
-    protected $fillable = ['status'];
+    protected $fillable = ['name'];
 }

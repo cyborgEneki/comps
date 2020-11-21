@@ -11,5 +11,5 @@ class Milestone extends Model
 
     protected $table = 'Dim_Milestone';
 
-    protected $fillable = ['milestone', 'target', 'status_justification', 'display'];
+    protected $fillable = ['name'];
 }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class InitiativeCurrentData extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Status';
+    protected $table = 'Fact_Initiative_Current_Data';
 
-    protected $fillable = ['status'];
+    protected $fillable = ['name'];
 }

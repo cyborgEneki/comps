@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Milestone extends Model
 {
     use HasFactory;
-
-    protected $table = 'Dim_Milestone';
-
-    protected $fillable = ['milestone', 'target', 'status_justification', 'display'];
 }

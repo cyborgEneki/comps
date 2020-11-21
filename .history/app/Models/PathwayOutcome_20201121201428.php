@@ -11,5 +11,5 @@ class PathwayOutcome extends Model
 
     protected $table = 'Dim_Pathway_Outcome';
 
-    protected $fillable = ['statement', 'description', 'label', 'units', 'data_source', 'number_of_subcategories', 'identity'];
+    protected $fillable = ['statement', 'description', 'label', 'units', 'data_source', 'number_of_subcategories'];
 }

@@ -18,6 +18,5 @@ class InitiativeIndicators extends Model
         'target_value', 
         'total_cost_budget', 
         'total_funds_secured', 
-        'total_funds_anticipated'
-    ];
+        'total_funds_anticipated'];
 }

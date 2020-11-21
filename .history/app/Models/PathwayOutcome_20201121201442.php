@@ -13,3 +13,4 @@ class PathwayOutcome extends Model
 
     protected $fillable = ['statement', 'description', 'label', 'units', 'data_source', 'number_of_subcategories', 'identity'];
 }
+Î

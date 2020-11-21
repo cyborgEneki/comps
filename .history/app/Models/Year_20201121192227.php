@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Year extends Model
 {
     use HasFactory;
-
-    protected $table = 'Dim_Status';
-
-    protected $fillable = ['status'];
 }
