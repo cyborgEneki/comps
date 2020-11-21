@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Initiative;
+use App\Models\DimInitiative;
 use Illuminate\Database\Seeder;
 
-class InitiativeSeeder extends Seeder
+class DimInitiativeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class InitiativeSeeder extends Seeder
      */
     public function run()
     {
-        Initiative::factory()
+        DimInitiative::factory()
             ->times(10)
             ->create();
     }

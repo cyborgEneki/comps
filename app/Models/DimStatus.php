@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Practice extends Model
+class DimStatus extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Practice';
+    protected $table = 'Dim_Statuses';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['status'];
 }

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Initiative;
+use App\Models\DimInitiative;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class InitiativeFactory extends Factory
+class DimInitiativeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Initiative::class;
+    protected $model = DimInitiative::class;
 
     /**
      * Define the model's default state.

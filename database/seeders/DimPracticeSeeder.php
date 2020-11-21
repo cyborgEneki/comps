@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Practice;
+use App\Models\DimPractice;
 use Illuminate\Database\Seeder;
 
-class PracticeSeeder extends Seeder
+class DimPracticeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,7 +24,7 @@ class PracticeSeeder extends Seeder
         ];
 
         foreach ($practices as $practice) {
-            Practice::create(['name' => $practice[0]]);
+            DimPractice::create(['name' => $practice[0]]);
         }
     }
 }

@@ -1,18 +1,18 @@
 <template>
   <div>
-    <SidebarNavbar></SidebarNavbar>
-    <InitiativeForm></InitiativeForm>
+    <SelectInitiative></SelectInitiative>
+    <AddInitiative></AddInitiative>
   </div>
 </template>
 
 <script>
-import SidebarNavbar from "../views/SidebarNavbar";
-import InitiativeForm from "../views/InitiativeForm";
+import SelectInitiative from "../views/SelectInitiative";
+import AddInitiative from "../views/AddInitiative";
 
 export default {
   components: {
-    SidebarNavbar,
-    InitiativeForm,
+    SelectInitiative,
+    AddInitiative,
   },
 };
 </script>
