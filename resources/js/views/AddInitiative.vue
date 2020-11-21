@@ -1,6 +1,7 @@
 <template>
   <div class="row container">
     <div class="col-12 col-md-6 ml-md-3 my-3">
+      <div class="page-title__font">Initiative Information</div>
       <form>
         <div class="form-group">
           <label for="initiative-name">Initiative Name</label>

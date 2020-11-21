@@ -1962,6 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var startYearDropdown = document.getElementById("initiative-start-year"),
@@ -2067,13 +2068,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -19812,6 +19806,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row container" }, [
       _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
+        _c("div", { staticClass: "page-title__font" }, [
+          _vm._v("Initiative Information")
+        ]),
+        _vm._v(" "),
         _c("form", [
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-name" } }, [
@@ -20065,6 +20063,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row container" }, [
       _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
+        _c("div", { staticClass: "page-title__font" }, [_vm._v("Pathway 1")]),
+        _vm._v(" "),
         _c("form", [
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "pathway-statement" } }, [
@@ -20089,57 +20089,35 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "indicator-statement" } }, [
-              _vm._v("Indicator Statement")
-            ]),
-            _vm._v(" "),
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: { id: "indicator-statement", rows: "3" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-description" } }, [
-              _vm._v("Initiative Description")
-            ]),
-            _vm._v(" "),
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: { id: "initiative-description", rows: "3" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-label" } }, [
-              _vm._v("Initiative Label")
+            _c("label", { attrs: { for: "indicator-label" } }, [
+              _vm._v("Indicator Label")
             ]),
             _vm._v(" "),
             _c("input", {
               staticClass: "form-control",
-              attrs: { type: "text", id: "initiative-label" }
+              attrs: { type: "text", id: "indicator-label" }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-units" } }, [
-              _vm._v("Initiative Units")
+            _c("label", { attrs: { for: "indicator-units" } }, [
+              _vm._v("Indicator Units")
             ]),
             _vm._v(" "),
             _c("input", {
               staticClass: "form-control",
-              attrs: { type: "text", id: "initiative-units" }
+              attrs: { type: "text", id: "indicator-units" }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-data-source" } }, [
-              _vm._v("Initiative Data Source")
+            _c("label", { attrs: { for: "indicator-data-source" } }, [
+              _vm._v("Indicator Data Source")
             ]),
             _vm._v(" "),
             _c("textarea", {
               staticClass: "form-control",
-              attrs: { id: "initiative-data-source", rows: "3" }
+              attrs: { id: "indicator-data-source", rows: "3" }
             })
           ]),
           _vm._v(" "),
