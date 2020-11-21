@@ -10,6 +10,10 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -27,4 +31,25 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
+const router = new VueRouter({
+    mode: 'history',
+    routes: [{
+            path: '/',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/hello',
+            name: 'hello',
+            component: Hello,
+        },
+    ],
+});
 
+const app = new Vue({
+    el: '#app',
+    components: {
+        App
+    },
+    router,
+});
