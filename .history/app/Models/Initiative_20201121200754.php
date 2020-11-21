@@ -9,7 +9,5 @@ class Initiative extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Initiative';
-
-    protected $fillable = ['name', 'lead_name', 'lead_email', 'start_year', 'end_year', 'statement', 'number_of_subcategories'];
+    protected $table = ''
 }

@@ -11,5 +11,5 @@ class Practice extends Model
 
     protected $table = 'Dim_Practice';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name']
 }

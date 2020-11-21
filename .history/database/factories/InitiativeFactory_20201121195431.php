@@ -21,16 +21,14 @@ class InitiativeFactory extends Factory
      */
     public function definition()
     {
-        $start_year = $this->faker->dateTimeBetween('-10 years', 'now')->format('Y');
-
         return [
             'name' => $this->faker->word,
             'lead_name' => $this->faker->name,
             'lead_email' => $this->faker->unique()->safeEmail,
-            'start_year' => $this->faker->dateTimeBetween('-10 years', 'now')->format('Y'),
-            'end_year' => $this->faker->dateTimeBetween($start_year, '+10 years')->format('Y'),
-            'statement' => $this->faker->paragraph(),
-            'number_of_subcategories' => $this->faker->randomDigitNotNull(),
+            'start_year' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'end_year' => Str::random(10),
+            'statement' => Str::random(10),
+            'number_of_categories' => Str::random(10),
         ];
     }
 }

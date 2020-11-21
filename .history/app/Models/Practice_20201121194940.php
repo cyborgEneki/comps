@@ -10,6 +10,4 @@ class Practice extends Model
     use HasFactory;
 
     protected $table = 'Dim_Practice';
-
-    protected $fillable = ['name'];
 }

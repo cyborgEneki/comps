@@ -30,7 +30,7 @@ class InitiativeFactory extends Factory
             'start_year' => $this->faker->dateTimeBetween('-10 years', 'now')->format('Y'),
             'end_year' => $this->faker->dateTimeBetween($start_year, '+10 years')->format('Y'),
             'statement' => $this->faker->paragraph(),
-            'number_of_subcategories' => $this->faker->randomDigitNotNull(),
+            'number_of_categories' => $this->faker->randomDigitNotNull(),
         ];
     }
 }
