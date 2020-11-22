@@ -18,7 +18,7 @@
         </router-link>
       </div>
       <div class="border-bottom">
-        <router-link :to="{ name: 'home' }" class="list-group-item list-group-item-action bg-light border-0">Milestones</router-link>
+        <router-link :to="{ name: 'milestones' }" class="list-group-item list-group-item-action bg-light border-0">Milestones</router-link>
       </div>
       <div class="border-bottom">
         <router-link :to="{ name: 'home' }" class="list-group-item list-group-item-action bg-light border-0">Financial Information</router-link>

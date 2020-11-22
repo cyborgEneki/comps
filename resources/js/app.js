@@ -7,7 +7,8 @@ Vue.use(VueRouter)
 
 import App from './views/App.vue'
 import Home from './views/Home.vue'
-import PathwayOutcomeForm from './components/PathwayOutcomeForm.vue'
+import PathwayOutcomeForm from './components/PathwayOutcome.vue'
+import Milestones from './views/Milestones.vue'
 
 const router = new VueRouter({
     mode: 'history',
@@ -25,6 +26,11 @@ const router = new VueRouter({
             path: '/outcome',
             name: 'outcome',
             component: PathwayOutcomeForm,
+        },
+        {
+            path: '/milestones',
+            name: 'milestones',
+            component: Milestones,
         },
     ],
 });
