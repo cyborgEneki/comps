@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\InitiativeController;
-use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\Api\InitiativeController;
+use App\Http\Controllers\Api\PracticeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

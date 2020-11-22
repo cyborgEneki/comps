@@ -2183,6 +2183,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -20491,56 +20497,6 @@ var render = function() {
   return _c("div", { staticClass: "row container" }, [
     _c("div", { staticClass: "col-12 col-md-3 ml-md-3" }, [
       _c("div", { staticClass: "my-3 font-weight-bold" }, [
-        _vm._v("Goal Team")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.goalTeam,
-              expression: "goalTeam"
-            }
-          ],
-          staticClass: "custom-select custom-select-sm",
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.goalTeam = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            }
-          }
-        },
-        [
-          _c("option", { attrs: { disabled: "", value: "" } }),
-          _vm._v(" "),
-          _vm._l(_vm.goalTeams, function(ref) {
-            var Name = ref.Name
-            var Practice_Key = ref.Practice_Key
-            return _c(
-              "option",
-              { key: Practice_Key, domProps: { value: Practice_Key } },
-              [_vm._v(_vm._s(Name))]
-            )
-          })
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "my-3 font-weight-bold" }, [
         _vm._v("Initiative Name")
       ]),
       _vm._v(" "),
@@ -20584,6 +20540,56 @@ var render = function() {
             return _c(
               "option",
               { key: Initiative_Key, domProps: { value: Initiative_Key } },
+              [_vm._v(_vm._s(Name))]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-3 font-weight-bold" }, [
+        _vm._v("Goal Team")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.goalTeam,
+              expression: "goalTeam"
+            }
+          ],
+          staticClass: "custom-select custom-select-sm",
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.goalTeam = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { disabled: "", value: "" } }),
+          _vm._v(" "),
+          _vm._l(_vm.goalTeams, function(ref) {
+            var Name = ref.Name
+            var Practice_Key = ref.Practice_Key
+            return _c(
+              "option",
+              { key: Practice_Key, domProps: { value: Practice_Key } },
               [_vm._v(_vm._s(Name))]
             )
           })

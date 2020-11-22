@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Comps\Repositories\PracticeRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PracticeController extends Controller
