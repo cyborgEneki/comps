@@ -22,3 +22,27 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      goalTeams: null,
+      error: null,
+    };
+  },
+  created() {
+    this.fetchGoalTeams();
+  },
+  methods: {
+    fetchGoalTeams() {
+      this.error = this.goalTeams = null;
+      axios.get("/api/practices").then((response) => {
+        console.log(response);
+      });
+    }
+  }
+};
+</script>
