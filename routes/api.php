@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InitiativeController;
+use App\Http\Controllers\PracticeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/practices', [PracticeController::class, 'index']);
+Route::get('/initiatives', [InitiativeController::class, 'index']);

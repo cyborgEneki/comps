@@ -1,24 +1,17 @@
 <template>
   <div class="row container">
-    <div class="col-12 col-md-3">
-      <div class="ml-md-3 my-3">Select your initiative here:</div>
-      <div class="dropdown">
-        <button class="btn ml-md-3 home-page__button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Goal Team</button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+    <div class="col-12 col-md-3 ml-md-3">
+      <div class="my-3 font-weight-bold">Goal Team</div>
+      <select class="custom-select custom-select-sm" v-model="goalTeam">
+        <option disabled value=""></option>
+        <option v-for="{ Name, Practice_Key } in goalTeams" :value="Practice_Key" :key="Practice_Key">{{ Name }}</option>
+      </select>
       <br />
-      <div class="dropdown">
-        <button class="btn ml-md-3 home-page__button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Initiative name</button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+      <div class="my-3 font-weight-bold">Initiative Name</div>
+      <select class="custom-select custom-select-sm" v-model="initiativeName">
+        <option disabled value=""></option>
+        <option v-for="{ Name, Initiative_Key } in initiatives" :value="Initiative_Key" :key="Initiative_Key">{{ Name }}</option>
+      </select>
     </div>
   </div>
 </template>
@@ -30,19 +23,31 @@ export default {
   data() {
     return {
       goalTeams: null,
-      error: null,
+      goalTeam: null,
+      initiativeName: null,
+      initiatives: null,
     };
   },
   created() {
     this.fetchGoalTeams();
+    this.fetchInitiatives();
   },
   methods: {
     fetchGoalTeams() {
-      this.error = this.goalTeams = null;
+      this.goalTeams = null;
+
       axios.get("/api/practices").then((response) => {
-        console.log(response);
+        this.goalTeams = response.data.practices;
       });
-    }
-  }
+    },
+
+    fetchInitiatives() {
+      this.initiatives = null;
+
+      axios.get("/api/initiatives").then(response => {
+        this.initiatives = response.data.initiatives;
+      })
+    },
+  },
 };
 </script>

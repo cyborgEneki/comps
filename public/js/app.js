@@ -2183,29 +2183,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       goalTeams: null,
-      error: null
+      goalTeam: null,
+      initiativeName: null,
+      initiatives: null
     };
   },
   created: function created() {
     this.fetchGoalTeams();
+    this.fetchInitiatives();
   },
   methods: {
     fetchGoalTeams: function fetchGoalTeams() {
-      this.error = this.goalTeams = null;
+      var _this = this;
+
+      this.goalTeams = null;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/practices").then(function (response) {
-        console.log(response);
+        _this.goalTeams = response.data.practices;
+      });
+    },
+    fetchInitiatives: function fetchInitiatives() {
+      var _this2 = this;
+
+      this.initiatives = null;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/initiatives").then(function (response) {
+        _this2.initiatives = response.data.initiatives;
       });
     }
   }
@@ -20468,84 +20474,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row container" }, [
-      _c("div", { staticClass: "col-12 col-md-3" }, [
-        _c("div", { staticClass: "ml-md-3 my-3" }, [
-          _vm._v("Select your initiative here:")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "dropdown" }, [
-          _c(
-            "button",
+  return _c("div", { staticClass: "row container" }, [
+    _c("div", { staticClass: "col-12 col-md-3 ml-md-3" }, [
+      _c("div", { staticClass: "my-3 font-weight-bold" }, [
+        _vm._v("Goal Team")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
             {
-              staticClass: "btn ml-md-3 home-page__button",
-              attrs: {
-                type: "button",
-                "data-toggle": "dropdown",
-                "aria-haspopup": "true",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Goal Team")]
-          ),
+              name: "model",
+              rawName: "v-model",
+              value: _vm.goalTeam,
+              expression: "goalTeam"
+            }
+          ],
+          staticClass: "custom-select custom-select-sm",
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.goalTeam = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { disabled: "", value: "" } }),
           _vm._v(" "),
-          _c("div", { staticClass: "dropdown-menu" }, [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Action")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Another action")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Something else here")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("div", { staticClass: "dropdown" }, [
-          _c(
-            "button",
+          _vm._l(_vm.goalTeams, function(ref) {
+            var Name = ref.Name
+            var Practice_Key = ref.Practice_Key
+            return _c(
+              "option",
+              { key: Practice_Key, domProps: { value: Practice_Key } },
+              [_vm._v(_vm._s(Name))]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-3 font-weight-bold" }, [
+        _vm._v("Initiative Name")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
             {
-              staticClass: "btn ml-md-3 home-page__button",
-              attrs: {
-                type: "button",
-                "data-toggle": "dropdown",
-                "aria-haspopup": "true",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Initiative name")]
-          ),
+              name: "model",
+              rawName: "v-model",
+              value: _vm.initiativeName,
+              expression: "initiativeName"
+            }
+          ],
+          staticClass: "custom-select custom-select-sm",
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.initiativeName = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { disabled: "", value: "" } }),
           _vm._v(" "),
-          _c("div", { staticClass: "dropdown-menu" }, [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Action")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Another action")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Something else here")
-            ])
-          ])
-        ])
-      ])
+          _vm._l(_vm.initiatives, function(ref) {
+            var Name = ref.Name
+            var Initiative_Key = ref.Initiative_Key
+            return _c(
+              "option",
+              { key: Initiative_Key, domProps: { value: Initiative_Key } },
+              [_vm._v(_vm._s(Name))]
+            )
+          })
+        ],
+        2
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
