@@ -2190,12 +2190,16 @@ __webpack_require__.r(__webpack_exports__);
       goalTeams: null,
       goalTeam: null,
       initiativeName: null,
-      initiatives: null
+      initiatives: null,
+      initiativeInformationFormDiv: null
     };
   },
   created: function created() {
     this.fetchGoalTeams();
     this.fetchInitiatives();
+  },
+  mounted: function mounted() {
+    this.initiativeInformationFormDiv = document.getElementById("initiative-information-form");
   },
   methods: {
     fetchGoalTeams: function fetchGoalTeams() {
@@ -2213,6 +2217,9 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/initiatives").then(function (response) {
         _this2.initiatives = response.data.initiatives;
       });
+    },
+    showInitiativeInformationFormDiv: function showInitiativeInformationFormDiv() {
+      this.initiativeInformationFormDiv.style.display = "block";
     }
   }
 });
@@ -20130,87 +20137,94 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row container" }, [
-      _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-        _c("div", { staticClass: "page-title__font" }, [
-          _vm._v("Initiative Information")
-        ]),
-        _vm._v(" "),
-        _c("form", [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-name" } }, [
-              _vm._v("Initiative Name")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", id: "initiative-name" }
-            })
+    return _c(
+      "div",
+      {
+        staticClass: "row container display-none",
+        attrs: { id: "initiative-information-form" }
+      },
+      [
+        _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
+          _c("div", { staticClass: "page-title__font" }, [
+            _vm._v("Initiative Information")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-name" } }, [
-              _vm._v("Name of Initiative Lead")
+          _c("form", [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "initiative-name" } }, [
+                _vm._v("Initiative Name")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text", id: "initiative-name" }
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", id: "name-of-initiative-lead" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-lead-email" } }, [
-              _vm._v("Initiative Lead Email")
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "initiative-name" } }, [
+                _vm._v("Name of Initiative Lead")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text", id: "name-of-initiative-lead" }
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "email", id: "initiative-lead-email" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-start-year" } }, [
-              _vm._v("Initiative Start Year")
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "initiative-lead-email" } }, [
+                _vm._v("Initiative Lead Email")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "email", id: "initiative-lead-email" }
+              })
             ]),
             _vm._v(" "),
-            _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "initiative-start-year" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-end-year" } }, [
-              _vm._v("Initiative End Year")
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "initiative-start-year" } }, [
+                _vm._v("Initiative Start Year")
+              ]),
+              _vm._v(" "),
+              _c("select", {
+                staticClass: "form-control",
+                attrs: { id: "initiative-start-year" }
+              })
             ]),
             _vm._v(" "),
-            _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "initiative-end-year" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-statement" } }, [
-              _vm._v("Initiative Statement")
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "initiative-end-year" } }, [
+                _vm._v("Initiative End Year")
+              ]),
+              _vm._v(" "),
+              _c("select", {
+                staticClass: "form-control",
+                attrs: { id: "initiative-end-year" }
+              })
             ]),
             _vm._v(" "),
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: { id: "initiative-statement", rows: "3" }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Save")]
-          )
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "initiative-statement" } }, [
+                _vm._v("Initiative Statement")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                staticClass: "form-control",
+                attrs: { id: "initiative-statement", rows: "3" }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [_vm._v("Save")]
+            )
+          ])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -20543,19 +20557,22 @@ var render = function() {
           ],
           staticClass: "custom-select custom-select-sm",
           on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.initiativeName = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            }
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.initiativeName = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              _vm.showInitiativeInformationFormDiv
+            ]
           }
         },
         [

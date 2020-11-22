@@ -1,5 +1,5 @@
 <template>
-  <div class="row container">
+  <div class="row container display-none" id="initiative-information-form">
     <div class="col-12 col-md-6 ml-md-3 my-3">
       <div class="page-title__font">Initiative Information</div>
       <form>

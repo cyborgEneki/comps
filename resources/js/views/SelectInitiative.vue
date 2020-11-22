@@ -8,7 +8,7 @@
       </select>
       <br />
       <div class="my-3 font-weight-bold">Initiative Name</div>
-      <select class="custom-select custom-select-sm" v-model="initiativeName">
+      <select class="custom-select custom-select-sm" v-model="initiativeName" @change="showInitiativeInformationFormDiv">
         <option disabled value=""></option>
         <option v-for="{ Name, Initiative_Key } in initiatives" :value="Initiative_Key" :key="Initiative_Key">{{ Name }}</option>
       </select>
@@ -26,11 +26,15 @@ export default {
       goalTeam: null,
       initiativeName: null,
       initiatives: null,
+      initiativeInformationFormDiv: null
     };
   },
   created() {
     this.fetchGoalTeams();
     this.fetchInitiatives();
+  },
+  mounted() {
+    this.initiativeInformationFormDiv = document.getElementById("initiative-information-form");
   },
   methods: {
     fetchGoalTeams() {
@@ -48,6 +52,10 @@ export default {
         this.initiatives = response.data.initiatives;
       })
     },
+    
+    showInitiativeInformationFormDiv() {
+      this.initiativeInformationFormDiv.style.display = "block";
+    }
   },
 };
 </script>
