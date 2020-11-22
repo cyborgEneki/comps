@@ -13,7 +13,7 @@
       </div>
       <div class="border-bottom">
         <p class="list-group-item list-group-item-action bg-light border-0 mb-0">Outcomes</p>
-        <router-link :to="{ name: 'hello' }" class="list-group-item list-group-item-action bg-light border-0">
+        <router-link :to="{ name: 'outcome' }" class="list-group-item list-group-item-action bg-light border-0">
           <span class="ml-3">Outcome 1</span>
         </router-link>
       </div>
