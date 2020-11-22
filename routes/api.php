@@ -21,4 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/practices', [PracticeController::class, 'index']);
+
 Route::get('/initiatives', [InitiativeController::class, 'index']);
+Route::post('/initiatives', [InitiativeController::class, 'store']);

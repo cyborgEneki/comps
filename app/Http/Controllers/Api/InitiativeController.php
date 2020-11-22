@@ -21,4 +21,9 @@ class InitiativeController extends Controller
 
         return response()->json(['initiatives' => $initiatives]);
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }

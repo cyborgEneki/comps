@@ -13,11 +13,11 @@
 
       <div class="my-3 font-weight-bold">Goal Team</div>
 
-      <select class="custom-select custom-select-sm" v-model="goalTeam">
+      <select class="custom-select custom-select-sm" v-model="goalTeam" @change="emitFetchGoalTeam">
         <option disabled value=""></option>
         <option v-for="{ Name, Practice_Key } in goalTeams" :value="Practice_Key" :key="Practice_Key">{{ Name }}</option>
       </select>
-      
+
     </div>
   </div>
 </template>
@@ -32,16 +32,19 @@ export default {
       goalTeam: null,
       initiativeName: null,
       initiatives: null,
-      initiativeInformationFormDiv: null,
+      initiativeInformationFormDiv: null
     };
   },
+
   created() {
     this.fetchGoalTeams();
     this.fetchInitiatives();
   },
+
   mounted() {
     this.initiativeInformationFormDiv = document.getElementById("initiative-information-form");
   },
+
   methods: {
     fetchGoalTeams() {
       this.goalTeams = null;
@@ -62,6 +65,10 @@ export default {
     showInitiativeInformationFormDiv() {
       this.initiativeInformationFormDiv.style.display = "block";
     },
+
+    emitFetchGoalTeam(event) {
+      this.$emit('fetchGoalTeam', this.goalTeam);
+    }
   },
 };
 </script>

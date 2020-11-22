@@ -2058,7 +2058,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    goalTeamProp: String
+  },
+  data: function data() {
+    return {
+      form: {
+        name: null,
+        lead_name: null,
+        lead_email: null,
+        start_year: null,
+        end_year: null,
+        statement: null,
+        goalTeam: this.goalTeamProp
+      }
+    };
+  },
   mounted: function mounted() {
     var startYearDropdown = document.getElementById("initiative-start-year"),
         endYearDropdown = document.getElementById("initiative-end-year"),
@@ -2083,6 +2103,12 @@ __webpack_require__.r(__webpack_exports__);
       _dateOption.value = furthestYear;
       endYearDropdown.add(_dateOption);
       furthestYear -= 1;
+    }
+  },
+  methods: {
+    submitForm: function submitForm() {
+      axios.post("/api/initiatives", this.form).then(function () {//Reload the page with data filled
+      });
     }
   }
 });
@@ -2146,9 +2172,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      goalTeam: null
+    };
+  },
   components: {
     SelectInitiative: _views_SelectInitiative__WEBPACK_IMPORTED_MODULE_0__["default"],
     AddInitiative: _views_AddInitiative__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    cacheGoalTeamProp: function cacheGoalTeamProp(value) {
+      this.goalTeam = value;
+    }
   }
 });
 
@@ -2226,6 +2262,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showInitiativeInformationFormDiv: function showInitiativeInformationFormDiv() {
       this.initiativeInformationFormDiv.style.display = "block";
+    },
+    emitFetchGoalTeam: function emitFetchGoalTeam(event) {
+      this.$emit('fetchGoalTeam', this.goalTeam);
     }
   }
 });
@@ -20136,34 +20175,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row container display-none",
-        attrs: { id: "initiative-information-form" }
-      },
-      [
-        _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-          _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("Initiative Information")
-          ]),
-          _vm._v(" "),
-          _c("form", [
+  return _c(
+    "div",
+    {
+      staticClass: "row container display-none",
+      attrs: { id: "initiative-information-form" }
+    },
+    [
+      _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
+        _c("div", { staticClass: "page-title__font" }, [
+          _vm._v("Initiative Information")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitForm($event)
+              }
+            }
+          },
+          [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "initiative-name" } }, [
                 _vm._v("Initiative Name")
               ]),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.name,
+                    expression: "form.name"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "text", id: "initiative-name" }
+                attrs: { type: "text", id: "initiative-name", name: "name" },
+                domProps: { value: _vm.form.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "name", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -20173,8 +20232,29 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.lead_name,
+                    expression: "form.lead_name"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "text", id: "name-of-initiative-lead" }
+                attrs: {
+                  type: "text",
+                  id: "name-of-initiative-lead",
+                  name: "lead_name"
+                },
+                domProps: { value: _vm.form.lead_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "lead_name", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -20184,8 +20264,29 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.lead_email,
+                    expression: "form.lead_email"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "email", id: "initiative-lead-email" }
+                attrs: {
+                  type: "email",
+                  id: "initiative-lead-email",
+                  name: "lead_email"
+                },
+                domProps: { value: _vm.form.lead_email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "lead_email", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -20194,10 +20295,41 @@ var staticRenderFns = [
                 _vm._v("Initiative Start Year")
               ]),
               _vm._v(" "),
-              _c("select", {
-                staticClass: "form-control",
-                attrs: { id: "initiative-start-year" }
-              })
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.start_year,
+                      expression: "form.start_year"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "initiative-start-year", name: "start_year" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "start_year",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [_c("option", { attrs: { value: "" } })]
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -20205,10 +20337,41 @@ var staticRenderFns = [
                 _vm._v("Initiative End Year")
               ]),
               _vm._v(" "),
-              _c("select", {
-                staticClass: "form-control",
-                attrs: { id: "initiative-end-year" }
-              })
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.end_year,
+                      expression: "form.end_year"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "initiative-end-year", name: "end_year" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "end_year",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [_c("option", { attrs: { value: "" } })]
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -20217,8 +20380,29 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.statement,
+                    expression: "form.statement"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { id: "initiative-statement", rows: "3" }
+                attrs: {
+                  id: "initiative-statement",
+                  name: "statement",
+                  rows: "3"
+                },
+                domProps: { value: _vm.form.statement },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "statement", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -20227,12 +20411,13 @@ var staticRenderFns = [
               { staticClass: "btn btn-primary", attrs: { type: "submit" } },
               [_vm._v("Save")]
             )
-          ])
-        ])
-      ]
-    )
-  }
-]
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20397,7 +20582,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("SelectInitiative"), _vm._v(" "), _c("AddInitiative")],
+    [
+      _c("SelectInitiative", { on: { fetchGoalTeam: _vm.cacheGoalTeamProp } }),
+      _vm._v(" "),
+      _c("AddInitiative", { attrs: { goalTeamProp: _vm.goalTeam } })
+    ],
     1
   )
 }
@@ -20566,19 +20755,22 @@ var render = function() {
           ],
           staticClass: "custom-select custom-select-sm",
           on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.goalTeam = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            }
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.goalTeam = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              _vm.emitFetchGoalTeam
+            ]
           }
         },
         [
