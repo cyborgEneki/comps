@@ -35,10 +35,10 @@
         <div class="mt-3 ml-3">Subcategories</div>
         <div class="border m-3">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
               <div class="mt-3 pathway-outcome-form__subcategories-title">Subcategories 1</div>
             </div>
-            <div class="col-md-2 offset-md-3">
+            <div class="col-md-2 offset-md-3 col-3 mr-3">
               <button type="submit" class="btn btn-primary mt-3">Delete</button>
             </div>
           </div>

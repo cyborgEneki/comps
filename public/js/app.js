@@ -19948,7 +19948,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "border m-3" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-md-6 col-8" }, [
             _c(
               "div",
               { staticClass: "mt-3 pathway-outcome-form__subcategories-title" },
@@ -19956,7 +19956,7 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 offset-md-3" }, [
+          _c("div", { staticClass: "col-md-2 offset-md-3 col-3 mr-3" }, [
             _c(
               "button",
               {
