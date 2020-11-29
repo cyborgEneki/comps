@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Comps\Repositories\InitiativeRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DimInitiative;
 
 class InitiativeController extends Controller
 {
@@ -22,8 +23,14 @@ class InitiativeController extends Controller
         return response()->json(['initiatives' => $initiatives]);
     }
 
+    public function show(DimInitiative $initiative)
+    {
+        return response()->json(['initiative' => $initiative]);
+    }
+
     public function store(Request $request)
     {
         dd($request->all());
+        DimInitiative::create();
     }
 }

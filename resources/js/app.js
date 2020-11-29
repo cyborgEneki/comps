@@ -19,7 +19,13 @@ const router = new VueRouter({
             component: Home
         },
         {
+            path: '/initiative/:initiativeId',
+            name: 'initiative',
+            component: Home
+        },
+        {
             path: '/pathway',
+            // path: '/initiative/:initiativeId/pathway/:pathwayId/edit',
             name: 'pathway',
             component: PathwayOutcome,
         },

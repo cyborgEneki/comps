@@ -1,15 +1,14 @@
 <template>
   <div class="row container">
     <div class="col-12 col-md-3 ml-md-3">
+      <!-- <div class="my-3 font-weight-bold">Initiative Name</div>
 
-      <div class="my-3 font-weight-bold">Initiative Name</div>
-
-      <select class="custom-select custom-select-sm" v-model="initiativeName" @change="showInitiativeInformationFormDiv">
+      <select class="custom-select custom-select-sm" v-model="initiativeId" @change="showInitiativeInformationFormDiv">
         <option disabled value=""></option>
         <option v-for="{ Name, Initiative_Key } in initiatives" :value="Initiative_Key" :key="Initiative_Key">{{ Name }}</option>
       </select>
 
-      <br />
+      <br /> -->
 
       <div class="my-3 font-weight-bold">Goal Team</div>
 
@@ -17,7 +16,6 @@
         <option disabled value=""></option>
         <option v-for="{ Name, Practice_Key } in goalTeams" :value="Practice_Key" :key="Practice_Key">{{ Name }}</option>
       </select>
-
     </div>
   </div>
 </template>
@@ -30,9 +28,10 @@ export default {
     return {
       goalTeams: null,
       goalTeam: null,
-      initiativeName: null,
+      initiativeId: null,
       initiatives: null,
-      initiativeInformationFormDiv: null
+      initiative: null,
+      initiativeInformationFormDiv: null,
     };
   },
 
@@ -63,12 +62,16 @@ export default {
     },
 
     showInitiativeInformationFormDiv() {
+      axios.get("/api/initiative/" + this.initiativeId).then((response) => {
+        this.initiative = response.data.initiative;
+      });
+
       this.initiativeInformationFormDiv.style.display = "block";
     },
 
     emitFetchGoalTeam(event) {
-      this.$emit('fetchGoalTeam', this.goalTeam);
-    }
+      this.$emit("fetchGoalTeam", this.goalTeam);
+    },
   },
 };
 </script>

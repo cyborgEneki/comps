@@ -1,35 +1,35 @@
 <template>
-  <div class="row container display-none" id="add-initiative-information-form">
+  <div class="row container display-none" id="edit-initiative-information-form">
     <div class="col-12 col-md-6 ml-md-3 my-3">
       <div class="page-title__font">Initiative Information</div>
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="initiative-name">Initiative Name</label>
-          <input type="text" class="form-control" id="initiative-name" name="name" v-model="form.name" />
+          <input type="text" class="form-control" id="initiative-name" name="name" v-model="initiative.Name" />
         </div>
         <div class="form-group">
           <label for="initiative-name">Name of Initiative Lead</label>
-          <input type="text" class="form-control" id="name-of-initiative-lead" name="lead_name" v-model="form.lead_name" />
+          <input type="text" class="form-control" id="name-of-initiative-lead" name="lead_name" v-model="initiative.Lead_Name" />
         </div>
         <div class="form-group">
           <label for="initiative-lead-email">Initiative Lead Email</label>
-          <input type="email" class="form-control" id="initiative-lead-email" name="lead_email" v-model="form.lead_email" />
+          <input type="email" class="form-control" id="initiative-lead-email" name="lead_email" v-model="initiative.Lead_Email" />
         </div>
         <div class="form-group">
           <label for="initiative-start-year">Initiative Start Year</label>
-          <select class="form-control" id="initiative-start-year" name="start_year" v-model="form.start_year">
+          <select class="form-control" id="initiative-start-year" name="start_year" v-model="initiative.Start_Year">
             <option value=""></option>
           </select>
         </div>
         <div class="form-group">
           <label for="initiative-end-year">Initiative End Year</label>
-          <select class="form-control" id="initiative-end-year" name="end_year" v-model="form.end_year">
+          <select class="form-control" id="initiative-end-year" name="end_year" v-model="initiative.End_Year">
             <option value=""></option>
           </select>
         </div>
         <div class="form-group">
           <label for="initiative-statement">Initiative Statement</label>
-          <textarea class="form-control" id="initiative-statement" name="statement" rows="3" v-model="form.statement"></textarea>
+          <textarea class="form-control" id="initiative-statement" name="statement" rows="3" v-model="initiative.Statement"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
@@ -46,16 +46,7 @@ export default {
 
   data() {
     return {
-      form: {
-        name: null,
-        lead_name: null,
-        lead_email: null,
-        start_year: null,
-        end_year: null,
-        statement: null,
-        goal_team: null,
-      },
-      initiative: null,
+      initiative: this.initiativeProp,
     };
   },
   mounted() {
