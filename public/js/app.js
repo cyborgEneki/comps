@@ -2026,144 +2026,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AddInitiative.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AddInitiative.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    goalTeamProp: Number,
-    initiativeProp: Object
-  },
-  data: function data() {
-    return {
-      form: {
-        name: null,
-        lead_name: null,
-        lead_email: null,
-        start_year: null,
-        end_year: null,
-        statement: null,
-        goal_team: null
-      },
-      initiative: null
-    };
-  },
-  mounted: function mounted() {
-    var startYearDropdown = document.getElementById("initiative-start-year"),
-        endYearDropdown = document.getElementById("initiative-end-year"),
-        currentYear = new Date().getFullYear(),
-        earliestYear = 1970,
-        furthestYear = 2050,
-        earliestYear2 = 1970; // Set start year dropdown
-
-    while (currentYear >= earliestYear) {
-      var dateOption = document.createElement("option");
-      dateOption.text = currentYear;
-      dateOption.value = currentYear;
-      startYearDropdown.add(dateOption);
-      currentYear -= 1;
-    } // Set end year dropdown
-
-
-    while (furthestYear >= earliestYear2) {
-      var _dateOption = document.createElement("option");
-
-      _dateOption.text = furthestYear;
-      _dateOption.value = furthestYear;
-      endYearDropdown.add(_dateOption);
-      furthestYear -= 1;
-    }
-  },
-  methods: {
-    submitForm: function submitForm() {
-      this.form.goal_team = this.goalTeamProp;
-      axios.post("/api/initiatives", this.form).then(function () {//Reload the page with data filled
-      });
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/App.vue?vue&type=script&lang=js& ***!
@@ -2287,10 +2149,10 @@ __webpack_require__.r(__webpack_exports__);
     goalTeamProp: Number,
     initiativeProp: Object
   },
-  data: function data() {
-    return {
-      initiative: this.initiativeProp
-    };
+  computed: {
+    initiative: function initiative() {
+      return this.initiativeProp;
+    }
   },
   mounted: function mounted() {
     var startYearDropdown = document.getElementById("initiative-start-year"),
@@ -2339,8 +2201,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_SelectInitiative__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/SelectInitiative */ "./resources/js/views/SelectInitiative.vue");
-/* harmony import */ var _views_AddInitiative__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/AddInitiative */ "./resources/js/views/AddInitiative.vue");
-/* harmony import */ var _views_EditInitiative__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/EditInitiative */ "./resources/js/views/EditInitiative.vue");
+/* harmony import */ var _views_EditInitiative__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/EditInitiative */ "./resources/js/views/EditInitiative.vue");
 //
 //
 //
@@ -2353,26 +2214,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       goalTeam: null,
-      initiative: null,
-      initiativeInformationFormDiv: null
+      initiative: null
     };
   },
   components: {
     SelectInitiative: _views_SelectInitiative__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AddInitiative: _views_AddInitiative__WEBPACK_IMPORTED_MODULE_1__["default"],
-    EditInitiative: _views_EditInitiative__WEBPACK_IMPORTED_MODULE_2__["default"]
+    EditInitiative: _views_EditInitiative__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
     cacheGoalTeam: function cacheGoalTeam(value) {
@@ -2384,13 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$root.$on("fetchSelectedInitiative", function (value) {
       _this.initiative = value;
-
-      if (!_this.initiative) {
-        _this.initiativeInformationFormDiv = document.getElementById("add-initiative-component");
-        console.log("test", _this.initiativeInformationFormDiv);
-      }
-
-      _this.initiativeInformationFormDiv.style.display = "block";
+      console.log(_this.initiative);
     });
   }
 });
@@ -21233,259 +21080,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AddInitiative.vue?vue&type=template&id=b8084704&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AddInitiative.vue?vue&type=template&id=b8084704& ***!
-  \***********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row container display-none" }, [
-    _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-      _c("div", { staticClass: "page-title__font" }, [
-        _vm._v("Initiative Information")
-      ]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.submitForm($event)
-            }
-          }
-        },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-name" } }, [
-              _vm._v("Initiative Name")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.name,
-                  expression: "form.name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "initiative-name", name: "name" },
-              domProps: { value: _vm.form.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "name", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-name" } }, [
-              _vm._v("Name of Initiative Lead")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.lead_name,
-                  expression: "form.lead_name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "name-of-initiative-lead",
-                name: "lead_name"
-              },
-              domProps: { value: _vm.form.lead_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "lead_name", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-lead-email" } }, [
-              _vm._v("Initiative Lead Email")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.lead_email,
-                  expression: "form.lead_email"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "email",
-                id: "initiative-lead-email",
-                name: "lead_email"
-              },
-              domProps: { value: _vm.form.lead_email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "lead_email", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-start-year" } }, [
-              _vm._v("Initiative Start Year")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.start_year,
-                    expression: "form.start_year"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { id: "initiative-start-year", name: "start_year" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "start_year",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [_c("option", { attrs: { value: "" } })]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-end-year" } }, [
-              _vm._v("Initiative End Year")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.end_year,
-                    expression: "form.end_year"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { id: "initiative-end-year", name: "end_year" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "end_year",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [_c("option", { attrs: { value: "" } })]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "initiative-statement" } }, [
-              _vm._v("Initiative Statement")
-            ]),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.statement,
-                  expression: "form.statement"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                id: "initiative-statement",
-                name: "statement",
-                rows: "3"
-              },
-              domProps: { value: _vm.form.statement },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "statement", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Save")]
-          )
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=template&id=91ac6b5c&":
 /*!*************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/App.vue?vue&type=template&id=91ac6b5c& ***!
@@ -21549,10 +21143,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95& ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21908,12 +21502,7 @@ var render = function() {
               id: "edit-initiative-component"
             }
           })
-        : _c("AddInitiative", {
-            attrs: {
-              goalTeamProp: _vm.goalTeam,
-              id: "add-initiative-component"
-            }
-          })
+        : _vm._e()
     ],
     1
   )
@@ -37674,75 +37263,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/AddInitiative.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/views/AddInitiative.vue ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AddInitiative_vue_vue_type_template_id_b8084704___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddInitiative.vue?vue&type=template&id=b8084704& */ "./resources/js/views/AddInitiative.vue?vue&type=template&id=b8084704&");
-/* harmony import */ var _AddInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddInitiative.vue?vue&type=script&lang=js& */ "./resources/js/views/AddInitiative.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _AddInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AddInitiative_vue_vue_type_template_id_b8084704___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AddInitiative_vue_vue_type_template_id_b8084704___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/views/AddInitiative.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/views/AddInitiative.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/views/AddInitiative.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AddInitiative.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AddInitiative.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/views/AddInitiative.vue?vue&type=template&id=b8084704&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/views/AddInitiative.vue?vue&type=template&id=b8084704& ***!
-  \*****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddInitiative_vue_vue_type_template_id_b8084704___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AddInitiative.vue?vue&type=template&id=b8084704& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AddInitiative.vue?vue&type=template&id=b8084704&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddInitiative_vue_vue_type_template_id_b8084704___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddInitiative_vue_vue_type_template_id_b8084704___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/views/App.vue":
 /*!************************************!*\
   !*** ./resources/js/views/App.vue ***!
@@ -37821,7 +37341,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& */ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&");
+/* harmony import */ var _EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditInitiative.vue?vue&type=template&id=0a49eb95& */ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&");
 /* harmony import */ var _EditInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditInitiative.vue?vue&type=script&lang=js& */ "./resources/js/views/EditInitiative.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -37833,8 +37353,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _EditInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -37863,19 +37383,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95& ***!
+  \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditInitiative.vue?vue&type=template&id=0a49eb95& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

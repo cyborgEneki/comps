@@ -7,17 +7,11 @@
       :goalTeamProp="goalTeam"
       id="edit-initiative-component"
     ></EditInitiative>
-    <AddInitiative
-      v-else
-      :goalTeamProp="goalTeam"
-      id="add-initiative-component"
-    ></AddInitiative>
   </div>
 </template>
 
 <script>
 import SelectInitiative from "../views/SelectInitiative";
-import AddInitiative from "../views/AddInitiative";
 import EditInitiative from "../views/EditInitiative";
 
 export default {
@@ -25,13 +19,11 @@ export default {
     return {
       goalTeam: null,
       initiative: null,
-      initiativeInformationFormDiv: null,
     };
   },
 
   components: {
     SelectInitiative,
-    AddInitiative,
     EditInitiative,
   },
 
@@ -44,14 +36,7 @@ export default {
   mounted() {
     this.$root.$on("fetchSelectedInitiative", (value) => {
       this.initiative = value;
-
-      if (!this.initiative) {
-        this.initiativeInformationFormDiv = document.getElementById(
-          "add-initiative-component"
-        );
-        console.log("test", this.initiativeInformationFormDiv);
-      }
-      this.initiativeInformationFormDiv.style.display = "block";
+      console.log(this.initiative);
     });
   },
 };

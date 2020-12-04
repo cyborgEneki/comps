@@ -1,4 +1,4 @@
-<template v-if="initiative">
+<template>
   <div class="row container">
     <div class="col-12 col-md-6 ml-md-3 my-3">
       <div class="page-title__font">Initiative Information</div>
@@ -78,11 +78,12 @@ export default {
     initiativeProp: Object,
   },
 
-  data() {
-    return {
-      initiative: this.initiativeProp,
-    };
+  computed: {
+    initiative() {
+      return this.initiativeProp
+    },
   },
+
   mounted() {
     let startYearDropdown = document.getElementById("initiative-start-year"),
       endYearDropdown = document.getElementById("initiative-end-year"),
