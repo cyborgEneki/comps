@@ -21303,7 +21303,11 @@ var render = function() {
                   }
                 }
               },
-              [_c("option", { attrs: { value: "" } })]
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v(_vm._s(_vm.initiative.Start_Year))
+                ])
+              ]
             )
           ]),
           _vm._v(" "),
@@ -21343,7 +21347,11 @@ var render = function() {
                   }
                 }
               },
-              [_c("option", { attrs: { value: "" } })]
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v(_vm._s(_vm.initiative.End_Year))
+                ])
+              ]
             )
           ]),
           _vm._v(" "),

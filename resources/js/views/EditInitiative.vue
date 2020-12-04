@@ -41,7 +41,7 @@
             name="start_year"
             v-model="initiative.Start_Year"
           >
-            <option value=""></option>
+            <option value="">{{ initiative.Start_Year }}</option>
           </select>
         </div>
         <div class="form-group">
@@ -52,7 +52,7 @@
             name="end_year"
             v-model="initiative.End_Year"
           >
-            <option value=""></option>
+            <option value="">{{ initiative.End_Year }}</option>
           </select>
         </div>
         <div class="form-group">
