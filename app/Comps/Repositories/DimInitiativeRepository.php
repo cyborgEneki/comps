@@ -4,7 +4,7 @@ namespace App\Comps\Repositories;
 
 use App\Models\DimInitiative;
 
-class InitiativeRepository 
+class DimInitiativeRepository 
 {
     protected $initiative;
     
@@ -16,5 +16,10 @@ class InitiativeRepository
     public function getAllInitiatives()
     {
         return $this->initiative->all();
+    }
+
+    public function findInitiativeById($id)
+    {
+        return DimInitiative::findOrFail($id);
     }
 }

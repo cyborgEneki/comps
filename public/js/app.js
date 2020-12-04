@@ -2183,7 +2183,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submitForm: function submitForm() {
       this.initiative.goal_team = this.goalTeamProp;
-      axios.post("/api/initiatives/".concat(this.initiative.id), this.initiative).then(function () {//Reload the page with data filled
+      axios.post("/api/initiatives/".concat(this.initiative.Initiative_Key), this.initiative).then(function (res) {
+        //Reload the page with data filled
+        console.log(res, 'test');
       });
     }
   }

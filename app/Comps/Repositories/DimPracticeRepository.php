@@ -4,7 +4,7 @@ namespace App\Comps\Repositories;
 
 use App\Models\DimPractice;
 
-class PracticeRepository 
+class DimPracticeRepository 
 {
     protected $practice;
     
@@ -16,5 +16,10 @@ class PracticeRepository
     public function getAllPractices()
     {
         return $this->practice->all();
+    }
+
+    public function findPracticeById($id)
+    {
+        return DimPractice::findOrFail($id);
     }
 }

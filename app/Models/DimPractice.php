@@ -11,5 +11,6 @@ class DimPractice extends Model
 
     protected $table = 'Dim_Practices';
 
-    protected $fillable = ['name'];
+    protected $guarded = ['practice_key'],
+        $primaryKey = 'practice_key';
 }
