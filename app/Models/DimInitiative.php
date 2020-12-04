@@ -11,5 +11,5 @@ class DimInitiative extends Model
 
     protected $table = 'Dim_Initiatives',
         $guarded = ['Initiative_Key'],
-        $primaryKey = 'initiative_key';
+        $primaryKey = 'Initiative_Key';
 }

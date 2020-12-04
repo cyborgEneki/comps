@@ -15,16 +15,19 @@ class DimPracticeSeeder extends Seeder
     public function run()
     {
         $practices = [
-            ['Climate'],
-            ['Food'],
-            ['Forests'],
-            ['Freshwater'],
-            ['Oceans'],
-            ['Wildlife']
+            [1], ['Climate'],
+            [2], ['Food'],
+            [3], ['Forests'],
+            [4], ['Freshwater'],
+            [5], ['Oceans'],
+            [6], ['Wildlife']
         ];
 
         foreach ($practices as $practice) {
-            DimPractice::create(['name' => $practice[0]]);
+            DimPractice::create([
+                'id' => $practice[0],
+                'name' => $practice[1]
+            ]);
         }
     }
 }

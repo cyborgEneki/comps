@@ -2182,10 +2182,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm() {
-      this.initiative.goal_team = this.goalTeamProp;
+      this.initiative.Practice_Key = this.goalTeamProp;
       axios.post("/api/initiatives/".concat(this.initiative.Initiative_Key), this.initiative).then(function (res) {
         //Reload the page with data filled
-        console.log(res, 'test');
+        router.push("home");
+        $this.initiative = res.initiative;
+        console.log($this.initiative);
       });
     }
   }

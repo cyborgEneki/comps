@@ -39,12 +39,12 @@ class InitiativeController extends Controller
     public function store(Request $request, $id)
     {
         $initiative = $this->dimInitiativeRepository->findInitiativeById($id);
-        $practice = $this->dimPracticeRepository->findPracticeById($request->get('goal_team'));
+        $practice = $this->dimPracticeRepository->findPracticeById($request->get('Practice_Key'));
 
         $initiative->update($request->all());
 
-        FactInitiativeIndicator::create($request->only('Initiative_Key', 'goal_team'));
-        
+        FactInitiativeIndicator::create($request->only('Initiative_Key', 'Practice_Key'));
+
         return response()->json([
             'success' => 'success',
             'initiative' => $initiative,
