@@ -2074,6 +2074,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     goalTeamProp: Number,
@@ -2214,6 +2248,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     goalTeamProp: Number,
@@ -2281,6 +2349,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2288,7 +2365,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       goalTeam: null,
-      initiative: null
+      initiative: null,
+      initiativeInformationFormDiv: null
     };
   },
   components: {
@@ -2306,6 +2384,13 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$root.$on("fetchSelectedInitiative", function (value) {
       _this.initiative = value;
+
+      if (!_this.initiative) {
+        _this.initiativeInformationFormDiv = document.getElementById("add-initiative-component");
+        console.log("test", _this.initiativeInformationFormDiv);
+      }
+
+      _this.initiativeInformationFormDiv.style.display = "block";
     });
   }
 });
@@ -2452,14 +2537,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       initiativeId: null,
       initiatives: null,
-      initiative: null,
-      initiativeInformationFormDiv: null
+      initiative: null
     };
   },
   created: function created() {
@@ -2490,15 +2614,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 _this2.$root.$emit("fetchSelectedInitiative", _this2.initiative);
 
-                if (!_this2.initiative) {
-                  _this2.initiativeInformationFormDiv = document.getElementById("add-initiative-information-form");
-                } else {
-                  _this2.initiativeInformationFormDiv = document.getElementById("edit-initiative-information-form");
-                }
-
-                _this2.initiativeInformationFormDiv.style.display = "block";
-
-              case 5:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -21132,247 +21248,236 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "row container display-none",
-      attrs: { id: "add-initiative-information-form" }
-    },
-    [
-      _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-        _c("div", { staticClass: "page-title__font" }, [
-          _vm._v("Initiative Information")
-        ]),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submitForm($event)
-              }
+  return _c("div", { staticClass: "row container display-none" }, [
+    _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
+      _c("div", { staticClass: "page-title__font" }, [
+        _vm._v("Initiative Information")
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submitForm($event)
             }
-          },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-name" } }, [
-                _vm._v("Initiative Name")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.name,
-                    expression: "form.name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "initiative-name", name: "name" },
-                domProps: { value: _vm.form.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "name", $event.target.value)
-                  }
-                }
-              })
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-name" } }, [
+              _vm._v("Initiative Name")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-name" } }, [
-                _vm._v("Name of Initiative Lead")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.lead_name,
-                    expression: "form.lead_name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "name-of-initiative-lead",
-                  name: "lead_name"
-                },
-                domProps: { value: _vm.form.lead_name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "lead_name", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-lead-email" } }, [
-                _vm._v("Initiative Lead Email")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.lead_email,
-                    expression: "form.lead_email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "initiative-lead-email",
-                  name: "lead_email"
-                },
-                domProps: { value: _vm.form.lead_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "lead_email", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-start-year" } }, [
-                _vm._v("Initiative Start Year")
-              ]),
-              _vm._v(" "),
-              _c(
-                "select",
+            _c("input", {
+              directives: [
                 {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.start_year,
-                      expression: "form.start_year"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "initiative-start-year", name: "start_year" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "start_year",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [_c("option", { attrs: { value: "" } })]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-end-year" } }, [
-                _vm._v("Initiative End Year")
-              ]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.end_year,
-                      expression: "form.end_year"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "initiative-end-year", name: "end_year" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "end_year",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [_c("option", { attrs: { value: "" } })]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-statement" } }, [
-                _vm._v("Initiative Statement")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.statement,
-                    expression: "form.statement"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "initiative-statement",
-                  name: "statement",
-                  rows: "3"
-                },
-                domProps: { value: _vm.form.statement },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "statement", $event.target.value)
-                  }
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
                 }
-              })
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "initiative-name", name: "name" },
+              domProps: { value: _vm.form.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-name" } }, [
+              _vm._v("Name of Initiative Lead")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.lead_name,
+                  expression: "form.lead_name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "name-of-initiative-lead",
+                name: "lead_name"
+              },
+              domProps: { value: _vm.form.lead_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "lead_name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-lead-email" } }, [
+              _vm._v("Initiative Lead Email")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.lead_email,
+                  expression: "form.lead_email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "email",
+                id: "initiative-lead-email",
+                name: "lead_email"
+              },
+              domProps: { value: _vm.form.lead_email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "lead_email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-start-year" } }, [
+              _vm._v("Initiative Start Year")
             ]),
             _vm._v(" "),
             _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Save")]
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.start_year,
+                    expression: "form.start_year"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "initiative-start-year", name: "start_year" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "start_year",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [_c("option", { attrs: { value: "" } })]
             )
-          ]
-        )
-      ])
-    ]
-  )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-end-year" } }, [
+              _vm._v("Initiative End Year")
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.end_year,
+                    expression: "form.end_year"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "initiative-end-year", name: "end_year" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "end_year",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [_c("option", { attrs: { value: "" } })]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-statement" } }, [
+              _vm._v("Initiative Statement")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.statement,
+                  expression: "form.statement"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "initiative-statement",
+                name: "statement",
+                rows: "3"
+              },
+              domProps: { value: _vm.form.statement },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "statement", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Save")]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21444,10 +21549,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&":
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95& ***!
-  \************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& ***!
+  \****************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21459,247 +21564,236 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "row container display-none",
-      attrs: { id: "edit-initiative-information-form" }
-    },
-    [
-      _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-        _c("div", { staticClass: "page-title__font" }, [
-          _vm._v("Initiative Information")
-        ]),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submitForm($event)
-              }
+  return _c("div", { staticClass: "row container" }, [
+    _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
+      _c("div", { staticClass: "page-title__font" }, [
+        _vm._v("Initiative Information")
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submitForm($event)
             }
-          },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-name" } }, [
-                _vm._v("Initiative Name")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.initiative.Name,
-                    expression: "initiative.Name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "initiative-name", name: "name" },
-                domProps: { value: _vm.initiative.Name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.initiative, "Name", $event.target.value)
-                  }
-                }
-              })
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-name" } }, [
+              _vm._v("Initiative Name")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-name" } }, [
-                _vm._v("Name of Initiative Lead")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.initiative.Lead_Name,
-                    expression: "initiative.Lead_Name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "name-of-initiative-lead",
-                  name: "lead_name"
-                },
-                domProps: { value: _vm.initiative.Lead_Name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.initiative, "Lead_Name", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-lead-email" } }, [
-                _vm._v("Initiative Lead Email")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.initiative.Lead_Email,
-                    expression: "initiative.Lead_Email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "initiative-lead-email",
-                  name: "lead_email"
-                },
-                domProps: { value: _vm.initiative.Lead_Email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.initiative, "Lead_Email", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-start-year" } }, [
-                _vm._v("Initiative Start Year")
-              ]),
-              _vm._v(" "),
-              _c(
-                "select",
+            _c("input", {
+              directives: [
                 {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.initiative.Start_Year,
-                      expression: "initiative.Start_Year"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "initiative-start-year", name: "start_year" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.initiative,
-                        "Start_Year",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [_c("option", { attrs: { value: "" } })]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-end-year" } }, [
-                _vm._v("Initiative End Year")
-              ]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.initiative.End_Year,
-                      expression: "initiative.End_Year"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "initiative-end-year", name: "end_year" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.initiative,
-                        "End_Year",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [_c("option", { attrs: { value: "" } })]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "initiative-statement" } }, [
-                _vm._v("Initiative Statement")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.initiative.Statement,
-                    expression: "initiative.Statement"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "initiative-statement",
-                  name: "statement",
-                  rows: "3"
-                },
-                domProps: { value: _vm.initiative.Statement },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.initiative, "Statement", $event.target.value)
-                  }
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiative.Name,
+                  expression: "initiative.Name"
                 }
-              })
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "initiative-name", name: "name" },
+              domProps: { value: _vm.initiative.Name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.initiative, "Name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-name" } }, [
+              _vm._v("Name of Initiative Lead")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiative.Lead_Name,
+                  expression: "initiative.Lead_Name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "name-of-initiative-lead",
+                name: "lead_name"
+              },
+              domProps: { value: _vm.initiative.Lead_Name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.initiative, "Lead_Name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-lead-email" } }, [
+              _vm._v("Initiative Lead Email")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiative.Lead_Email,
+                  expression: "initiative.Lead_Email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "email",
+                id: "initiative-lead-email",
+                name: "lead_email"
+              },
+              domProps: { value: _vm.initiative.Lead_Email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.initiative, "Lead_Email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-start-year" } }, [
+              _vm._v("Initiative Start Year")
             ]),
             _vm._v(" "),
             _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Save")]
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.initiative.Start_Year,
+                    expression: "initiative.Start_Year"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "initiative-start-year", name: "start_year" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.initiative,
+                      "Start_Year",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [_c("option", { attrs: { value: "" } })]
             )
-          ]
-        )
-      ])
-    ]
-  )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-end-year" } }, [
+              _vm._v("Initiative End Year")
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.initiative.End_Year,
+                    expression: "initiative.End_Year"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "initiative-end-year", name: "end_year" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.initiative,
+                      "End_Year",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [_c("option", { attrs: { value: "" } })]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "initiative-statement" } }, [
+              _vm._v("Initiative Statement")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiative.Statement,
+                  expression: "initiative.Statement"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "initiative-statement",
+                name: "statement",
+                rows: "3"
+              },
+              domProps: { value: _vm.initiative.Statement },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.initiative, "Statement", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Save")]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21810,10 +21904,16 @@ var render = function() {
         ? _c("EditInitiative", {
             attrs: {
               initiativeProp: _vm.initiative,
-              goalTeamProp: _vm.goalTeam
+              goalTeamProp: _vm.goalTeam,
+              id: "edit-initiative-component"
             }
           })
-        : _c("AddInitiative", { attrs: { goalTeamProp: _vm.goalTeam } })
+        : _c("AddInitiative", {
+            attrs: {
+              goalTeamProp: _vm.goalTeam,
+              id: "add-initiative-component"
+            }
+          })
     ],
     1
   )
@@ -22019,7 +22119,7 @@ var render = function() {
               staticClass:
                 "list-group-item list-group-item-action bg-light border-0 mb-0"
             },
-            [_vm._v("Select an Initiative")]
+            [_vm._v("\n        Select an Initiative\n      ")]
           ),
           _vm._v(" "),
           _c(
@@ -22062,7 +22162,7 @@ var render = function() {
                 return _c(
                   "option",
                   { key: Initiative_Key, domProps: { value: Initiative_Key } },
-                  [_vm._v(_vm._s(Name))]
+                  [_vm._v("\n          " + _vm._s(Name) + "\n        ")]
                 )
               })
             ],
@@ -22080,7 +22180,7 @@ var render = function() {
                 staticClass:
                   "list-group-item list-group-item-action bg-light border-0 mb-0"
               },
-              [_vm._v("Pathways")]
+              [_vm._v("\n        Pathways\n      ")]
             ),
             _vm._v(" "),
             _c(
@@ -22106,7 +22206,7 @@ var render = function() {
                 staticClass:
                   "list-group-item list-group-item-action bg-light border-0 mb-0"
               },
-              [_vm._v("Outcomes")]
+              [_vm._v("\n        Outcomes\n      ")]
             ),
             _vm._v(" "),
             _c(
@@ -37721,7 +37821,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditInitiative.vue?vue&type=template&id=0a49eb95& */ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&");
+/* harmony import */ var _EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& */ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&");
 /* harmony import */ var _EditInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditInitiative.vue?vue&type=script&lang=js& */ "./resources/js/views/EditInitiative.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -37733,8 +37833,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _EditInitiative_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -37763,19 +37863,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&":
-/*!******************************************************************************!*\
-  !*** ./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95& ***!
-  \******************************************************************************/
+/***/ "./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& ***!
+  \**********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditInitiative.vue?vue&type=template&id=0a49eb95& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/EditInitiative.vue?vue&type=template&id=0a49eb95&v-if=initiative&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditInitiative_vue_vue_type_template_id_0a49eb95_v_if_initiative___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

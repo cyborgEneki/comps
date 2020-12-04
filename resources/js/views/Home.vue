@@ -1,8 +1,17 @@
 <template>
   <div>
     <SelectInitiative @fetchGoalTeam="cacheGoalTeam"></SelectInitiative>
-    <EditInitiative v-if="initiative" :initiativeProp="initiative" :goalTeamProp="goalTeam"></EditInitiative>
-    <AddInitiative v-else :goalTeamProp="goalTeam"></AddInitiative>
+    <EditInitiative
+      v-if="initiative"
+      :initiativeProp="initiative"
+      :goalTeamProp="goalTeam"
+      id="edit-initiative-component"
+    ></EditInitiative>
+    <AddInitiative
+      v-else
+      :goalTeamProp="goalTeam"
+      id="add-initiative-component"
+    ></AddInitiative>
   </div>
 </template>
 
@@ -16,6 +25,7 @@ export default {
     return {
       goalTeam: null,
       initiative: null,
+      initiativeInformationFormDiv: null,
     };
   },
 
@@ -34,6 +44,14 @@ export default {
   mounted() {
     this.$root.$on("fetchSelectedInitiative", (value) => {
       this.initiative = value;
+
+      if (!this.initiative) {
+        this.initiativeInformationFormDiv = document.getElementById(
+          "add-initiative-component"
+        );
+        console.log("test", this.initiativeInformationFormDiv);
+      }
+      this.initiativeInformationFormDiv.style.display = "block";
     });
   },
 };
