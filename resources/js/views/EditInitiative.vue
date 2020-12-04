@@ -112,8 +112,8 @@ export default {
   },
   methods: {
     submitForm() {
-      this.form.goal_team = this.goalTeamProp;
-      axios.post("/api/initiatives", this.form).then(() => {
+      this.initiative.goal_team = this.goalTeamProp;
+      axios.post(`/api/initiatives/${this.initiative.id}`, this.initiative).then(() => {
         //Reload the page with data filled
       });
     },
