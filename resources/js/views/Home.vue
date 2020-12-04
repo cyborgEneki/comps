@@ -1,11 +1,12 @@
 <template>
   <div>
-    <SelectInitiative @fetchGoalTeam="cacheGoalTeam"></SelectInitiative>
+    <SelectInitiative :goalTeamIdFromDbProp="goalTeamIdFromDb" @fetchGoalTeamIdFromUser="cacheGoalTeamIdFromUser"></SelectInitiative>
     <EditInitiative
       v-if="initiative"
       :initiativeProp="initiative"
-      :goalTeamProp="goalTeam"
+      :goalTeamIdFromUserProp="goalTeamIdFromUser"
       id="edit-initiative-component"
+      @passInitiativeGoalTeamIdFromDb="cacheInitiativeGoalTeamIdFromDb"
     ></EditInitiative>
   </div>
 </template>
@@ -17,8 +18,9 @@ import EditInitiative from "../views/EditInitiative";
 export default {
   data() {
     return {
-      goalTeam: null,
+      goalTeamIdFromUser: null,
       initiative: null,
+      goalTeamIdFromDb: null
     };
   },
 
@@ -28,15 +30,17 @@ export default {
   },
 
   methods: {
-    cacheGoalTeam(value) {
-      this.goalTeam = value;
+    cacheGoalTeamIdFromUser(value) {
+      this.goalTeamIdFromUser = value;
     },
+    cacheInitiativeGoalTeamIdFromDb(value) {
+      this.goalTeamIdFromDb = value
+    }
   },
 
   mounted() {
     this.$root.$on("fetchSelectedInitiative", (value) => {
       this.initiative = value;
-      console.log(this.initiative);
     });
   },
 };

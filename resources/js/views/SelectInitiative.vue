@@ -1,20 +1,37 @@
 <template>
   <div class="row container">
     <div class="col-12 col-md-3 ml-md-3">
-      <!-- <div class="my-3 font-weight-bold">Initiative Name</div>
-
-      <select class="custom-select custom-select-sm" v-model="initiativeId" @change="showInitiativeInformationFormDiv">
+      <div class="my-3 font-weight-bold">Goal Team</div>
+      <select
+        v-if="goalTeamIdFromDb"
+        class="custom-select custom-select-sm"
+        v-model="goalTeam"
+        @change="emitFetchGoalTeam"
+      >
         <option disabled value=""></option>
-        <option v-for="{ Name, Initiative_Key } in initiatives" :value="Initiative_Key" :key="Initiative_Key">{{ Name }}</option>
+        <option
+          v-for="{ Name, Practice_Key } in goalTeams"
+          :value="goalTeamIdFromDbProp"
+          :key="Practice_Key"
+        >
+          {{ Name }}
+        </option>
       </select>
 
-      <br /> -->
-
-      <div class="my-3 font-weight-bold">Goal Team</div>
-
-      <select class="custom-select custom-select-sm" v-model="goalTeam" @change="emitFetchGoalTeam">
+      <select
+        v-else
+        class="custom-select custom-select-sm"
+        v-model="goalTeam"
+        @change="emitFetchGoalTeam"
+      >
         <option disabled value=""></option>
-        <option v-for="{ Name, Practice_Key } in goalTeams" :value="Practice_Key" :key="Practice_Key">{{ Name }}</option>
+        <option
+          v-for="{ Name, Practice_Key } in goalTeams"
+          :value="Practice_Key"
+          :key="Practice_Key"
+        >
+          {{ Name }}
+        </option>
       </select>
     </div>
   </div>
@@ -24,24 +41,33 @@
 import axios from "axios";
 
 export default {
+  props: {
+    goalTeamIdFromDbProp: Number
+  },
   data() {
     return {
       goalTeams: null,
       goalTeam: null,
-      initiativeId: null,
       initiatives: null,
       initiative: null,
       initiativeInformationFormDiv: null,
     };
   },
-
+  computed: {
+    goalTeamIdFromDb() {
+      console.log(this.goalTeamIdFromDbProp, 'gtdb'); // Pass this and show dropdown with value else show blank select option
+      return this.goalTeamIdFromDbProp;
+    }
+  },
   created() {
     this.fetchGoalTeams();
     this.fetchInitiatives();
   },
 
   mounted() {
-    this.initiativeInformationFormDiv = document.getElementById("initiative-information-form");
+    this.initiativeInformationFormDiv = document.getElementById(
+      "initiative-information-form"
+    );
   },
 
   methods: {
@@ -61,16 +87,8 @@ export default {
       });
     },
 
-    showInitiativeInformationFormDiv() {
-      axios.get("/api/initiative/" + this.initiativeId).then((response) => {
-        this.initiative = response.data.initiative;
-      });
-
-      this.initiativeInformationFormDiv.style.display = "block";
-    },
-
     emitFetchGoalTeam(event) {
-      this.$emit("fetchGoalTeam", this.goalTeam);
+      this.$emit("fetchGoalTeamIdFromUser", this.goalTeam);
     },
   },
 };

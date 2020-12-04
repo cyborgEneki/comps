@@ -2146,7 +2146,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    goalTeamProp: Number,
+    goalTeamIdFromUserProp: Number,
     initiativeProp: Object
   },
   computed: {
@@ -2182,13 +2182,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm() {
-      this.initiative.Practice_Key = this.goalTeamProp;
+      var _this = this;
+
+      this.initiative.Practice_Key = this.goalTeamIdFromUserProp;
       axios.post("/api/initiatives/".concat(this.initiative.Initiative_Key), this.initiative).then(function (res) {
-        //Reload the page with data filled
-        router.push("home");
-        $this.initiative = res.initiative;
-        console.log($this.initiative);
+        _this.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
+
       });
+    },
+    emitPassInitiativeGoalTeam: function emitPassInitiativeGoalTeam(event) {
+      this.$emit("passInitiativeGoalTeamIdFromDb", this.goalTeamIdFromUserProp);
     }
   }
 });
@@ -2218,13 +2221,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      goalTeam: null,
-      initiative: null
+      goalTeamIdFromUser: null,
+      initiative: null,
+      goalTeamIdFromDb: null
     };
   },
   components: {
@@ -2232,8 +2237,11 @@ __webpack_require__.r(__webpack_exports__);
     EditInitiative: _views_EditInitiative__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    cacheGoalTeam: function cacheGoalTeam(value) {
-      this.goalTeam = value;
+    cacheGoalTeamIdFromUser: function cacheGoalTeamIdFromUser(value) {
+      this.goalTeamIdFromUser = value;
+    },
+    cacheInitiativeGoalTeamIdFromDb: function cacheInitiativeGoalTeamIdFromDb(value) {
+      this.goalTeamIdFromDb = value;
     }
   },
   mounted: function mounted() {
@@ -2241,7 +2249,6 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$root.$on("fetchSelectedInitiative", function (value) {
       _this.initiative = value;
-      console.log(_this.initiative);
     });
   }
 });
@@ -2281,17 +2288,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    goalTeamIdFromDbProp: Number
+  },
   data: function data() {
     return {
       goalTeams: null,
       goalTeam: null,
-      initiativeId: null,
       initiatives: null,
       initiative: null,
       initiativeInformationFormDiv: null
     };
+  },
+  computed: {
+    goalTeamIdFromDb: function goalTeamIdFromDb() {
+      console.log(this.goalTeamIdFromDbProp, 'gtdb'); // Pass this and show dropdown with value else show blank select option
+
+      return this.goalTeamIdFromDbProp;
+    }
   },
   created: function created() {
     this.fetchGoalTeams();
@@ -2317,16 +2350,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.initiatives = response.data.initiatives;
       });
     },
-    showInitiativeInformationFormDiv: function showInitiativeInformationFormDiv() {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/initiative/" + this.initiativeId).then(function (response) {
-        _this3.initiative = response.data.initiative;
-      });
-      this.initiativeInformationFormDiv.style.display = "block";
-    },
     emitFetchGoalTeam: function emitFetchGoalTeam(event) {
-      this.$emit("fetchGoalTeam", this.goalTeam);
+      this.$emit("fetchGoalTeamIdFromUser", this.goalTeam);
     }
   }
 });
@@ -21504,14 +21529,21 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("SelectInitiative", { on: { fetchGoalTeam: _vm.cacheGoalTeam } }),
+      _c("SelectInitiative", {
+        attrs: { goalTeamIdFromDbProp: _vm.goalTeamIdFromDb },
+        on: { fetchGoalTeamIdFromUser: _vm.cacheGoalTeamIdFromUser }
+      }),
       _vm._v(" "),
       _vm.initiative
         ? _c("EditInitiative", {
             attrs: {
               initiativeProp: _vm.initiative,
-              goalTeamProp: _vm.goalTeam,
+              goalTeamIdFromUserProp: _vm.goalTeamIdFromUser,
               id: "edit-initiative-component"
+            },
+            on: {
+              passInitiativeGoalTeamIdFromDb:
+                _vm.cacheInitiativeGoalTeamIdFromDb
             }
           })
         : _vm._e()
@@ -21618,52 +21650,102 @@ var render = function() {
         _vm._v("Goal Team")
       ]),
       _vm._v(" "),
-      _c(
-        "select",
-        {
-          directives: [
+      _vm.goalTeamIdFromDb
+        ? _c(
+            "select",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.goalTeam,
-              expression: "goalTeam"
-            }
-          ],
-          staticClass: "custom-select custom-select-sm",
-          on: {
-            change: [
-              function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.goalTeam = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              },
-              _vm.emitFetchGoalTeam
-            ]
-          }
-        },
-        [
-          _c("option", { attrs: { disabled: "", value: "" } }),
-          _vm._v(" "),
-          _vm._l(_vm.goalTeams, function(ref) {
-            var Name = ref.Name
-            var Practice_Key = ref.Practice_Key
-            return _c(
-              "option",
-              { key: Practice_Key, domProps: { value: Practice_Key } },
-              [_vm._v(_vm._s(Name))]
-            )
-          })
-        ],
-        2
-      )
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.goalTeam,
+                  expression: "goalTeam"
+                }
+              ],
+              staticClass: "custom-select custom-select-sm",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.goalTeam = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.emitFetchGoalTeam
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }),
+              _vm._v(" "),
+              _vm._l(_vm.goalTeams, function(ref) {
+                var Name = ref.Name
+                var Practice_Key = ref.Practice_Key
+                return _c(
+                  "option",
+                  {
+                    key: Practice_Key,
+                    domProps: { value: _vm.goalTeamIdFromDbProp }
+                  },
+                  [_vm._v("\n        " + _vm._s(Name) + "\n      ")]
+                )
+              })
+            ],
+            2
+          )
+        : _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.goalTeam,
+                  expression: "goalTeam"
+                }
+              ],
+              staticClass: "custom-select custom-select-sm",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.goalTeam = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.emitFetchGoalTeam
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }),
+              _vm._v(" "),
+              _vm._l(_vm.goalTeams, function(ref) {
+                var Name = ref.Name
+                var Practice_Key = ref.Practice_Key
+                return _c(
+                  "option",
+                  { key: Practice_Key, domProps: { value: Practice_Key } },
+                  [_vm._v("\n        " + _vm._s(Name) + "\n      ")]
+                )
+              })
+            ],
+            2
+          )
     ])
   ])
 }

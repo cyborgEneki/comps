@@ -74,7 +74,7 @@
 <script>
 export default {
   props: {
-    goalTeamProp: Number,
+    goalTeamIdFromUserProp: Number,
     initiativeProp: Object,
   },
 
@@ -112,14 +112,14 @@ export default {
   },
   methods: {
     submitForm() {
-      this.initiative.Practice_Key = this.goalTeamProp;
+      this.initiative.Practice_Key = this.goalTeamIdFromUserProp;
       axios.post(`/api/initiatives/${this.initiative.Initiative_Key}`, this.initiative).then((res) => {
-        //Reload the page with data filled
-        router.push("home")
-        $this.initiative = res.initiative
-        console.log($this.initiative)
+        this.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
       });
     },
+    emitPassInitiativeGoalTeam(event) {
+      this.$emit("passInitiativeGoalTeamIdFromDb", this.goalTeamIdFromUserProp);
+    }
   },
 };
 </script>
