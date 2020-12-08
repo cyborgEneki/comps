@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SelectInitiative :goalTeamIdFromDbProp="goalTeamIdFromDb" @fetchGoalTeamIdFromUser="cacheGoalTeamIdFromUser"></SelectInitiative>
+    <SelectGoalTeam :goalTeamIdFromDbProp="goalTeamIdFromDb" @fetchGoalTeamIdFromUser="cacheGoalTeamIdFromUser"></SelectGoalTeam>
     <EditInitiative
       v-if="initiative"
       :initiativeProp="initiative"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import SelectInitiative from "../views/SelectInitiative";
+import SelectGoalTeam from "../views/SelectGoalTeam";
 import EditInitiative from "../views/EditInitiative";
 
 export default {
@@ -25,7 +25,7 @@ export default {
   },
 
   components: {
-    SelectInitiative,
+    SelectGoalTeam,
     EditInitiative,
   },
 
