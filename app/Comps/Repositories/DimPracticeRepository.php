@@ -20,6 +20,6 @@ class DimPracticeRepository
 
     public function findPracticeById($id)
     {
-        return DimPractice::findOrFail($id);
+        return $this->practice->findOrFail($id);
     }
 }

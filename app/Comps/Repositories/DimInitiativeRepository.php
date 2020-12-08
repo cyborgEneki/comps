@@ -20,6 +20,6 @@ class DimInitiativeRepository
 
     public function findInitiativeById($id)
     {
-        return DimInitiative::findOrFail($id);
+        return $this->initiative->findOrFail($id);
     }
 }

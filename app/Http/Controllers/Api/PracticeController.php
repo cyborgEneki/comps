@@ -37,7 +37,8 @@ class PracticeController extends Controller
         $factInitiativeIndicator = $this->factInitiativeIndicatorRepository->findFactInitiativeIndicatorByInitiativeId($request->get('Initiative_Key'));
         
         if($factInitiativeIndicator) {
-            $factInitiativeIndicator->update($request->all());
+            // How to use foreign key as primary key without continuously creating a new record when updating
+            $factInitiativeIndicator->update([$request->only('Practice_Key')]);
         }
         FactInitiativeIndicator::create($request->all());
 

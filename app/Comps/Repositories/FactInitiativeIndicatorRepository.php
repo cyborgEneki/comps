@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Comps\Repositories;
 
@@ -6,33 +6,26 @@ use App\Models\DimInitiative;
 use App\Models\DimPractice;
 use App\Models\FactInitiativeIndicator;
 
-class FactInitiativeIndicatorRepository 
+class FactInitiativeIndicatorRepository
 {
-    protected $initiative;
-    
+    protected $factInitiativeIndicator,
+        $practice;
+
+
     public function __construct()
     {
-        $this->initiative = new DimInitiative();
-    }
-
-    public function getAllInitiatives()
-    {
-        return $this->initiative->all();
-    }
-
-    public function findInitiativeById($id)
-    {
-        return DimInitiative::findOrFail($id);
+        $this->factInitiativeIndicator = new FactInitiativeIndicator();
+        $this->practice = new DimPractice();
     }
 
     public function findFactInitiativeIndicatorByInitiativeId($initiativeId)
     {
-       return FactInitiativeIndicator::where('Initiative_Key', $initiativeId)->first();
+        return $this->factInitiativeIndicator->where('Initiative_Key', $initiativeId)->first();
     }
 
     public function getPracticeByInitiativeId($initiativeId)
     {
-        $practiceId = FactInitiativeIndicator::select('Practice_Key')->where('Initiative_Key', $initiativeId)->first()->Practice_Key;
-        return DimPractice::findOrFail($practiceId);
+        $practiceId = $this->factInitiativeIndicator->select('Practice_Key')->where('Initiative_Key', $initiativeId)->first()->Practice_Key;
+        return $this->practice->findOrFail($practiceId);
     }
 }
