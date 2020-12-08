@@ -70,6 +70,7 @@
 
 <script>
 import axios from "axios";
+import clientApi from "../api/initiatiave";
 
 export default {
   data() {
@@ -87,13 +88,13 @@ export default {
     fetchInitiatives() {
       this.initiatives = null;
 
-      axios.get("/api/initiatives").then((response) => {
+      clientApi.all().then((response) => {
         this.initiatives = response.data.initiatives;
       });
     },
 
     async openEditPage(event) {
-      await axios.get("/api/initiative/" + this.initiativeId).then((response) => {
+      await clientApi.find(this.initiativeId).then((response) => {
         this.initiative = response.data.initiative;
       });
 

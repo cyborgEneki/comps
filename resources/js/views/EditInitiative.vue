@@ -72,10 +72,10 @@
 </template>
 
 <script>
-import api from '../api/initiatiave';
+import clientApi from "../api/initiatiave";
 export default {
   props: {
-    goalTeamIdFromUserProp: Number
+    goalTeamIdFromUserProp: Number,
   },
   data() {
     return {
@@ -86,15 +86,16 @@ export default {
         Lead_Email: "",
         Start_Year: "",
         End_Year: "",
-        Statement: ""
+        Statement: "",
       },
     };
   },
-  created() {
-    api.find(this.$route.params.initiativeId).then((response) => {
-      this.loaded = true;
-      this.initiative = response.data.initiative;
-    });
+  watch: {
+    // call the method if the route changes
+    $route: {
+      handler: "getInitiative",
+      immediate: true, // runs immediately with mount() instead of calling method on mount hook
+    },
   },
   mounted() {
     let startYearDropdown = document.getElementById("initiative-start-year"),
@@ -123,6 +124,12 @@ export default {
     }
   },
   methods: {
+    getInitiative() {
+      clientApi.find(this.$route.params.initiativeId).then((response) => {
+        this.loaded = true;
+        this.initiative = response.data.initiative;
+      });
+    },
     submitForm() {
       this.initiative.Practice_Key = this.goalTeamIdFromUserProp;
       axios

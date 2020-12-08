@@ -2163,13 +2163,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    // call the method if the route changes
+    $route: {
+      handler: "getInitiative",
+      immediate: true // runs immediately with mount() instead of calling method on mount hook
 
-    _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].find(this.$route.params.initiativeId).then(function (response) {
-      _this.loaded = true;
-      _this.initiative = response.data.initiative;
-    });
+    }
   },
   mounted: function mounted() {
     var startYearDropdown = document.getElementById("initiative-start-year"),
@@ -2198,6 +2198,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    getInitiative: function getInitiative() {
+      var _this = this;
+
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].find(this.$route.params.initiativeId).then(function (response) {
+        _this.loaded = true;
+        _this.initiative = response.data.initiative;
+      });
+    },
     submitForm: function submitForm() {
       var _this2 = this;
 
@@ -2372,6 +2380,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api/initiatiave */ "./resources/js/api/initiatiave.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2449,6 +2458,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2465,7 +2475,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       this.initiatives = null;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/initiatives").then(function (response) {
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].all().then(function (response) {
         _this.initiatives = response.data.initiatives;
       });
     },
@@ -2478,7 +2488,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/initiative/" + _this2.initiativeId).then(function (response) {
+                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this2.initiativeId).then(function (response) {
                   _this2.initiative = response.data.initiative;
                 });
 
