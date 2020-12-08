@@ -1,19 +1,12 @@
 <template>
   <div>
     <SelectGoalTeam :goalTeamIdFromDbProp="goalTeamIdFromDb" @fetchGoalTeamIdFromUser="cacheGoalTeamIdFromUser"></SelectGoalTeam>
-    <EditInitiative
-      v-if="initiative"
-      :initiativeProp="initiative"
-      :goalTeamIdFromUserProp="goalTeamIdFromUser"
-      id="edit-initiative-component"
-      @passInitiativeGoalTeamIdFromDb="cacheInitiativeGoalTeamIdFromDb"
-    ></EditInitiative>
+   
   </div>
 </template>
 
 <script>
 import SelectGoalTeam from "../views/SelectGoalTeam";
-import EditInitiative from "../views/EditInitiative";
 
 export default {
   data() {
@@ -25,8 +18,7 @@ export default {
   },
 
   components: {
-    SelectGoalTeam,
-    EditInitiative,
+    SelectGoalTeam
   },
 
   methods: {
@@ -36,12 +28,6 @@ export default {
     cacheInitiativeGoalTeamIdFromDb(value) {
       this.goalTeamIdFromDb = value
     }
-  },
-
-  mounted() {
-    this.$root.$on("fetchSelectedInitiative", (value) => {
-      this.initiative = value;
-    });
-  },
+  }
 };
 </script>

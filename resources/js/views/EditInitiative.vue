@@ -72,18 +72,30 @@
 </template>
 
 <script>
+import api from '../api/initiatiave';
 export default {
   props: {
-    goalTeamIdFromUserProp: Number,
-    initiativeProp: Object,
+    goalTeamIdFromUserProp: Number
   },
-
-  computed: {
-    initiative() {
-      return this.initiativeProp
-    },
+  data() {
+    return {
+      initiative: {
+        Initiative_Key: null,
+        Name: "",
+        Lead_Name: "",
+        Lead_Email: "",
+        Start_Year: "",
+        End_Year: "",
+        Statement: ""
+      },
+    };
   },
-
+  created() {
+    api.find(this.$route.params.id).then((response) => {
+      this.loaded = true;
+      this.initiative = response.data.initiative;
+    });
+  },
   mounted() {
     let startYearDropdown = document.getElementById("initiative-start-year"),
       endYearDropdown = document.getElementById("initiative-end-year"),
@@ -113,13 +125,15 @@ export default {
   methods: {
     submitForm() {
       this.initiative.Practice_Key = this.goalTeamIdFromUserProp;
-      axios.post(`/api/initiatives/${this.initiative.Initiative_Key}`, this.initiative).then((res) => {
-        this.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
-      });
+      axios
+        .post(`/api/initiatives/${this.initiative.Initiative_Key}`, this.initiative)
+        .then((res) => {
+          this.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
+        });
     },
     emitPassInitiativeGoalTeam(event) {
       this.$emit("passInitiativeGoalTeamIdFromDb", this.goalTeamIdFromUserProp);
-    }
+    },
   },
 };
 </script>

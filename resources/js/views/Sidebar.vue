@@ -16,7 +16,7 @@
         <select
           class="custom-select custom-select-sm"
           v-model="initiativeId"
-          @change="emitFetchSelectedInitiative"
+          @change="openEditPage"
         >
           <option disabled value=""></option>
           <option
@@ -92,13 +92,12 @@ export default {
       });
     },
 
-    async emitFetchSelectedInitiative(event) {
+    async openEditPage(event) {
       await axios.get("/api/initiative/" + this.initiativeId).then((response) => {
         this.initiative = response.data.initiative;
       });
 
       this.$router.push({ path: "/initiative/" + this.initiative.Initiative_Key });
-      this.$root.$emit("fetchSelectedInitiative", this.initiative);
     },
   },
 };

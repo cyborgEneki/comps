@@ -10,6 +10,7 @@ import Home from './views/Home.vue'
 import PathwayOutcome from './components/PathwayOutcome.vue'
 import Milestones from './views/Milestones.vue'
 import FinancialInformation from './views/FinancialInformation.vue'
+import EditInitiative from "./views/EditInitiative.vue";
 
 const router = new VueRouter({
     mode: 'history',
@@ -22,7 +23,7 @@ const router = new VueRouter({
             path: '/initiative/:initiativeId',
             name: 'initiative',
             props: true,
-            component: Home
+            component: EditInitiative
         },
         {
             path: '/pathway',

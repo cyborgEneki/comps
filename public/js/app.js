@@ -2071,6 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/initiatiave */ "./resources/js/api/initiatiave.js");
 //
 //
 //
@@ -2144,15 +2145,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    goalTeamIdFromUserProp: Number,
-    initiativeProp: Object
+    goalTeamIdFromUserProp: Number
   },
-  computed: {
-    initiative: function initiative() {
-      return this.initiativeProp;
-    }
+  data: function data() {
+    return {
+      initiative: {
+        Initiative_Key: null,
+        Name: "",
+        Lead_Name: "",
+        Lead_Email: "",
+        Start_Year: "",
+        End_Year: "",
+        Statement: ""
+      }
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].find(this.$route.params.id).then(function (response) {
+      _this.loaded = true;
+      _this.initiative = response.data.initiative;
+    });
   },
   mounted: function mounted() {
     var startYearDropdown = document.getElementById("initiative-start-year"),
@@ -2182,11 +2199,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm() {
-      var _this = this;
+      var _this2 = this;
 
       this.initiative.Practice_Key = this.goalTeamIdFromUserProp;
       axios.post("/api/initiatives/".concat(this.initiative.Initiative_Key), this.initiative).then(function (res) {
-        _this.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
+        _this2.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
 
       });
     },
@@ -2208,7 +2225,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_SelectGoalTeam__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/SelectGoalTeam */ "./resources/js/views/SelectGoalTeam.vue");
-/* harmony import */ var _views_EditInitiative__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/EditInitiative */ "./resources/js/views/EditInitiative.vue");
 //
 //
 //
@@ -2216,13 +2232,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2233,8 +2242,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
-    SelectGoalTeam: _views_SelectGoalTeam__WEBPACK_IMPORTED_MODULE_0__["default"],
-    EditInitiative: _views_EditInitiative__WEBPACK_IMPORTED_MODULE_1__["default"]
+    SelectGoalTeam: _views_SelectGoalTeam__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
     cacheGoalTeamIdFromUser: function cacheGoalTeamIdFromUser(value) {
@@ -2243,13 +2251,6 @@ __webpack_require__.r(__webpack_exports__);
     cacheInitiativeGoalTeamIdFromDb: function cacheInitiativeGoalTeamIdFromDb(value) {
       this.goalTeamIdFromDb = value;
     }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$root.$on("fetchSelectedInitiative", function (value) {
-      _this.initiative = value;
-    });
   }
 });
 
@@ -2468,7 +2469,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this.initiatives = response.data.initiatives;
       });
     },
-    emitFetchSelectedInitiative: function emitFetchSelectedInitiative(event) {
+    openEditPage: function openEditPage(event) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -2486,9 +2487,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   path: "/initiative/" + _this2.initiative.Initiative_Key
                 });
 
-                _this2.$root.$emit("fetchSelectedInitiative", _this2.initiative);
-
-              case 4:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -21530,21 +21529,7 @@ var render = function() {
       _c("SelectGoalTeam", {
         attrs: { goalTeamIdFromDbProp: _vm.goalTeamIdFromDb },
         on: { fetchGoalTeamIdFromUser: _vm.cacheGoalTeamIdFromUser }
-      }),
-      _vm._v(" "),
-      _vm.initiative
-        ? _c("EditInitiative", {
-            attrs: {
-              initiativeProp: _vm.initiative,
-              goalTeamIdFromUserProp: _vm.goalTeamIdFromUser,
-              id: "edit-initiative-component"
-            },
-            on: {
-              passInitiativeGoalTeamIdFromDb:
-                _vm.cacheInitiativeGoalTeamIdFromDb
-            }
-          })
-        : _vm._e()
+      })
     ],
     1
   )
@@ -21830,7 +21815,7 @@ var render = function() {
                       ? $$selectedVal
                       : $$selectedVal[0]
                   },
-                  _vm.emitFetchSelectedInitiative
+                  _vm.openEditPage
                 ]
               }
             },
@@ -37188,6 +37173,29 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/api/initiatiave.js":
+/*!*****************************************!*\
+  !*** ./resources/js/api/initiatiave.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all() {
+    return axios.get('/api/initiatives');
+  },
+  find: function find(id) {
+    return axios.get("/api/initiative/".concat(id));
+  },
+  update: function update(id, data) {
+    return axios.put("/api/initiative/".concat(id), data);
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37205,11 +37213,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PathwayOutcome_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PathwayOutcome.vue */ "./resources/js/components/PathwayOutcome.vue");
 /* harmony import */ var _views_Milestones_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Milestones.vue */ "./resources/js/views/Milestones.vue");
 /* harmony import */ var _views_FinancialInformation_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/FinancialInformation.vue */ "./resources/js/views/FinancialInformation.vue");
+/* harmony import */ var _views_EditInitiative_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/EditInitiative.vue */ "./resources/js/views/EditInitiative.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
 
 
 
@@ -37225,7 +37235,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/initiative/:initiativeId',
     name: 'initiative',
     props: true,
-    component: _views_Home_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _views_EditInitiative_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/pathway',
     // path: '/initiative/:initiativeId/pathway/:pathwayId/edit',
