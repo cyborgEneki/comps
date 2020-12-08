@@ -21,6 +21,7 @@ const router = new VueRouter({
         {
             path: '/initiative/:initiativeId',
             name: 'initiative',
+            props: true,
             component: Home
         },
         {

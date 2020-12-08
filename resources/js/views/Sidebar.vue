@@ -10,9 +10,7 @@
         >
       </div>
       <div class="border-bottom">
-        <p
-          class="list-group-item list-group-item-action bg-light border-0 mb-0"
-        >
+        <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
           Select an Initiative
         </p>
         <select
@@ -31,9 +29,7 @@
         </select>
       </div>
       <div class="border-bottom">
-        <p
-          class="list-group-item list-group-item-action bg-light border-0 mb-0"
-        >
+        <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
           Pathways
         </p>
         <router-link
@@ -44,9 +40,7 @@
         </router-link>
       </div>
       <div class="border-bottom">
-        <p
-          class="list-group-item list-group-item-action bg-light border-0 mb-0"
-        >
+        <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
           Outcomes
         </p>
         <router-link
@@ -99,12 +93,11 @@ export default {
     },
 
     async emitFetchSelectedInitiative(event) {
-      await axios
-        .get("/api/initiative/" + this.initiativeId)
-        .then((response) => {
-          this.initiative = response.data.initiative;
-        });
+      await axios.get("/api/initiative/" + this.initiativeId).then((response) => {
+        this.initiative = response.data.initiative;
+      });
 
+      this.$router.push({ path: "/initiative/" + this.initiative.Initiative_Key });
       this.$root.$emit("fetchSelectedInitiative", this.initiative);
     },
   },
