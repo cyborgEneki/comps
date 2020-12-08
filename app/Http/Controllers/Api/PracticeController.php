@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Comps\Repositories\DimPracticeRepository;
+use App\Comps\Repositories\FactInitiativeIndicatorRepository;
 use App\Http\Controllers\Controller;
 use App\Models\DimPractice;
 use App\Models\FactInitiativeIndicator;
@@ -10,11 +11,13 @@ use Illuminate\Http\Request;
 
 class PracticeController extends Controller
 {
-    protected $dimPracticeRepository;
+    protected $dimPracticeRepository,
+        $factInitiativeIndicatorRepository;
 
     public function __construct()
     {
         $this->dimPracticeRepository = new DimPracticeRepository();
+        $this->factInitiativeIndicatorRepository = new FactInitiativeIndicatorRepository();
     }
 
     public function index()
@@ -31,12 +34,15 @@ class PracticeController extends Controller
 
     public function store(Request $request)
     {
-        $practice = $this->dimPracticeRepository->findPracticeById($request->get('Practice_Key'));
+        $factInitiativeIndicator = $this->factInitiativeIndicatorRepository->findFactInitiativeIndicatorByInitiativeId($request->get('Initiative_Key'));
+        
+        if($factInitiativeIndicator) {
+            $factInitiativeIndicator->update($request->all());
+        }
         FactInitiativeIndicator::create($request->all());
 
         return response()->json([
-            'success' => 'success',
-            'practice' => $practice
+            'success' => 'success'
         ], 200);
     }
 }

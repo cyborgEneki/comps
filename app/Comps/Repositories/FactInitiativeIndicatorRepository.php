@@ -25,6 +25,11 @@ class FactInitiativeIndicatorRepository
         return DimInitiative::findOrFail($id);
     }
 
+    public function findFactInitiativeIndicatorByInitiativeId($initiativeId)
+    {
+       return FactInitiativeIndicator::where('Initiative_Key', $initiativeId)->first();
+    }
+
     public function getPracticeByInitiativeId($initiativeId)
     {
         $practiceId = FactInitiativeIndicator::select('Practice_Key')->where('Initiative_Key', $initiativeId)->first()->Practice_Key;

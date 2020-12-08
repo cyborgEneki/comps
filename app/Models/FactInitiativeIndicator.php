@@ -9,7 +9,8 @@ class FactInitiativeIndicator extends Model
 {
     use HasFactory;
 
-    protected $table = 'Fact_Initiative_Indicators';
+    protected $table = 'Fact_Initiative_Indicators',
+        $primaryKey = 'Initiative_Key';
 
     protected $fillable = [
         'Initiative_Key',
@@ -20,4 +21,9 @@ class FactInitiativeIndicator extends Model
         'Total_Funds_Secured',
         'Total_Funds_Anticipated'
     ];
+
+    public function initiative()
+    {
+        return $this->hasOne(DimInitiative::class, 'Initiative_Key');
+    }
 }

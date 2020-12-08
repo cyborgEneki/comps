@@ -137,7 +137,7 @@ export default {
     },
 
     storeInitiativeGoalTeam() {
-      this.initiative.Practice_Key = this.goalTeam;
+      this.initiative.Practice_Key = this.goalTeam.Practice_Key;
       clientApi.storeInitiativeGoalTeam(this.$route.params.initiativeId, {
         Practice_Key: this.initiative.Practice_Key,
         Initiative_Key: this.$route.params.initiativeId

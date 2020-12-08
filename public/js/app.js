@@ -2524,7 +2524,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     storeInitiativeGoalTeam: function storeInitiativeGoalTeam() {
-      this.initiative.Practice_Key = this.goalTeam;
+      this.initiative.Practice_Key = this.goalTeam.Practice_Key;
       _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].storeInitiativeGoalTeam(this.$route.params.initiativeId, {
         Practice_Key: this.initiative.Practice_Key,
         Initiative_Key: this.$route.params.initiativeId
