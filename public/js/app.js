@@ -2520,6 +2520,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(this.$route.params.initiativeId).then(function (response) {
         _this3.initiative = response.data.initiative;
+        _this3.goalTeam = response.data.initiativeGoalTeam;
       });
     },
     storeInitiativeGoalTeam: function storeInitiativeGoalTeam() {
@@ -21857,8 +21858,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.goalTeam,
-                        expression: "goalTeam"
+                        value: _vm.goalTeam.Practice_Key,
+                        expression: "goalTeam.Practice_Key"
                       }
                     ],
                     staticClass: "custom-select custom-select-sm",
@@ -21873,9 +21874,13 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.goalTeam = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            _vm.goalTeam,
+                            "Practice_Key",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         },
                         _vm.storeInitiativeGoalTeam
                       ]

@@ -3,6 +3,8 @@
 namespace App\Comps\Repositories;
 
 use App\Models\DimInitiative;
+use App\Models\DimPractice;
+use App\Models\FactInitiativeIndicator;
 
 class FactInitiativeIndicatorRepository 
 {
@@ -21,5 +23,11 @@ class FactInitiativeIndicatorRepository
     public function findInitiativeById($id)
     {
         return DimInitiative::findOrFail($id);
+    }
+
+    public function getPracticeByInitiativeId($initiativeId)
+    {
+        $practiceId = FactInitiativeIndicator::select('Practice_Key')->where('Initiative_Key', $initiativeId)->first()->Practice_Key;
+        return DimPractice::findOrFail($practiceId);
     }
 }

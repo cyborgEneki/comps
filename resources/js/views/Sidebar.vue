@@ -16,7 +16,7 @@
           </p>
           <select
             class="custom-select custom-select-sm"
-            v-model="goalTeam"
+            v-model="goalTeam.Practice_Key"
             @change="storeInitiativeGoalTeam"
           >
             <option disabled value=""></option>
@@ -132,6 +132,7 @@ export default {
     displayGoalTeamSelect() {
       clientApi.find(this.$route.params.initiativeId).then((response) => {
         this.initiative = response.data.initiative;
+        this.goalTeam = response.data.initiativeGoalTeam;
       });
     },
 
