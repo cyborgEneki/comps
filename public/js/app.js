@@ -2166,7 +2166,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].find(this.$route.params.id).then(function (response) {
+    _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].find(this.$route.params.initiativeId).then(function (response) {
       _this.loaded = true;
       _this.initiative = response.data.initiative;
     });

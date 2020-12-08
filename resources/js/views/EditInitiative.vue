@@ -91,7 +91,7 @@ export default {
     };
   },
   created() {
-    api.find(this.$route.params.id).then((response) => {
+    api.find(this.$route.params.initiativeId).then((response) => {
       this.loaded = true;
       this.initiative = response.data.initiative;
     });
