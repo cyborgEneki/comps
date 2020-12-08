@@ -10,13 +10,32 @@
         >
       </div>
       <div class="border-bottom">
+        <div v-if="initiative">
+          <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
+            Select a Goal Team
+          </p>
+          <select
+            class="custom-select custom-select-sm"
+            v-model="goalTeam"
+            @change="storeInitiativeGoalTeam"
+          >
+            <option disabled value=""></option>
+            <option
+              v-for="{ Name, Practice_Key } in goalTeams"
+              :value="Practice_Key"
+              :key="Practice_Key"
+            >
+              {{ Name }}
+            </option>
+          </select>
+        </div>
         <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
           Select an Initiative
         </p>
         <select
           class="custom-select custom-select-sm"
           v-model="initiativeId"
-          @change="openEditPage"
+          @change="selectInitiative"
         >
           <option disabled value=""></option>
           <option
@@ -78,22 +97,53 @@ export default {
       initiativeId: null,
       initiatives: null,
       initiative: null,
+      goalTeamId: null,
+      goalTeam: null,
+      goalTeams: null,
     };
   },
 
   created() {
+    this.fetchGoalTeams();
     this.fetchInitiatives();
   },
-  methods: {
-    fetchInitiatives() {
-      this.initiatives = null;
 
+  watch: {
+    // call the method if the route changes
+    $route: {
+      handler: "displayGoalTeamSelect",
+      immediate: true, // runs immediately with mount() instead of calling method on mount hook
+    },
+  },
+
+  methods: {
+    fetchGoalTeams() {
+      axios.get("/api/practices").then((response) => {
+        this.goalTeams = response.data.practices;
+      });
+    },
+
+    fetchInitiatives() {
       clientApi.all().then((response) => {
         this.initiatives = response.data.initiatives;
       });
     },
 
-    async openEditPage(event) {
+    displayGoalTeamSelect() {
+      clientApi.find(this.$route.params.initiativeId).then((response) => {
+        this.initiative = response.data.initiative;
+      });
+    },
+
+    storeInitiativeGoalTeam() {
+      this.initiative.Practice_Key = this.goalTeam;
+      clientApi.storeInitiativeGoalTeam(this.$route.params.initiativeId, {
+        Practice_Key: this.initiative.Practice_Key,
+        Initiative_Key: this.$route.params.initiativeId
+      });
+    },
+
+    async selectInitiative(event) {
       await clientApi.find(this.initiativeId).then((response) => {
         this.initiative = response.data.initiative;
       });

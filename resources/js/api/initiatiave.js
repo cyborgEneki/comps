@@ -6,6 +6,9 @@ export default {
         return axios.get(`/api/initiative/${id}`);
     },
     update(id, data) {
-        return axios.put(`/api/initiative/${id}`, data);
+        return axios.post(`/api/initiative/${id}`, data);
+    },
+    storeInitiativeGoalTeam(id, data) {
+        return axios.post(`/api/initiative/${id}/goal-team`, data);
     },
 };

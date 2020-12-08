@@ -2202,7 +2202,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].find(this.$route.params.initiativeId).then(function (response) {
-        _this.loaded = true;
         _this.initiative = response.data.initiative;
       });
     },
@@ -2457,6 +2456,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2464,23 +2482,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       initiativeId: null,
       initiatives: null,
-      initiative: null
+      initiative: null,
+      goalTeamId: null,
+      goalTeam: null,
+      goalTeams: null
     };
   },
   created: function created() {
+    this.fetchGoalTeams();
     this.fetchInitiatives();
   },
+  watch: {
+    // call the method if the route changes
+    $route: {
+      handler: "displayGoalTeamSelect",
+      immediate: true // runs immediately with mount() instead of calling method on mount hook
+
+    }
+  },
   methods: {
-    fetchInitiatives: function fetchInitiatives() {
+    fetchGoalTeams: function fetchGoalTeams() {
       var _this = this;
 
-      this.initiatives = null;
-      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].all().then(function (response) {
-        _this.initiatives = response.data.initiatives;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/practices").then(function (response) {
+        _this.goalTeams = response.data.practices;
       });
     },
-    openEditPage: function openEditPage(event) {
+    fetchInitiatives: function fetchInitiatives() {
       var _this2 = this;
+
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].all().then(function (response) {
+        _this2.initiatives = response.data.initiatives;
+      });
+    },
+    displayGoalTeamSelect: function displayGoalTeamSelect() {
+      var _this3 = this;
+
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(this.$route.params.initiativeId).then(function (response) {
+        _this3.initiative = response.data.initiative;
+      });
+    },
+    storeInitiativeGoalTeam: function storeInitiativeGoalTeam() {
+      this.initiative.Practice_Key = this.goalTeam;
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].storeInitiativeGoalTeam(this.$route.params.initiativeId, {
+        Practice_Key: this.initiative.Practice_Key,
+        Initiative_Key: this.$route.params.initiativeId
+      });
+    },
+    selectInitiative: function selectInitiative(event) {
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2488,13 +2538,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this2.initiativeId).then(function (response) {
-                  _this2.initiative = response.data.initiative;
+                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this4.initiativeId).then(function (response) {
+                  _this4.initiative = response.data.initiative;
                 });
 
               case 2:
-                _this2.$router.push({
-                  path: "/initiative/" + _this2.initiative.Initiative_Key
+                _this4.$router.push({
+                  path: "/initiative/" + _this4.initiative.Initiative_Key
                 });
 
               case 3:
@@ -21789,6 +21839,73 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "border-bottom" }, [
+          _vm.initiative
+            ? _c("div", [
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "list-group-item list-group-item-action bg-light border-0 mb-0"
+                  },
+                  [_vm._v("\n          Select a Goal Team\n        ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.goalTeam,
+                        expression: "goalTeam"
+                      }
+                    ],
+                    staticClass: "custom-select custom-select-sm",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.goalTeam = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        _vm.storeInitiativeGoalTeam
+                      ]
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { disabled: "", value: "" } }),
+                    _vm._v(" "),
+                    _vm._l(_vm.goalTeams, function(ref) {
+                      var Name = ref.Name
+                      var Practice_Key = ref.Practice_Key
+                      return _c(
+                        "option",
+                        {
+                          key: Practice_Key,
+                          domProps: { value: Practice_Key }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " + _vm._s(Name) + "\n          "
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "p",
             {
@@ -21825,7 +21942,7 @@ var render = function() {
                       ? $$selectedVal
                       : $$selectedVal[0]
                   },
-                  _vm.openEditPage
+                  _vm.selectInitiative
                 ]
               }
             },
@@ -37200,7 +37317,10 @@ __webpack_require__.r(__webpack_exports__);
     return axios.get("/api/initiative/".concat(id));
   },
   update: function update(id, data) {
-    return axios.put("/api/initiative/".concat(id), data);
+    return axios.post("/api/initiative/".concat(id), data);
+  },
+  storeInitiativeGoalTeam: function storeInitiativeGoalTeam(id, data) {
+    return axios.post("/api/initiative/".concat(id, "/goal-team"), data);
   }
 });
 

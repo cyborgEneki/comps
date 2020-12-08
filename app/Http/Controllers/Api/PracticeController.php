@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Comps\Repositories\DimPracticeRepository;
 use App\Http\Controllers\Controller;
 use App\Models\DimPractice;
+use App\Models\FactInitiativeIndicator;
+use Illuminate\Http\Request;
 
 class PracticeController extends Controller
 {
@@ -25,5 +27,16 @@ class PracticeController extends Controller
     public function getPracticeById($id)
     {
         return DimPractice::findOrFail($id);
+    }
+
+    public function store(Request $request)
+    {
+        $practice = $this->dimPracticeRepository->findPracticeById($request->get('Practice_Key'));
+        FactInitiativeIndicator::create($request->all());
+
+        return response()->json([
+            'success' => 'success',
+            'practice' => $practice
+        ], 200);
     }
 }

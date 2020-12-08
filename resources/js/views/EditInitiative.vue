@@ -126,7 +126,6 @@ export default {
   methods: {
     getInitiative() {
       clientApi.find(this.$route.params.initiativeId).then((response) => {
-        this.loaded = true;
         this.initiative = response.data.initiative;
       });
     },
