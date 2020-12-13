@@ -2352,6 +2352,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2361,8 +2379,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       initiatives: null,
       initiative: null,
       goalTeamId: null,
-      goalTeam: null,
-      goalTeams: null
+      goalTeams: null,
+      initiativeGoalTeam: null
     };
   },
   created: function created() {
@@ -2397,11 +2415,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(this.$route.params.initiativeId).then(function (response) {
         _this3.initiative = response.data.initiative;
-        _this3.goalTeam = response.data.initiativeGoalTeam;
+        _this3.initiativeGoalTeam = response.data.initiativeGoalTeam;
       });
     },
     storeInitiativeGoalTeam: function storeInitiativeGoalTeam() {
-      this.initiative.Practice_Key = this.goalTeam.Practice_Key;
+      this.initiative.Practice_Key = this.goalTeamPracticeKey;
       _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].storeInitiativeGoalTeam(this.$route.params.initiativeId, {
         Practice_Key: this.initiative.Practice_Key,
         Initiative_Key: this.$route.params.initiativeId
@@ -21592,63 +21610,125 @@ var render = function() {
                   [_vm._v("\n          Select a Goal Team\n        ")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.goalTeam.Practice_Key,
-                        expression: "goalTeam.Practice_Key"
-                      }
-                    ],
-                    staticClass: "custom-select custom-select-sm",
-                    on: {
-                      change: [
-                        function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.goalTeam,
-                            "Practice_Key",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        },
-                        _vm.storeInitiativeGoalTeam
-                      ]
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { disabled: "", value: "" } }),
-                    _vm._v(" "),
-                    _vm._l(_vm.goalTeams, function(ref) {
-                      var Name = ref.Name
-                      var Practice_Key = ref.Practice_Key
-                      return _c(
-                        "option",
+                _vm.initiativeGoalTeam
+                  ? _c("div", [
+                      _c(
+                        "select",
                         {
-                          key: Practice_Key,
-                          domProps: { value: Practice_Key }
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.initiativeGoalTeam.Practice_Key,
+                              expression: "initiativeGoalTeam.Practice_Key"
+                            }
+                          ],
+                          staticClass: "custom-select custom-select-sm",
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.initiativeGoalTeam,
+                                  "Practice_Key",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              _vm.storeInitiativeGoalTeam
+                            ]
+                          }
                         },
                         [
-                          _vm._v(
-                            "\n            " + _vm._s(Name) + "\n          "
-                          )
-                        ]
+                          _c("option", { attrs: { disabled: "", value: "" } }),
+                          _vm._v(" "),
+                          _vm._l(_vm.goalTeams, function(ref) {
+                            var Name = ref.Name
+                            var Practice_Key = ref.Practice_Key
+                            return _c(
+                              "option",
+                              {
+                                key: Practice_Key,
+                                domProps: { value: Practice_Key }
+                              },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(Name) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
                       )
-                    })
-                  ],
-                  2
-                )
+                    ])
+                  : _c("div", [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.initiativeGoalTeam,
+                              expression: "initiativeGoalTeam"
+                            }
+                          ],
+                          staticClass: "custom-select custom-select-sm",
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.initiativeGoalTeam = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                              _vm.storeInitiativeGoalTeam
+                            ]
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { disabled: "", value: "" } }),
+                          _vm._v(" "),
+                          _vm._l(_vm.goalTeams, function(ref) {
+                            var Name = ref.Name
+                            var Practice_Key = ref.Practice_Key
+                            return _c(
+                              "option",
+                              {
+                                key: Practice_Key,
+                                domProps: { value: Practice_Key }
+                              },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(Name) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ])
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -37559,14 +37639,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./resources/js/views/Sidebar.vue ***!
   \****************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Sidebar_vue_vue_type_template_id_02a6918d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sidebar.vue?vue&type=template&id=02a6918d& */ "./resources/js/views/Sidebar.vue?vue&type=template&id=02a6918d&");
 /* harmony import */ var _Sidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sidebar.vue?vue&type=script&lang=js& */ "./resources/js/views/Sidebar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Sidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Sidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -37596,7 +37677,7 @@ component.options.__file = "resources/js/views/Sidebar.vue"
 /*!*****************************************************************!*\
   !*** ./resources/js/views/Sidebar.vue?vue&type=script&lang=js& ***!
   \*****************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

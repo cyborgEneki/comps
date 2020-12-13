@@ -25,7 +25,11 @@ class FactInitiativeIndicatorRepository
 
     public function getPracticeByInitiativeId($initiativeId)
     {
-        $practiceId = $this->factInitiativeIndicator->select('Practice_Key')->where('Initiative_Key', $initiativeId)->first()->Practice_Key;
-        return $this->practice->findOrFail($practiceId);
+        $practiceId = $this->factInitiativeIndicator->where('Initiative_Key', $initiativeId)->first() ? $this->factInitiativeIndicator->where('Initiative_Key', $initiativeId)->first()->Practice_Key : null;
+        if($practiceId) {
+            return $this->practice->findOrFail($practiceId);
+        } else {
+            return null;
+        }
     }
 }

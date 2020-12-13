@@ -14,20 +14,38 @@
           <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
             Select a Goal Team
           </p>
-          <select
-            class="custom-select custom-select-sm"
-            v-model="goalTeam.Practice_Key"
-            @change="storeInitiativeGoalTeam"
-          >
-            <option disabled value=""></option>
-            <option
-              v-for="{ Name, Practice_Key } in goalTeams"
-              :value="Practice_Key"
-              :key="Practice_Key"
+          <div v-if="initiativeGoalTeam">
+            <select
+              class="custom-select custom-select-sm"
+              v-model="initiativeGoalTeam.Practice_Key"
+              @change="storeInitiativeGoalTeam"
             >
-              {{ Name }}
-            </option>
-          </select>
+              <option disabled value=""></option>
+              <option
+                v-for="{ Name, Practice_Key } in goalTeams"
+                :value="Practice_Key"
+                :key="Practice_Key"
+              >
+                {{ Name }}
+              </option>
+            </select>
+          </div>
+          <div v-else>
+            <select
+              class="custom-select custom-select-sm"
+              v-model="initiativeGoalTeam"
+              @change="storeInitiativeGoalTeam"
+            >
+              <option disabled value=""></option>
+              <option
+                v-for="{ Name, Practice_Key } in goalTeams"
+                :value="Practice_Key"
+                :key="Practice_Key"
+              >
+                {{ Name }}
+              </option>
+            </select>
+          </div>
         </div>
         <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
           Select an Initiative
@@ -98,8 +116,8 @@ export default {
       initiatives: null,
       initiative: null,
       goalTeamId: null,
-      goalTeam: null,
       goalTeams: null,
+      initiativeGoalTeam: null,
     };
   },
 
@@ -132,15 +150,15 @@ export default {
     displayGoalTeamSelect() {
       clientApi.find(this.$route.params.initiativeId).then((response) => {
         this.initiative = response.data.initiative;
-        this.goalTeam = response.data.initiativeGoalTeam;
+        this.initiativeGoalTeam = response.data.initiativeGoalTeam;
       });
     },
 
     storeInitiativeGoalTeam() {
-      this.initiative.Practice_Key = this.goalTeam.Practice_Key;
+      this.initiative.Practice_Key = this.goalTeamPracticeKey;
       clientApi.storeInitiativeGoalTeam(this.$route.params.initiativeId, {
         Practice_Key: this.initiative.Practice_Key,
-        Initiative_Key: this.$route.params.initiativeId
+        Initiative_Key: this.$route.params.initiativeId,
       });
     },
 

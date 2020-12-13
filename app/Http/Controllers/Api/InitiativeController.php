@@ -33,7 +33,9 @@ class InitiativeController extends Controller
 
     public function show(DimInitiative $initiative)
     {
+        $initiative = $this->dimInitiativeRepository->findInitiativeById($initiative->Initiative_Key);
         $initiativeGoalTeam = $this->factInitiativeIndicatorRepository->getPracticeByInitiativeId($initiative->Initiative_Key);
+
         return response()->json([
             'initiative' => $initiative,
             'initiativeGoalTeam' => $initiativeGoalTeam
