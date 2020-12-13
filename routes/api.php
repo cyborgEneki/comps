@@ -27,3 +27,5 @@ Route::get('/initiative/{initiative}', [InitiativeController::class, 'show']);
 Route::post('/initiatives/{initiative}', [InitiativeController::class, 'store']);
 
 Route::post('/initiative/{initiative}/goal-team', [PracticeController::class, 'store']);
+
+Route::get('/initiative/{initiative}/pathway/{pathway}', [InitiativeController::class, 'show']);

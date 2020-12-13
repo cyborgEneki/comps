@@ -69,13 +69,19 @@
         <div v-if="initiative">
           <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
             Pathways
+            <router-link
+              :to="{ name: 'create-pathway' }"
+              class="list-group-item list-group-item-action bg-light border-0 d-inline"
+            >
+              <i class="fas fa-plus-circle"></i>
+            </router-link>
           </p>
-          <router-link
+          <!-- <router-link
             :to="{ name: 'pathway' }"
             class="list-group-item list-group-item-action bg-light border-0"
           >
             <span class="ml-3">Pathway 1</span>
-          </router-link>
+          </router-link> -->
         </div>
       </div>
       <div class="border-bottom">
