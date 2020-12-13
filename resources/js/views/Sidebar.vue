@@ -76,12 +76,17 @@
               <i class="fas fa-plus-circle"></i>
             </router-link>
           </p>
-          <!-- <router-link
-            :to="{ name: 'pathway' }"
-            class="list-group-item list-group-item-action bg-light border-0"
+          <div
+            :key="Initiative_Indicator_Key"
+            v-for="{ Indicator_Label, Initiative_Indicator_Key } in pathways"
           >
-            <span class="ml-3">Pathway 1</span>
-          </router-link> -->
+            <router-link
+              :to="{ name: 'pathway' }"
+              class="list-group-item list-group-item-action bg-light border-0"
+            >
+              <span class="ml-3">{{ Indicator_Label }}</span>
+            </router-link>
+          </div>
         </div>
       </div>
       <div class="border-bottom">
@@ -127,7 +132,8 @@ export default {
       goalTeams: null,
       initiativeGoalTeam: null,
       goalTeamPracticeKey: null,
-      pathways: null
+      pathways: null,
+      outcomes: null,
     };
   },
 
@@ -166,20 +172,35 @@ export default {
     },
 
     fetchInitiativeData() {
-      getGoalTeam(this.$route.params.initiativeId);
-      getPathways(this.$route.params.initiativeId, "P");
+      getGoalTeam(this, this.$route.params.initiativeId);
+      getPathways(this, this.$route.params.initiativeId, "P");
+      getOutcomes(this, this.$route.params.initiativeId, "O");
 
-      function getPathways(initiativeId, indicatorType) {
-        clientApi.allInitiativeIndicators(initiativeId, indicatorType).then((response) => {
-          this.pathways = response.data.pathways;
-        });
+      async function getGoalTeam(thisObject, initiativeId) {
+        await clientApi
+          .find(initiativeId)
+          .then((response) => {
+            thisObject.initiativeGoalTeam = response.data.initiativeGoalTeam;
+          })
+          .catch((err) => console.log(err));
       }
 
-      function getGoalTeam(initiativeId) {
-        clientApi.find(initiativeId).then((response) => {
-          this.initiative = response.data.initiative;
-          this.initiativeGoalTeam = response.data.initiativeGoalTeam;
-        });
+      async function getPathways(thisObject, initiativeId, indicatorType) {
+        await clientApi
+          .allInitiativeIndicators(initiativeId, indicatorType)
+          .then((response) => {
+            thisObject.pathways = response.data.initiativeIndicators;
+          })
+          .catch((err) => console.log(err));
+      }
+
+      async function getOutcomes(thisObject, initiativeId, indicatorType) {
+        await clientApi
+          .allInitiativeIndicators(initiativeId, indicatorType)
+          .then((response) => {
+            thisObject.outcomes = response.data.initiativeIndicators;
+          })
+          .catch((err) => console.log(err));
       }
     },
 
@@ -192,9 +213,12 @@ export default {
     },
 
     async selectInitiative(event) {
-      await clientApi.find(this.initiativeId).then((response) => {
-        this.initiative = response.data.initiative;
-      });
+      await clientApi
+        .find(this.initiativeId)
+        .then((response) => {
+          this.initiative = response.data.initiative;
+        })
+        .catch((err) => console.log(err));
 
       this.$router.push({ path: "/initiative/" + this.initiative.Initiative_Key });
     },

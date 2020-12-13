@@ -2550,6 +2550,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2562,7 +2567,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       goalTeams: null,
       initiativeGoalTeam: null,
       goalTeamPracticeKey: null,
-      pathways: null
+      pathways: null,
+      outcomes: null
     };
   },
   created: function created() {
@@ -2600,24 +2606,89 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     fetchInitiativeData: function fetchInitiativeData() {
-      getGoalTeam(this.$route.params.initiativeId);
-      getPathways(this.$route.params.initiativeId, "P");
+      getGoalTeam(this, this.$route.params.initiativeId);
+      getPathways(this, this.$route.params.initiativeId, "P");
+      getOutcomes(this, this.$route.params.initiativeId, "O");
 
-      function getPathways(initiativeId, indicatorType) {
-        var _this4 = this;
-
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(initiativeId, indicatorType).then(function (response) {
-          _this4.pathways = response.data.pathways;
-        });
+      function getGoalTeam(_x, _x2) {
+        return _getGoalTeam.apply(this, arguments);
       }
 
-      function getGoalTeam(initiativeId) {
-        var _this5 = this;
+      function _getGoalTeam() {
+        _getGoalTeam = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(thisObject, initiativeId) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(initiativeId).then(function (response) {
+                    thisObject.initiativeGoalTeam = response.data.initiativeGoalTeam;
+                  })["catch"](function (err) {
+                    return console.log(err);
+                  });
 
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(initiativeId).then(function (response) {
-          _this5.initiative = response.data.initiative;
-          _this5.initiativeGoalTeam = response.data.initiativeGoalTeam;
-        });
+                case 2:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+        return _getGoalTeam.apply(this, arguments);
+      }
+
+      function getPathways(_x3, _x4, _x5) {
+        return _getPathways.apply(this, arguments);
+      }
+
+      function _getPathways() {
+        _getPathways = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(thisObject, initiativeId, indicatorType) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(initiativeId, indicatorType).then(function (response) {
+                    thisObject.pathways = response.data.initiativeIndicators;
+                  })["catch"](function (err) {
+                    return console.log(err);
+                  });
+
+                case 2:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+        return _getPathways.apply(this, arguments);
+      }
+
+      function getOutcomes(_x6, _x7, _x8) {
+        return _getOutcomes.apply(this, arguments);
+      }
+
+      function _getOutcomes() {
+        _getOutcomes = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(thisObject, initiativeId, indicatorType) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(initiativeId, indicatorType).then(function (response) {
+                    thisObject.outcomes = response.data.initiativeIndicators;
+                  })["catch"](function (err) {
+                    return console.log(err);
+                  });
+
+                case 2:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }));
+        return _getOutcomes.apply(this, arguments);
       }
     },
     storeInitiativeGoalTeam: function storeInitiativeGoalTeam() {
@@ -2628,29 +2699,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     selectInitiative: function selectInitiative(event) {
-      var _this6 = this;
+      var _this4 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context.next = 2;
-                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this6.initiativeId).then(function (response) {
-                  _this6.initiative = response.data.initiative;
+                _context4.next = 2;
+                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this4.initiativeId).then(function (response) {
+                  _this4.initiative = response.data.initiative;
+                })["catch"](function (err) {
+                  return console.log(err);
                 });
 
               case 2:
-                _this6.$router.push({
-                  path: "/initiative/" + _this6.initiative.Initiative_Key
+                _this4.$router.push({
+                  path: "/initiative/" + _this4.initiative.Initiative_Key
                 });
 
               case 3:
               case "end":
-                return _context.stop();
+                return _context4.stop();
             }
           }
-        }, _callee);
+        }, _callee4);
       }))();
     }
   }
@@ -22314,28 +22387,57 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "border-bottom" }, [
           _vm.initiative
-            ? _c("div", [
-                _c(
-                  "p",
-                  {
-                    staticClass:
-                      "list-group-item list-group-item-action bg-light border-0 mb-0"
-                  },
-                  [
-                    _vm._v("\n          Pathways\n          "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass:
-                          "list-group-item list-group-item-action bg-light border-0 d-inline",
-                        attrs: { to: { name: "create-pathway" } }
-                      },
-                      [_c("i", { staticClass: "fas fa-plus-circle" })]
+            ? _c(
+                "div",
+                [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "list-group-item list-group-item-action bg-light border-0 mb-0"
+                    },
+                    [
+                      _vm._v("\n          Pathways\n          "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-action bg-light border-0 d-inline",
+                          attrs: { to: { name: "create-pathway" } }
+                        },
+                        [_c("i", { staticClass: "fas fa-plus-circle" })]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.pathways, function(ref) {
+                    var Indicator_Label = ref.Indicator_Label
+                    var Initiative_Indicator_Key = ref.Initiative_Indicator_Key
+                    return _c(
+                      "div",
+                      { key: Initiative_Indicator_Key },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "list-group-item list-group-item-action bg-light border-0",
+                            attrs: { to: { name: "pathway" } }
+                          },
+                          [
+                            _c("span", { staticClass: "ml-3" }, [
+                              _vm._v(_vm._s(Indicator_Label))
+                            ])
+                          ]
+                        )
+                      ],
+                      1
                     )
-                  ],
-                  1
-                )
-              ])
+                  })
+                ],
+                2
+              )
             : _vm._e()
         ]),
         _vm._v(" "),

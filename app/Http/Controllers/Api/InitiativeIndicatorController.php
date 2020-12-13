@@ -20,9 +20,13 @@ class InitiativeIndicatorController extends Controller
     public function showallInitiativeIndicators($initiativeId, $indicatorType)
     {
         $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
-        $initiative->initiativeIndicators;
-        dd($initiative->initiativeIndicators);
-        # code...
+        if ($indicatorType == "P") {
+            $initiativeIndicators = $initiative->initiativeIndicators()->whereIndicatorType("P")->get();
+        }
+        if ($indicatorType == "O") {
+            $initiativeIndicators = $initiative->initiativeIndicators()->whereIndicatorType("O")->get();
+        }
+        return response()->json(['initiativeIndicators' => $initiativeIndicators], 200);
     }
 
     public function store(Request $request, $initiativeId, $pathwayId = null)
@@ -30,7 +34,7 @@ class InitiativeIndicatorController extends Controller
         $initiativeIndicator = DimInitiativeIndicator::create($request->all());
         $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
         $initiative->initiativeIndicators()->attach($initiativeIndicator->id);
-        
+
         return response()->json(['success' => 'success'], 200);
     }
 }
