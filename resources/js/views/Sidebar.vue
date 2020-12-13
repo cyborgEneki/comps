@@ -76,12 +76,15 @@
               <i class="fas fa-plus-circle"></i>
             </router-link>
           </p>
-          <div
-            :key="pathway.Initiative_Indicator_Key"
-            v-for="pathway in pathways"
-          >
+          <div :key="pathway.Initiative_Indicator_Key" v-for="pathway in pathways">
             <router-link
-              :to="{ name: 'edit-pathway', params: {pathwayId: pathway.Initiative_Indicator_Key, initiativeIndicatorProp: pathway } }"
+              :to="{
+                name: 'edit-pathway',
+                params: {
+                  pathwayId: pathway.Initiative_Indicator_Key,
+                  initiativeIndicatorProp: pathway,
+                },
+              }"
               class="list-group-item list-group-item-action bg-light border-0"
             >
               <span class="ml-3">{{ pathway.Indicator_Label }}</span>
@@ -90,15 +93,31 @@
         </div>
       </div>
       <div class="border-bottom">
-        <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
-          Outcomes
-        </p>
-        <router-link
-          :to="{ name: 'outcome' }"
-          class="list-group-item list-group-item-action bg-light border-0"
-        >
-          <span class="ml-3">Outcome 1</span>
-        </router-link>
+        <div v-if="initiative">
+          <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
+            Outcomes
+            <router-link
+              :to="{ name: 'create-outcome' }"
+              class="list-group-item list-group-item-action bg-light border-0 d-inline"
+            >
+              <i class="fas fa-plus-circle"></i>
+            </router-link>
+          </p>
+          <div :key="outcome.Initiative_Indicator_Key" v-for="outcome in outcomes">
+            <router-link
+              :to="{
+                name: 'edit-outcome',
+                params: {
+                  outcomeId: outcome.Initiative_Indicator_Key,
+                  initiativeIndicatorProp: outcome,
+                },
+              }"
+              class="list-group-item list-group-item-action bg-light border-0"
+            >
+              <span class="ml-3">{{ outcome.Indicator_Label }}</span>
+            </router-link>
+          </div>
+        </div>
       </div>
       <div class="border-bottom">
         <router-link

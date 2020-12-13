@@ -38,8 +38,13 @@ const router = new VueRouter({
             component: EditInitiativeIndicator,
         },
         {
-            path: '/outcome',
-            name: 'outcome',
+            path: '/initiative/:initiativeId/create',
+            name: 'create-outcome',
+            component: CreateInitiativeIndicator,
+        },
+        {
+            path: '/initiative/:initiativeId/outcome/:outcomeId',
+            name: 'edit-outcome',
             component: EditInitiativeIndicator,
         },
         {

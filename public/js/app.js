@@ -2068,13 +2068,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     savePathwayOutcome: function savePathwayOutcome() {
       if (this.currentRoute == "create-outcome") {
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, null, Object.assign(this.initiativeIndicator, {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storeInitiativeIndicator(this.$route.params.initiativeId, 0, Object.assign(this.initiativeIndicator, {
           Indicator_Type: "O"
         }));
       }
 
       if (this.currentRoute == "create-pathway") {
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, null, Object.assign(this.initiativeIndicator, {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storeInitiativeIndicator(this.$route.params.initiativeId, 0, Object.assign(this.initiativeIndicator, {
           Indicator_Type: "P"
         }));
       }
@@ -2485,6 +2485,25 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22604,31 +22623,67 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "border-bottom" },
-          [
-            _c(
-              "p",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0 mb-0"
-              },
-              [_vm._v("\n        Outcomes\n      ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0",
-                attrs: { to: { name: "outcome" } }
-              },
-              [_c("span", { staticClass: "ml-3" }, [_vm._v("Outcome 1")])]
-            )
-          ],
-          1
-        ),
+        _c("div", { staticClass: "border-bottom" }, [
+          _vm.initiative
+            ? _c(
+                "div",
+                [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "list-group-item list-group-item-action bg-light border-0 mb-0"
+                    },
+                    [
+                      _vm._v("\n          Outcomes\n          "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-action bg-light border-0 d-inline",
+                          attrs: { to: { name: "create-outcome" } }
+                        },
+                        [_c("i", { staticClass: "fas fa-plus-circle" })]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.outcomes, function(outcome) {
+                    return _c(
+                      "div",
+                      { key: outcome.Initiative_Indicator_Key },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "list-group-item list-group-item-action bg-light border-0",
+                            attrs: {
+                              to: {
+                                name: "edit-outcome",
+                                params: {
+                                  outcomeId: outcome.Initiative_Indicator_Key,
+                                  initiativeIndicatorProp: outcome
+                                }
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "ml-3" }, [
+                              _vm._v(_vm._s(outcome.Indicator_Label))
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
+            : _vm._e()
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -37937,8 +37992,8 @@ __webpack_require__.r(__webpack_exports__);
   storeInitiativeGoalTeam: function storeInitiativeGoalTeam(id, data) {
     return axios.post("/api/initiative/".concat(id, "/goal-team"), data);
   },
-  storePathwayOrOutcome: function storePathwayOrOutcome(initiativeId, pathwayOrOutcomeId, data) {
-    return axios.post("/api/initiative/".concat(initiativeId, "/pathway-outcome/").concat(pathwayOrOutcomeId), data);
+  storeInitiativeIndicator: function storeInitiativeIndicator(initiativeId, indicatorId, data) {
+    return axios.post("/api/initiative/".concat(initiativeId, "/indicator/").concat(indicatorId), data);
   },
   allInitiativeIndicators: function allInitiativeIndicators(initiativeId, indicatorType) {
     return axios.get("/api/initiative/".concat(initiativeId, "/indicators/").concat(indicatorType));
@@ -37999,8 +38054,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     props: true,
     component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
-    path: '/outcome',
-    name: 'outcome',
+    path: '/initiative/:initiativeId/create',
+    name: 'create-outcome',
+    component: _components_CreateInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: '/initiative/:initiativeId/outcome/:outcomeId',
+    name: 'edit-outcome',
     component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/milestones',

@@ -148,16 +148,16 @@ export default {
   methods: {
     savePathwayOutcome() {
       if (this.currentRoute == "create-outcome") {
-        clientApi.storePathwayOrOutcome(
+        clientApi.storeInitiativeIndicator(
           this.$route.params.initiativeId,
-          null,
+          0,
           Object.assign(this.initiativeIndicator, {Indicator_Type: "O"})
         );
       }
       if (this.currentRoute == "create-pathway") {
-        clientApi.storePathwayOrOutcome(
+        clientApi.storeInitiativeIndicator(
           this.$route.params.initiativeId,
-          null,
+          0,
           Object.assign(this.initiativeIndicator, {Indicator_Type: "P"})
         );
       }

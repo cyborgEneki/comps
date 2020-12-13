@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Comps\Repositories\DimInitiativeIndicatorRepository;
 use App\Comps\Repositories\DimInitiativeRepository;
-use App\Models\DimInitiative;
 use App\Models\DimInitiativeIndicator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -32,10 +31,10 @@ class InitiativeIndicatorController extends Controller
         return response()->json(['initiativeIndicators' => $initiativeIndicators], 200);
     }
 
-    public function store(Request $request, $initiativeId, $pathwayId = null)
+    public function store(Request $request, $initiativeId, $indicatorId = null)
     {
-        if($pathwayId) {
-            $initiativeIndicator = $this->dimInitiativeIndicatorRepository->findInitiativeIndicatorById($pathwayId);
+        if($indicatorId) {
+            $initiativeIndicator = $this->dimInitiativeIndicatorRepository->findInitiativeIndicatorById($indicatorId);
             $initiativeIndicator->update($request->all());
             $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
             $initiative->initiativeIndicators()->sync($initiativeIndicator->Initiative_Indicator_Key);
