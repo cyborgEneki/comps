@@ -77,14 +77,14 @@
             </router-link>
           </p>
           <div
-            :key="Initiative_Indicator_Key"
-            v-for="{ Indicator_Label, Initiative_Indicator_Key } in pathways"
+            :key="pathway.Initiative_Indicator_Key"
+            v-for="pathway in pathways"
           >
             <router-link
-              :to="{ name: 'edit-pathway', params: {pathwayId: Initiative_Indicator_Key } }"
+              :to="{ name: 'edit-pathway', params: {pathwayId: pathway.Initiative_Indicator_Key, initiativeIndicatorProp: pathway } }"
               class="list-group-item list-group-item-action bg-light border-0"
             >
-              <span class="ml-3">{{ Indicator_Label }}</span>
+              <span class="ml-3">{{ pathway.Indicator_Label }}</span>
             </router-link>
           </div>
         </div>

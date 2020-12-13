@@ -2093,6 +2093,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/initiatiave */ "./resources/js/api/initiatiave.js");
 //
 //
 //
@@ -2176,11 +2177,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    initiativeIndicatorProp: Object
+  },
   computed: {
     currentRoute: function currentRoute() {
       return this.$route.name;
     }
+  },
+  data: function data() {
+    return {
+      initiativeIndicator: {
+        Indicator_Key: null,
+        Statement: null,
+        Indicator_Description: null,
+        Indicator_Label: null,
+        Indicator_Units: null,
+        Indicator_Data_Source: null,
+        Number_of_Subcategories: null,
+        Indicator_Type: null
+      }
+    };
   },
   mounted: function mounted() {
     var yearDropdown = document.getElementById("target-year"),
@@ -2192,7 +2238,22 @@ __webpack_require__.r(__webpack_exports__);
       dateOption.text = earliestYear;
       dateOption.value = earliestYear;
       yearDropdown.add(dateOption);
-      currentYear -= 1;
+      earliestYear += 1;
+    }
+  },
+  methods: {
+    savePathwayOutcome: function savePathwayOutcome() {
+      if (this.currentRoute == "create-outcome") {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, null, Object.assign(this.initiativeIndicator, {
+          Indicator_Type: "O"
+        }));
+      }
+
+      if (this.currentRoute == "create-pathway") {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, null, Object.assign(this.initiativeIndicator, {
+          Indicator_Type: "P"
+        }));
+      }
     }
   }
 });
@@ -21461,99 +21522,206 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row container" }, [
     _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-      _vm.currentRoute == "edit-outcome"
-        ? _c("div", { staticClass: "page-title__font" }, [_vm._v("Outcome")])
+      _vm.currentRoute == "create-outcome"
+        ? _c("div", { staticClass: "page-title__font" }, [
+            _vm._v("\n      Create Outcome\n    ")
+          ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.currentRoute == "edit-pathway"
-        ? _c("div", { staticClass: "page-title__font" }, [_vm._v("Pathway")])
+      _vm.currentRoute == "create-pathway"
+        ? _c("div", { staticClass: "page-title__font" }, [
+            _vm._v("\n      Create Pathway\n    ")
+          ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.savePathwayOutcome($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "pathway-statement" } }, [
+              _vm._v("Pathway Statement")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiativeIndicator.Statement,
+                  expression: "initiativeIndicator.Statement"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "pathway-statement", rows: "3" },
+              domProps: { value: _vm.initiativeIndicator.Statement },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.initiativeIndicator,
+                    "Statement",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "indicator-description" } }, [
+              _vm._v("Indicator Description")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiativeIndicator.Indicator_Description,
+                  expression: "initiativeIndicator.Indicator_Description"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "indicator-description", rows: "3" },
+              domProps: {
+                value: _vm.initiativeIndicator.Indicator_Description
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.initiativeIndicator,
+                    "Indicator_Description",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "indicator-label" } }, [
+              _vm._v("Indicator Label")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiativeIndicator.Indicator_Label,
+                  expression: "initiativeIndicator.Indicator_Label"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "indicator-label" },
+              domProps: { value: _vm.initiativeIndicator.Indicator_Label },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.initiativeIndicator,
+                    "Indicator_Label",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "indicator-units" } }, [
+              _vm._v("Indicator Units")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiativeIndicator.Indicator_Units,
+                  expression: "initiativeIndicator.Indicator_Units"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "indicator-units" },
+              domProps: { value: _vm.initiativeIndicator.Indicator_Units },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.initiativeIndicator,
+                    "Indicator_Units",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "indicator-data-source" } }, [
+              _vm._v("Indicator Data Source")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.initiativeIndicator.Indicator_Data_Source,
+                  expression: "initiativeIndicator.Indicator_Data_Source"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "indicator-data-source", rows: "3" },
+              domProps: {
+                value: _vm.initiativeIndicator.Indicator_Data_Source
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.initiativeIndicator,
+                    "Indicator_Data_Source",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Save")]
+          )
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(0)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "pathway-statement" } }, [
-          _vm._v("Pathway Statement")
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { id: "pathway-statement", rows: "3" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "indicator-description" } }, [
-          _vm._v("Indicator Description")
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { id: "indicator-description", rows: "3" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "indicator-label" } }, [
-          _vm._v("Indicator Label")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "indicator-label" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "indicator-units" } }, [
-          _vm._v("Indicator Units")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "indicator-units" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "indicator-data-source" } }, [
-          _vm._v("Indicator Data Source")
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { id: "indicator-data-source", rows: "3" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "number-of-subcategories" } }, [
-          _vm._v("Number of Subcategories")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "number", id: "number-of-subcategories" }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -21567,7 +21735,7 @@ var staticRenderFns = [
             _c(
               "div",
               { staticClass: "mt-3 pathway-outcome-form__subcategories-title" },
-              [_vm._v("Subcategories 1")]
+              [_vm._v("\n              Subcategories 1\n            ")]
             )
           ]),
           _vm._v(" "),
@@ -22411,12 +22579,10 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _vm._l(_vm.pathways, function(ref) {
-                    var Indicator_Label = ref.Indicator_Label
-                    var Initiative_Indicator_Key = ref.Initiative_Indicator_Key
+                  _vm._l(_vm.pathways, function(pathway) {
                     return _c(
                       "div",
-                      { key: Initiative_Indicator_Key },
+                      { key: pathway.Initiative_Indicator_Key },
                       [
                         _c(
                           "router-link",
@@ -22426,13 +22592,16 @@ var render = function() {
                             attrs: {
                               to: {
                                 name: "edit-pathway",
-                                params: { pathwayId: Initiative_Indicator_Key }
+                                params: {
+                                  pathwayId: pathway.Initiative_Indicator_Key,
+                                  initiativeIndicatorProp: pathway
+                                }
                               }
                             }
                           },
                           [
                             _c("span", { staticClass: "ml-3" }, [
-                              _vm._v(_vm._s(Indicator_Label))
+                              _vm._v(_vm._s(pathway.Indicator_Label))
                             ])
                           ]
                         )
@@ -37838,6 +38007,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/initiative/:initiativeId/pathway/:pathwayId',
     name: 'edit-pathway',
+    props: true,
     component: _components_EditPathwayOutcome_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/outcome',

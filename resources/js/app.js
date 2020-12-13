@@ -34,6 +34,7 @@ const router = new VueRouter({
         {
             path: '/initiative/:initiativeId/pathway/:pathwayId',
             name: 'edit-pathway',
+            props: true,
             component: EditPathwayOutcome,
         },
         {
