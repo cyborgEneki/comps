@@ -99,7 +99,7 @@ export default {
       dateOption.text = earliestYear;
       dateOption.value = earliestYear;
       yearDropdown.add(dateOption);
-      currentYear -= 1;
+      earliestYear += 1;
     }
   },
 };
