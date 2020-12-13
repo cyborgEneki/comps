@@ -2370,6 +2370,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21790,31 +21792,34 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "border-bottom" },
-          [
-            _c(
-              "p",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0 mb-0"
-              },
-              [_vm._v("\n        Pathways\n      ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0",
-                attrs: { to: { name: "pathway" } }
-              },
-              [_c("span", { staticClass: "ml-3" }, [_vm._v("Pathway 1")])]
-            )
-          ],
-          1
-        ),
+        _c("div", { staticClass: "border-bottom" }, [
+          _vm.initiative
+            ? _c(
+                "div",
+                [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "list-group-item list-group-item-action bg-light border-0 mb-0"
+                    },
+                    [_vm._v("\n          Pathways\n        ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "list-group-item list-group-item-action bg-light border-0",
+                      attrs: { to: { name: "pathway" } }
+                    },
+                    [_c("span", { staticClass: "ml-3" }, [_vm._v("Pathway 1")])]
+                  )
+                ],
+                1
+              )
+            : _vm._e()
+        ]),
         _vm._v(" "),
         _c(
           "div",

@@ -66,15 +66,17 @@
         </select>
       </div>
       <div class="border-bottom">
-        <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
-          Pathways
-        </p>
-        <router-link
-          :to="{ name: 'pathway' }"
-          class="list-group-item list-group-item-action bg-light border-0"
-        >
-          <span class="ml-3">Pathway 1</span>
-        </router-link>
+        <div v-if="initiative">
+          <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
+            Pathways
+          </p>
+          <router-link
+            :to="{ name: 'pathway' }"
+            class="list-group-item list-group-item-action bg-light border-0"
+          >
+            <span class="ml-3">Pathway 1</span>
+          </router-link>
+        </div>
       </div>
       <div class="border-bottom">
         <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
@@ -118,7 +120,7 @@ export default {
       goalTeamId: null,
       goalTeams: null,
       initiativeGoalTeam: null,
-      goalTeamPracticeKey: null
+      goalTeamPracticeKey: null,
     };
   },
 
