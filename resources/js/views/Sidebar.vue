@@ -127,6 +127,7 @@ export default {
       goalTeams: null,
       initiativeGoalTeam: null,
       goalTeamPracticeKey: null,
+      pathways: null
     };
   },
 
@@ -138,7 +139,7 @@ export default {
   watch: {
     // call the method if the route changes
     $route: {
-      handler: "displayGoalTeamSelect",
+      handler: "fetchInitiativeData",
       immediate: true, // runs immediately with mount() instead of calling method on mount hook
     },
   },
@@ -156,11 +157,30 @@ export default {
       });
     },
 
-    displayGoalTeamSelect() {
-      clientApi.find(this.$route.params.initiativeId).then((response) => {
-        this.initiative = response.data.initiative;
-        this.initiativeGoalTeam = response.data.initiativeGoalTeam;
-      });
+    fetchInitiativeIndicators() {
+      clientApi
+        .allInitiativeIndicators(this.$route.params.initiativeId)
+        .then((response) => {
+          this.initiativeIndicators = response.data.initiativeIndicators;
+        });
+    },
+
+    fetchInitiativeData() {
+      getGoalTeam(this.$route.params.initiativeId);
+      getPathways(this.$route.params.initiativeId);
+
+      function getPathways(initiativeId) {
+        clientApi.allInitiativeIndicators(initiativeId).then((response) => {
+          this.pathways = response.data.pathways;
+        });
+      }
+
+      function getGoalTeam(initiativeId) {
+        clientApi.find(initiativeId).then((response) => {
+          this.initiative = response.data.initiative;
+          this.initiativeGoalTeam = response.data.initiativeGoalTeam;
+        });
+      }
     },
 
     storeInitiativeGoalTeam() {

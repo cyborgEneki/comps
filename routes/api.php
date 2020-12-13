@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\InitiativeController;
 use App\Http\Controllers\Api\PracticeController;
-use App\Http\Controllers\InitiativeIndicatorController;
+use App\Http\Controllers\Api\InitiativeIndicatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +30,5 @@ Route::post('/initiatives/{initiative}', [InitiativeController::class, 'store'])
 Route::post('/initiative/{initiative}/goal-team', [PracticeController::class, 'store']);
 
 Route::get('/initiative/{initiative}/pathway-outcomepathway-outcome/{pathway}', [InitiativeIndicatorController::class, 'show']);
+Route::get('/initiative/{initiative}/indicators', [InitiativeIndicatorController::class, 'showallInitiativeIndicators']);
 Route::post('/initiative/{initiative}/pathway-outcome/{pathway?}', [InitiativeIndicatorController::class, 'store']);

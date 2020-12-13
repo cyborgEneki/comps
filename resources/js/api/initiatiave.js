@@ -14,4 +14,7 @@ export default {
     storePathwayOrOutcome(initiativeId, pathwayOrOutcomeId, data) {
         return axios.post(`/api/initiative/${initiativeId}/pathway-outcome/${pathwayOrOutcomeId}`, data);
     },
+    allInitiativeIndicators(initiativeId) {
+        return axios.get(`/api/initiative/${initiativeId}/indicators`);
+    }
 };

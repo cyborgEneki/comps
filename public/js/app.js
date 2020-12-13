@@ -2378,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.initiative = response.data.initiative;
       });
     },
-    submitForm: function submitForm() {
+    storeInitiative: function storeInitiative() {
       var _this2 = this;
 
       this.initiative.Practice_Key = this.goalTeamIdFromUserProp;
@@ -2561,7 +2561,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       goalTeamId: null,
       goalTeams: null,
       initiativeGoalTeam: null,
-      goalTeamPracticeKey: null
+      goalTeamPracticeKey: null,
+      pathways: null
     };
   },
   created: function created() {
@@ -2571,7 +2572,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   watch: {
     // call the method if the route changes
     $route: {
-      handler: "displayGoalTeamSelect",
+      handler: "fetchInitiativeData",
       immediate: true // runs immediately with mount() instead of calling method on mount hook
 
     }
@@ -2591,13 +2592,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.initiatives = response.data.initiatives;
       });
     },
-    displayGoalTeamSelect: function displayGoalTeamSelect() {
+    fetchInitiativeIndicators: function fetchInitiativeIndicators() {
       var _this3 = this;
 
-      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(this.$route.params.initiativeId).then(function (response) {
-        _this3.initiative = response.data.initiative;
-        _this3.initiativeGoalTeam = response.data.initiativeGoalTeam;
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(this.$route.params.initiativeId).then(function (response) {
+        _this3.initiativeIndicators = response.data.initiativeIndicators;
       });
+    },
+    fetchInitiativeData: function fetchInitiativeData() {
+      getGoalTeam(this.$route.params.initiativeId);
+      getPathways(this.$route.params.initiativeId);
+
+      function getPathways(initiativeId) {
+        var _this4 = this;
+
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(initiativeId).then(function (response) {
+          _this4.pathways = response.data.pathways;
+        });
+      }
+
+      function getGoalTeam(initiativeId) {
+        var _this5 = this;
+
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(initiativeId).then(function (response) {
+          _this5.initiative = response.data.initiative;
+          _this5.initiativeGoalTeam = response.data.initiativeGoalTeam;
+        });
+      }
     },
     storeInitiativeGoalTeam: function storeInitiativeGoalTeam() {
       this.initiative.Practice_Key = this.goalTeamPracticeKey;
@@ -2607,7 +2628,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     selectInitiative: function selectInitiative(event) {
-      var _this4 = this;
+      var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2615,13 +2636,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this4.initiativeId).then(function (response) {
-                  _this4.initiative = response.data.initiative;
+                return _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this6.initiativeId).then(function (response) {
+                  _this6.initiative = response.data.initiative;
                 });
 
               case 2:
-                _this4.$router.push({
-                  path: "/initiative/" + _this4.initiative.Initiative_Key
+                _this6.$router.push({
+                  path: "/initiative/" + _this6.initiative.Initiative_Key
                 });
 
               case 3:
@@ -21654,7 +21675,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.submitForm($event)
+              return _vm.storeInitiative($event)
             }
           }
         },
@@ -37653,6 +37674,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   storePathwayOrOutcome: function storePathwayOrOutcome(initiativeId, pathwayOrOutcomeId, data) {
     return axios.post("/api/initiative/".concat(initiativeId, "/pathway-outcome/").concat(pathwayOrOutcomeId), data);
+  },
+  allInitiativeIndicators: function allInitiativeIndicators(initiativeId) {
+    return axios.get("/api/initiative/".concat(initiativeId, "/indicators"));
   }
 });
 

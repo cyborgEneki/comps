@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Comps\Repositories\DimInitiativeRepository;
 use App\Models\DimInitiative;
 use App\Models\DimInitiativeIndicator;
 use GrahamCampbell\ResultType\Success;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class InitiativeIndicatorController extends Controller
@@ -17,8 +18,9 @@ class InitiativeIndicatorController extends Controller
         $this->dimInitiativeRepository = new DimInitiativeRepository();
     }
 
-    public function show($id)
+    public function showallInitiativeIndicators($initiativeId)
     {
+        dd($initiativeId);
         # code...
     }
 
