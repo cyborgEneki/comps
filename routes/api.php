@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\InitiativeController;
 use App\Http\Controllers\Api\PracticeController;
 use App\Http\Controllers\Api\InitiativeIndicatorController;
+use App\Http\Controllers\Api\YearController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +34,4 @@ Route::get('/initiative/{initiative}/pathway-outcomepathway-outcome/{pathway}', 
 Route::get('/initiative/{initiative}/indicators/{indicatorType}', [InitiativeIndicatorController::class, 'showallInitiativeIndicators']);
 Route::post('/initiative/{initiative}/indicator/{indicator}', [InitiativeIndicatorController::class, 'store']);
 
-Route::get('/api/years', [DimYea])
+Route::get('/years', [YearController::class, 'index']);

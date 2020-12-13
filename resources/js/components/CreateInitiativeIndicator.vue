@@ -72,19 +72,20 @@
           <div class="row ml-0 ml-md-3">
             <div class="col-10 col-md-8">
               <form class="mt-3">
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="label">Label</label>
-                  <input type="text" class="form-control" id="label" />
-                </div>
+                  <input type="text" class="form-control" id="label" v-model="currentData.Year_Key"/>
+                </div> -->
                 <div class="form-group">
                   <label for="target-year">Target Year</label>
-                  <select class="form-control" id="target-year">
-                    <option value="" v-for="year in years" :key="year.YearId"></option>
+                  <select class="form-control" v-model="currentData.Year_Key">
+                    <option value="">Select Year</option>
+                    <option v-for="year in years" :key="year.Year_Key">{{ year.Year }}</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="target-value">Target Value</label>
-                  <input type="number" class="form-control" id="target-value" />
+                  <input type="number" class="form-control" id="target-value" v-model="currentData.Year_Key"/>
                 </div>
                 <table class="table">
                   <thead>
@@ -131,7 +132,12 @@ export default {
         Number_of_Subcategories: null,
         Indicator_Type: null,
       },
-      years: null
+      years: null,
+      currentData: {
+        Year_Key: null,
+        Initiative_Key: null,
+        Value: null
+      }
     };
   },
   mounted() {
@@ -139,7 +145,9 @@ export default {
   },
   methods: {
     fetchYears() {
-      
+      clientApi.allYears().then(response => {
+        this.years = response.data.years;
+      });
     },
     savePathwayOutcome() {
       if (this.currentRoute == "create-outcome") {

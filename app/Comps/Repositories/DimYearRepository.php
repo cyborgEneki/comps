@@ -15,6 +15,6 @@ class DimYearRepository
 
     public function getAllYears()
     {
-        return $this->year->orderBy('Year')->all();
+        return $this->year->orderBy('Year')->get();
     }
 }

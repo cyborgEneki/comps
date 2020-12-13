@@ -12,7 +12,7 @@ class YearController extends Controller
 
     public function __construct()
     {
-        $this->dimPracticeRepository = new DimYearRepository();
+        $this->yearRepository = new DimYearRepository();
     }
 
     public function index()

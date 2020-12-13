@@ -2033,6 +2033,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -2052,14 +2053,25 @@ __webpack_require__.r(__webpack_exports__);
         Number_of_Subcategories: null,
         Indicator_Type: null
       },
-      years: null
+      years: null,
+      currentData: {
+        Year_Key: null,
+        Initiative_Key: null,
+        Value: null
+      }
     };
   },
   mounted: function mounted() {
     this.fetchYears();
   },
   methods: {
-    fetchYears: function fetchYears() {},
+    fetchYears: function fetchYears() {
+      var _this = this;
+
+      _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].allYears().then(function (response) {
+        _this.years = response.data.years;
+      });
+    },
     savePathwayOutcome: function savePathwayOutcome() {
       if (this.currentRoute == "create-outcome") {
         _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storeInitiativeIndicator(this.$route.params.initiativeId, 0, Object.assign(this.initiativeIndicator, {
@@ -21407,8 +21419,6 @@ var render = function() {
           _c("div", { staticClass: "row ml-0 ml-md-3" }, [
             _c("div", { staticClass: "col-10 col-md-8" }, [
               _c("form", { staticClass: "mt-3" }, [
-                _vm._m(1),
-                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "target-year" } }, [
                     _vm._v("Target Year")
@@ -21417,22 +21427,83 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentData.Year_Key,
+                          expression: "currentData.Year_Key"
+                        }
+                      ],
                       staticClass: "form-control",
-                      attrs: { id: "target-year" }
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.currentData,
+                            "Year_Key",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
                     },
-                    _vm._l(_vm.years, function(year) {
-                      return _c("option", {
-                        key: year.YearId,
-                        attrs: { value: "" }
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Select Year")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.years, function(year) {
+                        return _c("option", { key: year.Year_Key }, [
+                          _vm._v(_vm._s(year.Year))
+                        ])
                       })
-                    }),
-                    0
+                    ],
+                    2
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(2),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "target-value" } }, [
+                    _vm._v("Target Value")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.currentData.Year_Key,
+                        expression: "currentData.Year_Key"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", id: "target-value" },
+                    domProps: { value: _vm.currentData.Year_Key },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.currentData,
+                          "Year_Key",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn btn-primary mb-3" }, [
                   _vm._v("Add Row")
@@ -21442,7 +21513,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4)
+        _vm._m(2)
       ])
     ])
   ])
@@ -21468,32 +21539,6 @@ var staticRenderFns = [
           [_vm._v("Delete")]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "label" } }, [_vm._v("Label")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", id: "label" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "target-value" } }, [_vm._v("Target Value")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "number", id: "target-value" }
-      })
     ])
   },
   function() {
