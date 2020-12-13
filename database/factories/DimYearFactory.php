@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\DimYear;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DimInitiativeFactory extends Factory
+class DimYearFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,7 +22,7 @@ class DimInitiativeFactory extends Factory
     public function definition()
     {
         return [
-            'year' => $this->faker->unique()->dateTimeBetween('-50 years', '+30 years')->format('Y')
+            'year' => $this->faker->unique()->numberBetween(1970, 2050)
         ];
     }
 }

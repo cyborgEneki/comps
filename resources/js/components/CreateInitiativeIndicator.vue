@@ -78,7 +78,9 @@
                 </div>
                 <div class="form-group">
                   <label for="target-year">Target Year</label>
-                  <select class="form-control" id="target-year"></select>
+                  <select class="form-control" id="target-year">
+                    <option value="" v-for="year in years" :key="year.YearId"></option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="target-value">Target Value</label>
@@ -129,23 +131,16 @@ export default {
         Number_of_Subcategories: null,
         Indicator_Type: null,
       },
+      years: null
     };
   },
   mounted() {
-    let yearDropdown = document.getElementById("target-year"),
-      earliestYear = 1970,
-      furthestYear = 2050;
-
-    // Set start year dropdown
-    while (furthestYear >= earliestYear) {
-      let dateOption = document.createElement("option");
-      dateOption.text = earliestYear;
-      dateOption.value = earliestYear;
-      yearDropdown.add(dateOption);
-      earliestYear += 1;
-    }
+    this.fetchYears();
   },
   methods: {
+    fetchYears() {
+      
+    },
     savePathwayOutcome() {
       if (this.currentRoute == "create-outcome") {
         clientApi.storeInitiativeIndicator(

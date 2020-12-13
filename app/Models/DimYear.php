@@ -11,5 +11,5 @@ class DimYear extends Model
 
     protected $table = 'Dim_Years';
 
-    protected $fillable = ['name', 'year'];
+    protected $fillable = ['Year'];
 }

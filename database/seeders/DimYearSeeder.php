@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\DimYear;
 use Illuminate\Database\Seeder;
 
-class DimInitiativeSeeder extends Seeder
+class DimYearSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class DimInitiativeSeeder extends Seeder
     public function run()
     {
         DimYear::factory()
-            ->times(10)
+            ->times(80)
             ->create();
     }
 }

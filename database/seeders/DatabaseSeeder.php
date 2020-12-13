@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             DimInitiativeSeeder::class,
-            DimPracticeSeeder::class
+            DimPracticeSeeder::class,
+            DimYearSeeder::class,
         ]);
     }
 }

@@ -2031,6 +2031,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -2049,23 +2051,15 @@ __webpack_require__.r(__webpack_exports__);
         Indicator_Data_Source: null,
         Number_of_Subcategories: null,
         Indicator_Type: null
-      }
+      },
+      years: null
     };
   },
   mounted: function mounted() {
-    var yearDropdown = document.getElementById("target-year"),
-        earliestYear = 1970,
-        furthestYear = 2050; // Set start year dropdown
-
-    while (furthestYear >= earliestYear) {
-      var dateOption = document.createElement("option");
-      dateOption.text = earliestYear;
-      dateOption.value = earliestYear;
-      yearDropdown.add(dateOption);
-      earliestYear += 1;
-    }
+    this.fetchYears();
   },
   methods: {
+    fetchYears: function fetchYears() {},
     savePathwayOutcome: function savePathwayOutcome() {
       if (this.currentRoute == "create-outcome") {
         _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storeInitiativeIndicator(this.$route.params.initiativeId, 0, Object.assign(this.initiativeIndicator, {
@@ -21404,7 +21398,52 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "border mt-3" }, [
+        _c("div", { staticClass: "mt-3 ml-3" }, [_vm._v("Subcategories")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "border m-3" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "row ml-0 ml-md-3" }, [
+            _c("div", { staticClass: "col-10 col-md-8" }, [
+              _c("form", { staticClass: "mt-3" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "target-year" } }, [
+                    _vm._v("Target Year")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { id: "target-year" }
+                    },
+                    _vm._l(_vm.years, function(year) {
+                      return _c("option", {
+                        key: year.YearId,
+                        attrs: { value: "" }
+                      })
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-primary mb-3" }, [
+                  _vm._v("Add Row")
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(4)
+      ])
     ])
   ])
 }
@@ -21413,96 +21452,80 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "border mt-3" }, [
-      _c("div", { staticClass: "mt-3 ml-3" }, [_vm._v("Subcategories")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 col-8" }, [
+        _c(
+          "div",
+          { staticClass: "mt-3 pathway-outcome-form__subcategories-title" },
+          [_vm._v("\n              Subcategories 1\n            ")]
+        )
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "border m-3" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6 col-8" }, [
-            _c(
-              "div",
-              { staticClass: "mt-3 pathway-outcome-form__subcategories-title" },
-              [_vm._v("\n              Subcategories 1\n            ")]
-            )
-          ]),
+      _c("div", { staticClass: "col-md-2 offset-md-3 col-3 mr-3" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary mt-3", attrs: { type: "submit" } },
+          [_vm._v("Delete")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "label" } }, [_vm._v("Label")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", id: "label" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "target-value" } }, [_vm._v("Target Value")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "number", id: "target-value" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "table" }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("Year")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 offset-md-3 col-3 mr-3" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary mt-3",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Delete")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row ml-0 ml-md-3" }, [
-          _c("div", { staticClass: "col-10 col-md-8" }, [
-            _c("form", { staticClass: "mt-3" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "label" } }, [_vm._v("Label")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "label" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "target-year" } }, [
-                  _vm._v("Target Year")
-                ]),
-                _vm._v(" "),
-                _c("select", {
-                  staticClass: "form-control",
-                  attrs: { id: "target-year" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "target-value" } }, [
-                  _vm._v("Target Value")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", id: "target-value" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Year")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Value")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody")
-              ]),
-              _vm._v(" "),
-              _c("button", { staticClass: "btn btn-primary mb-3" }, [
-                _vm._v("Add Row")
-              ])
-            ])
-          ])
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("Value")])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-2 offset-8 col-md-2 offset-md-9" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary mb-3 mr-4",
-              attrs: { type: "submit" }
-            },
-            [_vm._v("Add")]
-          )
-        ])
+      _c("tbody")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-2 offset-8 col-md-2 offset-md-9" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary mb-3 mr-4",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Add")]
+        )
       ])
     ])
   }
@@ -37997,6 +38020,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   allInitiativeIndicators: function allInitiativeIndicators(initiativeId, indicatorType) {
     return axios.get("/api/initiative/".concat(initiativeId, "/indicators/").concat(indicatorType));
+  },
+  allYears: function allYears() {
+    return axios.get("/api/years");
   }
 });
 

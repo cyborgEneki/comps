@@ -16,5 +16,8 @@ export default {
     },
     allInitiativeIndicators(initiativeId, indicatorType) {
         return axios.get(`/api/initiative/${initiativeId}/indicators/${indicatorType}`);
+    },
+    allYears() {
+        return axios.get(`/api/years`);
     }
 };
