@@ -2231,15 +2231,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    savePathwayOutcome: function savePathwayOutcome() {
-      if (this.currentRoute == "create-outcome") {
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, null, Object.assign(this.initiativeIndicator, {
+    editPathwayOutcome: function editPathwayOutcome() {
+      if (this.currentRoute == "edit-outcome") {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, this.$route.params.pathwayId, Object.assign(this.initiativeIndicator, {
           Indicator_Type: "O"
         }));
       }
 
-      if (this.currentRoute == "create-pathway") {
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, null, Object.assign(this.initiativeIndicator, {
+      if (this.currentRoute == "edit-pathway") {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, this.$route.params.pathwayId, Object.assign(this.initiativeIndicator, {
           Indicator_Type: "P"
         }));
       }
@@ -21511,15 +21511,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row container" }, [
     _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-      _vm.currentRoute == "create-outcome"
+      _vm.currentRoute == "edit-outcome"
         ? _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("\n      Create Outcome\n    ")
+            _vm._v("\n      Edit Outcome\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.currentRoute == "create-pathway"
+      _vm.currentRoute == "edit-pathway"
         ? _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("\n      Create Pathway\n    ")
+            _vm._v("\n      Edit Pathway\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -21529,7 +21529,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.savePathwayOutcome($event)
+              return _vm.editPathwayOutcome($event)
             }
           }
         },
@@ -37961,11 +37961,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/App.vue */ "./resources/js/views/App.vue");
 /* harmony import */ var _views_Home_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Home.vue */ "./resources/js/views/Home.vue");
-/* harmony import */ var _components_CreateInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/CreateInitiativeIndicator.vue */ "./resources/js/components/CreateInitiativeIndicator.vue");
-/* harmony import */ var _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/EditInitiativeIndicator.vue */ "./resources/js/components/EditInitiativeIndicator.vue");
-/* harmony import */ var _views_Milestones_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Milestones.vue */ "./resources/js/views/Milestones.vue");
-/* harmony import */ var _views_FinancialInformation_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/FinancialInformation.vue */ "./resources/js/views/FinancialInformation.vue");
-/* harmony import */ var _views_EditInitiative_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/EditInitiative.vue */ "./resources/js/views/EditInitiative.vue");
+/* harmony import */ var _components_CreateInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/CreateInitiativeIndicator.vue */ "./resources/js/components/CreateInitiativeIndicator.vue");
+/* harmony import */ var _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/EditInitiativeIndicator.vue */ "./resources/js/components/EditInitiativeIndicator.vue");
+/* harmony import */ var _views_Milestones_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/Milestones.vue */ "./resources/js/views/Milestones.vue");
+/* harmony import */ var _views_FinancialInformation_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/FinancialInformation.vue */ "./resources/js/views/FinancialInformation.vue");
+/* harmony import */ var _views_EditInitiative_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/EditInitiative.vue */ "./resources/js/views/EditInitiative.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -37988,28 +37988,28 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/initiative/:initiativeId',
     name: 'initiative',
     props: true,
-    component: _views_EditInitiative_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _views_EditInitiative_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   }, {
     path: '/initiative/:initiativeId/create',
     name: 'create-pathway',
-    component: _components_CreateInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _components_CreateInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/initiative/:initiativeId/pathway/:pathwayId',
     name: 'edit-pathway',
     props: true,
-    component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/outcome',
     name: 'outcome',
-    component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/milestones',
     name: 'milestones',
-    component: _views_Milestones_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _views_Milestones_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/financial-information',
     name: 'financial-information',
-    component: _views_FinancialInformation_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _views_FinancialInformation_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({

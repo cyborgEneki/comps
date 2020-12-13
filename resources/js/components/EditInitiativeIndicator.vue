@@ -1,13 +1,13 @@
 <template>
   <div class="row container">
     <div class="col-12 col-md-6 ml-md-3 my-3">
-      <div class="page-title__font" v-if="currentRoute == 'create-outcome'">
-        Create Outcome
+      <div class="page-title__font" v-if="currentRoute == 'edit-outcome'">
+        Edit Outcome
       </div>
-      <div class="page-title__font" v-if="currentRoute == 'create-pathway'">
-        Create Pathway
+      <div class="page-title__font" v-if="currentRoute == 'edit-pathway'">
+        Edit Pathway
       </div>
-      <form @submit.prevent="savePathwayOutcome">
+      <form @submit.prevent="editPathwayOutcome">
         <div class="form-group">
           <label for="pathway-statement">Pathway Statement</label>
           <textarea
@@ -121,7 +121,7 @@ export default {
     },
     initiativeIndicator() {
       return this.initiativeIndicatorProp;
-    }
+    },
   },
   mounted() {
     let yearDropdown = document.getElementById("target-year"),
@@ -138,18 +138,18 @@ export default {
     }
   },
   methods: {
-    savePathwayOutcome() {
-      if (this.currentRoute == "create-outcome") {
+    editPathwayOutcome() {
+      if (this.currentRoute == "edit-outcome") {
         clientApi.storePathwayOrOutcome(
           this.$route.params.initiativeId,
-          null,
+          this.$route.params.pathwayId,
           Object.assign(this.initiativeIndicator, { Indicator_Type: "O" })
         );
       }
-      if (this.currentRoute == "create-pathway") {
+      if (this.currentRoute == "edit-pathway") {
         clientApi.storePathwayOrOutcome(
           this.$route.params.initiativeId,
-          null,
+          this.$route.params.pathwayId,
           Object.assign(this.initiativeIndicator, { Indicator_Type: "P" })
         );
       }

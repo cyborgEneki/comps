@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Comps\Repositories\DimInitiativeIndicatorRepository;
 use App\Comps\Repositories\DimInitiativeRepository;
 use App\Models\DimInitiative;
 use App\Models\DimInitiativeIndicator;
@@ -10,11 +11,13 @@ use Illuminate\Http\Request;
 
 class InitiativeIndicatorController extends Controller
 {
-    protected $dimInitiativeRepository;
+    protected $dimInitiativeRepository,
+        $dimInitiativeIndicatorRepository;
 
     public function __construct()
     {
         $this->dimInitiativeRepository = new DimInitiativeRepository();
+        $this->dimInitiativeIndicatorRepository = new DimInitiativeIndicatorRepository();
     }
 
     public function showallInitiativeIndicators($initiativeId, $indicatorType)
@@ -31,9 +34,16 @@ class InitiativeIndicatorController extends Controller
 
     public function store(Request $request, $initiativeId, $pathwayId = null)
     {
-        $initiativeIndicator = DimInitiativeIndicator::create($request->all());
-        $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
-        $initiative->initiativeIndicators()->attach($initiativeIndicator->id);
+        if($pathwayId) {
+            $initiativeIndicator = $this->dimInitiativeIndicatorRepository->findInitiativeIndicatorById($pathwayId);
+            $initiativeIndicator->update($request->all());
+            $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
+            $initiative->initiativeIndicators()->sync($initiativeIndicator->Initiative_Indicator_Key);
+        } else {
+            $initiativeIndicator = DimInitiativeIndicator::create($request->all());
+            $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
+            $initiative->initiativeIndicators()->attach($initiativeIndicator->Initiative_Indicator_Key);
+        }
 
         return response()->json(['success' => 'success'], 200);
     }
