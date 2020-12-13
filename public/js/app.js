@@ -2233,13 +2233,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     editPathwayOutcome: function editPathwayOutcome() {
       if (this.currentRoute == "edit-outcome") {
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, this.$route.params.pathwayId, Object.assign(this.initiativeIndicator, {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storeInitiativeIndicator(this.$route.params.initiativeId, this.$route.params.outcomeId, Object.assign(this.initiativeIndicator, {
           Indicator_Type: "O"
         }));
       }
 
       if (this.currentRoute == "edit-pathway") {
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storePathwayOrOutcome(this.$route.params.initiativeId, this.$route.params.pathwayId, Object.assign(this.initiativeIndicator, {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__["default"].storeInitiativeIndicator(this.$route.params.initiativeId, this.$route.params.pathwayId, Object.assign(this.initiativeIndicator, {
           Indicator_Type: "P"
         }));
       }
@@ -38060,6 +38060,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/initiative/:initiativeId/outcome/:outcomeId',
     name: 'edit-outcome',
+    props: true,
     component: _components_EditInitiativeIndicator_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/milestones',

@@ -45,6 +45,7 @@ const router = new VueRouter({
         {
             path: '/initiative/:initiativeId/outcome/:outcomeId',
             name: 'edit-outcome',
+            props: true,
             component: EditInitiativeIndicator,
         },
         {

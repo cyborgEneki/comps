@@ -140,14 +140,14 @@ export default {
   methods: {
     editPathwayOutcome() {
       if (this.currentRoute == "edit-outcome") {
-        clientApi.storePathwayOrOutcome(
+        clientApi.storeInitiativeIndicator(
           this.$route.params.initiativeId,
-          this.$route.params.pathwayId,
+          this.$route.params.outcomeId,
           Object.assign(this.initiativeIndicator, { Indicator_Type: "O" })
         );
       }
       if (this.currentRoute == "edit-pathway") {
-        clientApi.storePathwayOrOutcome(
+        clientApi.storeInitiativeIndicator(
           this.$route.params.initiativeId,
           this.$route.params.pathwayId,
           Object.assign(this.initiativeIndicator, { Indicator_Type: "P" })
