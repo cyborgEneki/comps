@@ -9,7 +9,8 @@ class DimInitiativeIndicator extends Model
 {
     use HasFactory;
 
-    protected $table = 'Dim_Initiative_Indicators';
+    protected $table = 'Dim_Initiative_Indicators',
+    $primaryKey = 'Initiative_Indicator_Key';
 
     protected $fillable = [
         'Statement',

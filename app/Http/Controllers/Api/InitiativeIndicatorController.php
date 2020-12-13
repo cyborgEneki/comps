@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Comps\Repositories\DimInitiativeRepository;
 use App\Models\DimInitiative;
 use App\Models\DimInitiativeIndicator;
-use GrahamCampbell\ResultType\Success;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,9 +17,11 @@ class InitiativeIndicatorController extends Controller
         $this->dimInitiativeRepository = new DimInitiativeRepository();
     }
 
-    public function showallInitiativeIndicators($initiativeId)
+    public function showallInitiativeIndicators($initiativeId, $indicatorType)
     {
-        dd($initiativeId);
+        $initiative = $this->dimInitiativeRepository->findInitiativeById($initiativeId);
+        $initiative->initiativeIndicators;
+        dd($initiative->initiativeIndicators);
         # code...
     }
 

@@ -2601,12 +2601,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     fetchInitiativeData: function fetchInitiativeData() {
       getGoalTeam(this.$route.params.initiativeId);
-      getPathways(this.$route.params.initiativeId);
+      getPathways(this.$route.params.initiativeId, "P");
 
-      function getPathways(initiativeId) {
+      function getPathways(initiativeId, indicatorType) {
         var _this4 = this;
 
-        _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(initiativeId).then(function (response) {
+        _api_initiatiave__WEBPACK_IMPORTED_MODULE_2__["default"].allInitiativeIndicators(initiativeId, indicatorType).then(function (response) {
           _this4.pathways = response.data.pathways;
         });
       }
@@ -37675,8 +37675,8 @@ __webpack_require__.r(__webpack_exports__);
   storePathwayOrOutcome: function storePathwayOrOutcome(initiativeId, pathwayOrOutcomeId, data) {
     return axios.post("/api/initiative/".concat(initiativeId, "/pathway-outcome/").concat(pathwayOrOutcomeId), data);
   },
-  allInitiativeIndicators: function allInitiativeIndicators(initiativeId) {
-    return axios.get("/api/initiative/".concat(initiativeId, "/indicators"));
+  allInitiativeIndicators: function allInitiativeIndicators(initiativeId, indicatorType) {
+    return axios.get("/api/initiative/".concat(initiativeId, "/indicators/").concat(indicatorType));
   }
 });
 

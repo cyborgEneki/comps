@@ -167,10 +167,10 @@ export default {
 
     fetchInitiativeData() {
       getGoalTeam(this.$route.params.initiativeId);
-      getPathways(this.$route.params.initiativeId);
+      getPathways(this.$route.params.initiativeId, "P");
 
-      function getPathways(initiativeId) {
-        clientApi.allInitiativeIndicators(initiativeId).then((response) => {
+      function getPathways(initiativeId, indicatorType) {
+        clientApi.allInitiativeIndicators(initiativeId, indicatorType).then((response) => {
           this.pathways = response.data.pathways;
         });
       }
