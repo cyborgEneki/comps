@@ -7,8 +7,8 @@ Vue.use(VueRouter)
 
 import App from './views/App.vue'
 import Home from './views/Home.vue'
-import CreatePathwayOutcome from './components/CreatePathwayOutcome.vue'
-import EditPathwayOutcome from './components/EditPathwayOutcome.vue'
+import CreateInitiativeIndicator from './components/CreateInitiativeIndicator.vue'
+import EditInitiativeIndicator from './components/EditInitiativeIndicator.vue'
 import Milestones from './views/Milestones.vue'
 import FinancialInformation from './views/FinancialInformation.vue'
 import EditInitiative from "./views/EditInitiative.vue";
@@ -29,18 +29,18 @@ const router = new VueRouter({
         {
             path: '/initiative/:initiativeId/create',
             name: 'create-pathway',
-            component: CreatePathwayOutcome,
+            component: CreateInitiativeIndicator,
         },
         {
             path: '/initiative/:initiativeId/pathway/:pathwayId',
             name: 'edit-pathway',
             props: true,
-            component: EditPathwayOutcome,
+            component: EditInitiativeIndicator,
         },
         {
             path: '/outcome',
             name: 'outcome',
-            component: EditPathwayOutcome,
+            component: EditInitiativeIndicator,
         },
         {
             path: '/milestones',

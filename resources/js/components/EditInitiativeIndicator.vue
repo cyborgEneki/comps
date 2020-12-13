@@ -119,20 +119,9 @@ export default {
     currentRoute() {
       return this.$route.name;
     },
-  },
-  data() {
-    return {
-      initiativeIndicator: {
-        Indicator_Key: null,
-        Statement: null,
-        Indicator_Description: null,
-        Indicator_Label: null,
-        Indicator_Units: null,
-        Indicator_Data_Source: null,
-        Number_of_Subcategories: null,
-        Indicator_Type: null,
-      },
-    };
+    initiativeIndicator() {
+      return this.initiativeIndicatorProp;
+    }
   },
   mounted() {
     let yearDropdown = document.getElementById("target-year"),
