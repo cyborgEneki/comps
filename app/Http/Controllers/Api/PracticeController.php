@@ -34,14 +34,11 @@ class PracticeController extends Controller
 
     public function store(Request $request)
     {
-        $factInitiativeIndicator = $this->factInitiativeIndicatorRepository->findFactInitiativeIndicatorByInitiativeId($request->get('Initiative_Key'));
+        FactInitiativeIndicator::updateOrCreate(
+            ['Initiative_Key' => $request->get('Initiative_Key')],
+            ['Practice_Key' => $request->get('Practice_Key')]
+        );
         
-        if($factInitiativeIndicator) {
-            // How to use foreign key as primary key without continuously creating a new record when updating
-            $factInitiativeIndicator->update([$request->only('Practice_Key')]);
-        }
-        FactInitiativeIndicator::create($request->all());
-
         return response()->json([
             'success' => 'success'
         ], 200);

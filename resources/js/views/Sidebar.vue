@@ -33,7 +33,7 @@
           <div v-else>
             <select
               class="custom-select custom-select-sm"
-              v-model="initiativeGoalTeam"
+              v-model="goalTeamPracticeKey"
               @change="storeInitiativeGoalTeam"
             >
               <option disabled value=""></option>
@@ -118,6 +118,7 @@ export default {
       goalTeamId: null,
       goalTeams: null,
       initiativeGoalTeam: null,
+      goalTeamPracticeKey: null
     };
   },
 

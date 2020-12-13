@@ -2380,7 +2380,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       initiative: null,
       goalTeamId: null,
       goalTeams: null,
-      initiativeGoalTeam: null
+      initiativeGoalTeam: null,
+      goalTeamPracticeKey: null
     };
   },
   created: function created() {
@@ -21680,8 +21681,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.initiativeGoalTeam,
-                              expression: "initiativeGoalTeam"
+                              value: _vm.goalTeamPracticeKey,
+                              expression: "goalTeamPracticeKey"
                             }
                           ],
                           staticClass: "custom-select custom-select-sm",
@@ -21696,7 +21697,7 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.initiativeGoalTeam = $event.target.multiple
+                                _vm.goalTeamPracticeKey = $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
                               },
