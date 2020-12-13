@@ -11,4 +11,7 @@ export default {
     storeInitiativeGoalTeam(id, data) {
         return axios.post(`/api/initiative/${id}/goal-team`, data);
     },
+    storePathwayOrOutcome(initiativeId, pathwayOrOutcomeId, data) {
+        return axios.post(`/api/initiative/${initiativeId}/pathway-outcome/${pathwayOrOutcomeId}`, data);
+    },
 };

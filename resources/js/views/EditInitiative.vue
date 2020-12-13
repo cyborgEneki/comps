@@ -134,7 +134,7 @@ export default {
       axios
         .post(`/api/initiatives/${this.initiative.Initiative_Key}`, this.initiative)
         .then((res) => {
-          this.emitPassInitiativeGoalTeam(); // How to reset the goal team dropdown null for new ones but maintain the value for already set initiatives
+          this.emitPassInitiativeGoalTeam(); 
         });
     },
     emitPassInitiativeGoalTeam(event) {
