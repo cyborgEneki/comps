@@ -81,7 +81,7 @@
             v-for="{ Indicator_Label, Initiative_Indicator_Key } in pathways"
           >
             <router-link
-              :to="{ name: 'pathway' }"
+              :to="{ name: 'edit-pathway', params: {pathwayId: Initiative_Indicator_Key } }"
               class="list-group-item list-group-item-action bg-light border-0"
             >
               <span class="ml-3">{{ Indicator_Label }}</span>

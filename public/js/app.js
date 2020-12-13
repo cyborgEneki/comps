@@ -22423,7 +22423,12 @@ var render = function() {
                           {
                             staticClass:
                               "list-group-item list-group-item-action bg-light border-0",
-                            attrs: { to: { name: "pathway" } }
+                            attrs: {
+                              to: {
+                                name: "edit-pathway",
+                                params: { pathwayId: Initiative_Indicator_Key }
+                              }
+                            }
                           },
                           [
                             _c("span", { staticClass: "ml-3" }, [
