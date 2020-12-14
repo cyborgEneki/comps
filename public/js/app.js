@@ -2681,6 +2681,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     clearInitiativeData: function clearInitiativeData() {
       this.initiative = '';
       this.initiativeId = '';
+      this.$router.push({
+        path: "/"
+      });
     }
   }
 });

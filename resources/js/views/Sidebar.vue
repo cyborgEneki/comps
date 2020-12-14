@@ -223,7 +223,8 @@ export default {
 
     clearInitiativeData() {
       this.initiative = '';
-      this.initiativeId = ''
+      this.initiativeId = '';
+      this.$router.push({ path: "/" });
     }
   },
 };
