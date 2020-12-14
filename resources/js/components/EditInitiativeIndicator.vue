@@ -1,15 +1,15 @@
 <template>
   <div class="row container">
     <div class="col-12 col-md-6 ml-md-3 my-3">
-      <div class="page-title__font" v-if="currentRoute == 'edit-outcome'">
-        Edit Outcome
+      <div class="page-title__font header--font" v-if="currentRoute == 'edit-outcome'">
+        EDIT OUTCOME
       </div>
-      <div class="page-title__font" v-if="currentRoute == 'edit-pathway'">
-        Edit Pathway
+      <div class="page-title__font header--font" v-if="currentRoute == 'edit-pathway'">
+        EDIT PATHWAY
       </div>
       <form @submit.prevent="editPathwayOutcome">
         <div class="form-group">
-          <label for="pathway-statement">Pathway Statement</label>
+          <label for="pathway-statement">PATHWAY STATEMENT</label>
           <textarea
             class="form-control"
             id="pathway-statement"
@@ -18,7 +18,7 @@
           ></textarea>
         </div>
         <div class="form-group">
-          <label for="indicator-description">Indicator Description</label>
+          <label for="indicator-description">INDICATOR DESCRIPTION</label>
           <textarea
             class="form-control"
             id="indicator-description"
@@ -27,7 +27,7 @@
           ></textarea>
         </div>
         <div class="form-group">
-          <label for="indicator-label">Indicator Label</label>
+          <label for="indicator-label">INDICATOR LABEL</label>
           <input
             type="text"
             class="form-control"
@@ -36,7 +36,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="indicator-units">Indicator Units</label>
+          <label for="indicator-units">INDICATOR UNITS</label>
           <input
             type="text"
             class="form-control"
@@ -45,7 +45,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="indicator-data-source">Indicator Data Source</label>
+          <label for="indicator-data-source">INDICATOR DATA SOURCE</label>
           <textarea
             class="form-control"
             id="indicator-data-source"
@@ -53,7 +53,7 @@
             v-model="initiativeIndicator.Indicator_Data_Source"
           ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">SAVE</button>
       </form>
     </div>
   </div>

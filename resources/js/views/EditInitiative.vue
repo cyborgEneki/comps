@@ -1,10 +1,10 @@
 <template>
   <div class="row container">
     <div class="col-12 col-md-6 ml-md-3 my-3">
-      <div class="page-title__font">Initiative Information</div>
+      <div class="page-title__font header--font">INITIATIVE INFORMATION</div>
       <form @submit.prevent="storeInitiative">
         <div class="form-group">
-          <label for="initiative-name">Initiative Name</label>
+          <label for="initiative-name">INITIATIVE NAME</label>
           <input
             type="text"
             class="form-control"
@@ -14,7 +14,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="initiative-name">Name of Initiative Lead</label>
+          <label for="initiative-name">INITIATIVE LEAD</label>
           <input
             type="text"
             class="form-control"
@@ -24,7 +24,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="initiative-lead-email">Initiative Lead Email</label>
+          <label for="initiative-lead-email">INITIATIVE LEAD EMAIL</label>
           <input
             type="email"
             class="form-control"
@@ -34,7 +34,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="initiative-start-year">Initiative Start Year</label>
+          <label for="initiative-start-year">START YEAR</label>
           <select
             class="form-control"
             id="initiative-start-year"
@@ -45,7 +45,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="initiative-end-year">Initiative End Year</label>
+          <label for="initiative-end-year">END YEAR</label>
           <select
             class="form-control"
             id="initiative-end-year"
@@ -56,7 +56,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="initiative-statement">Initiative Statement</label>
+          <label for="initiative-statement">STATEMENT</label>
           <textarea
             class="form-control"
             id="initiative-statement"
@@ -65,7 +65,7 @@
             v-model="initiative.Statement"
           ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">SAVE</button>
       </form>
     </div>
   </div>

@@ -4,7 +4,7 @@
       <Sidebar></Sidebar>
 
       <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom navbar--height interface-border">
           <button class="btn home-page__button" id="menu-toggle">
             <i class="fas fa-bars"></i>
           </button>
