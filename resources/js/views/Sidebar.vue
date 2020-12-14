@@ -6,7 +6,7 @@
         <router-link
           :to="{ name: 'home' }"
           class="list-group-item list-group-item-action bg-light border-0"
-          >General Information</router-link
+          ><span @click="clearInitiativeData">General Information</span></router-link
         >
       </div>
       <div class="border-bottom">
@@ -148,11 +148,10 @@ export default {
   },
 
   watch: {
-    // call the method if the route changes
     $route(to, from) {
-      if(to.name == 'initiative') {
+      if (to.name == "initiative") {
         this.fetchInitiativeData();
-      };
+      }
     },
   },
 
@@ -228,6 +227,11 @@ export default {
 
       this.$router.push({ path: "/initiative/" + this.initiative.Initiative_Key });
     },
+
+    clearInitiativeData() {
+      this.initiative = '';
+      this.initiativeId = ''
+    }
   },
 };
 </script>

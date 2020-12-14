@@ -2536,13 +2536,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.fetchInitiatives();
   },
   watch: {
-    // call the method if the route changes
     $route: function $route(to, from) {
-      if (to.name == 'initiative') {
+      if (to.name == "initiative") {
         this.fetchInitiativeData();
       }
-
-      ;
     }
   },
   methods: {
@@ -2687,6 +2684,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4);
       }))();
+    },
+    clearInitiativeData: function clearInitiativeData() {
+      this.initiative = '';
+      this.initiativeId = '';
     }
   }
 });
@@ -22057,7 +22058,11 @@ var render = function() {
                   "list-group-item list-group-item-action bg-light border-0",
                 attrs: { to: { name: "home" } }
               },
-              [_vm._v("General Information")]
+              [
+                _c("span", { on: { click: _vm.clearInitiativeData } }, [
+                  _vm._v("General Information")
+                ])
+              ]
             )
           ],
           1
