@@ -4,6 +4,10 @@
   border-color: #cdd2d6;
 }
 
+.navbar--height {
+  height: 58px;
+}
+
 #wrapper {
   overflow-x: hidden;
 }
@@ -54,6 +58,15 @@
 
 .display-none {
   display: none;
+}
+
+.interface-border {
+  border-color: #cbcbcb;
+  border-width: 2px !important;
+}
+
+.header--font {
+  font-size: 1.25rem;
 }
 
 .pathway-outcome-form__subcategories-title {

@@ -2508,13 +2508,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21104,14 +21097,14 @@ var render = function() {
   return _c("div", { staticClass: "row container" }, [
     _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
       _vm.currentRoute == "create-outcome"
-        ? _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("\n      Create Outcome\n    ")
+        ? _c("div", { staticClass: "page-title__font header--font" }, [
+            _vm._v("\n      CREATE OUTCOME\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
       _vm.currentRoute == "create-pathway"
-        ? _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("\n      Create Pathway\n    ")
+        ? _c("div", { staticClass: "page-title__font header--font" }, [
+            _vm._v("\n      CREATE PATHWAY\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -21128,7 +21121,7 @@ var render = function() {
         [
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "pathway-statement" } }, [
-              _vm._v("Pathway Statement")
+              _vm._v("PATHWAY STATEMENT")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21160,7 +21153,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-description" } }, [
-              _vm._v("Indicator Description")
+              _vm._v("INDICATOR DESCRIPTION")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21194,7 +21187,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-label" } }, [
-              _vm._v("Indicator Label")
+              _vm._v("INDICATOR LABEL")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21226,7 +21219,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-units" } }, [
-              _vm._v("Indicator Units")
+              _vm._v("INDICATOR UNITS")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21258,7 +21251,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-data-source" } }, [
-              _vm._v("Indicator Data Source")
+              _vm._v("INDICATOR DATA SOURCE")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21293,7 +21286,7 @@ var render = function() {
           _c(
             "button",
             { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Save")]
+            [_vm._v("SAVE")]
           )
         ]
       )
@@ -21325,14 +21318,14 @@ var render = function() {
   return _c("div", { staticClass: "row container" }, [
     _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
       _vm.currentRoute == "edit-outcome"
-        ? _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("\n      Edit Outcome\n    ")
+        ? _c("div", { staticClass: "page-title__font header--font" }, [
+            _vm._v("\n      EDIT OUTCOME\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
       _vm.currentRoute == "edit-pathway"
-        ? _c("div", { staticClass: "page-title__font" }, [
-            _vm._v("\n      Edit Pathway\n    ")
+        ? _c("div", { staticClass: "page-title__font header--font" }, [
+            _vm._v("\n      EDIT PATHWAY\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -21349,7 +21342,7 @@ var render = function() {
         [
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "pathway-statement" } }, [
-              _vm._v("Pathway Statement")
+              _vm._v("PATHWAY STATEMENT")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21381,7 +21374,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-description" } }, [
-              _vm._v("Indicator Description")
+              _vm._v("INDICATOR DESCRIPTION")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21415,7 +21408,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-label" } }, [
-              _vm._v("Indicator Label")
+              _vm._v("INDICATOR LABEL")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21447,7 +21440,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-units" } }, [
-              _vm._v("Indicator Units")
+              _vm._v("INDICATOR UNITS")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21479,7 +21472,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "indicator-data-source" } }, [
-              _vm._v("Indicator Data Source")
+              _vm._v("INDICATOR DATA SOURCE")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21514,7 +21507,7 @@ var render = function() {
           _c(
             "button",
             { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Save")]
+            [_vm._v("SAVE")]
           )
         ]
       )
@@ -21570,7 +21563,7 @@ var staticRenderFns = [
       "nav",
       {
         staticClass:
-          "navbar navbar-expand-lg navbar-light bg-light border-bottom"
+          "navbar navbar-expand-lg navbar-light bg-light border-bottom navbar--height interface-border"
       },
       [
         _c(
@@ -21608,8 +21601,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row container" }, [
     _c("div", { staticClass: "col-12 col-md-6 ml-md-3 my-3" }, [
-      _c("div", { staticClass: "page-title__font" }, [
-        _vm._v("Initiative Information")
+      _c("div", { staticClass: "page-title__font header--font" }, [
+        _vm._v("INITIATIVE INFORMATION")
       ]),
       _vm._v(" "),
       _c(
@@ -21625,7 +21618,7 @@ var render = function() {
         [
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-name" } }, [
-              _vm._v("Initiative Name")
+              _vm._v("INITIATIVE NAME")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21653,7 +21646,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-name" } }, [
-              _vm._v("Name of Initiative Lead")
+              _vm._v("INITIATIVE LEAD")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21685,7 +21678,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-lead-email" } }, [
-              _vm._v("Initiative Lead Email")
+              _vm._v("INITIATIVE LEAD EMAIL")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21717,7 +21710,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-start-year" } }, [
-              _vm._v("Initiative Start Year")
+              _vm._v("START YEAR")
             ]),
             _vm._v(" "),
             _c(
@@ -21761,7 +21754,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-end-year" } }, [
-              _vm._v("Initiative End Year")
+              _vm._v("END YEAR")
             ]),
             _vm._v(" "),
             _c(
@@ -21805,7 +21798,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "initiative-statement" } }, [
-              _vm._v("Initiative Statement")
+              _vm._v("STATEMENT")
             ]),
             _vm._v(" "),
             _c("textarea", {
@@ -21838,7 +21831,7 @@ var render = function() {
           _c(
             "button",
             { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Save")]
+            [_vm._v("SAVE")]
           )
         ]
       )
@@ -22042,33 +22035,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "bg-light border-right", attrs: { id: "sidebar-wrapper" } },
+    {
+      staticClass: "bg-light border-right interface-border",
+      attrs: { id: "sidebar-wrapper" }
+    },
     [
-      _c("div", { staticClass: "sidebar-heading" }, [_vm._v("Comps")]),
+      _c("div", { staticClass: "sidebar-heading page-title__font" }, [
+        _c("span", { on: { click: _vm.clearInitiativeData } }, [
+          _vm._v("COMPS")
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "list-group list-group-flush" }, [
-        _c(
-          "div",
-          { staticClass: "border-bottom" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0",
-                attrs: { to: { name: "home" } }
-              },
-              [
-                _c("span", { on: { click: _vm.clearInitiativeData } }, [
-                  _vm._v("General Information")
-                ])
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "border-bottom" }, [
+        _c("div", { staticClass: "border-bottom interface-border" }, [
           _vm.initiative
             ? _c("div", [
                 _c(
@@ -22077,7 +22056,7 @@ var render = function() {
                     staticClass:
                       "list-group-item list-group-item-action bg-light border-0 mb-0"
                   },
-                  [_vm._v("\n          Select a Goal Team\n        ")]
+                  [_vm._v("\n          SELECT GOAL TEAM\n        ")]
                 ),
                 _vm._v(" "),
                 _vm.initiativeGoalTeam
@@ -22208,7 +22187,7 @@ var render = function() {
               staticClass:
                 "list-group-item list-group-item-action bg-light border-0 mb-0"
             },
-            [_vm._v("\n        Select an Initiative\n      ")]
+            [_vm._v("\n        SELECT INITIATIVE\n      ")]
           ),
           _vm._v(" "),
           _c(
@@ -22259,7 +22238,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "border-bottom" }, [
+        _c("div", { staticClass: "border-bottom interface-border" }, [
           _vm.initiative
             ? _c(
                 "div",
@@ -22271,7 +22250,7 @@ var render = function() {
                         "list-group-item list-group-item-action bg-light border-0 mb-0"
                     },
                     [
-                      _vm._v("\n          Pathways\n          "),
+                      _vm._v("\n          PATHWAY\n          "),
                       _c(
                         "router-link",
                         {
@@ -22321,7 +22300,7 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "border-bottom" }, [
+        _c("div", { staticClass: "border-bottom interface-border" }, [
           _vm.initiative
             ? _c(
                 "div",
@@ -22333,7 +22312,7 @@ var render = function() {
                         "list-group-item list-group-item-action bg-light border-0 mb-0"
                     },
                     [
-                      _vm._v("\n          Outcomes\n          "),
+                      _vm._v("\n          OUTCOMES\n          "),
                       _c(
                         "router-link",
                         {

@@ -1,18 +1,11 @@
 <template>
-  <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Comps</div>
+  <div class="bg-light border-right interface-border" id="sidebar-wrapper">
+    <div class="sidebar-heading page-title__font"><span @click="clearInitiativeData">COMPS</span></div>
     <div class="list-group list-group-flush">
-      <div class="border-bottom">
-        <router-link
-          :to="{ name: 'home' }"
-          class="list-group-item list-group-item-action bg-light border-0"
-          ><span @click="clearInitiativeData">General Information</span></router-link
-        >
-      </div>
-      <div class="border-bottom">
+      <div class="border-bottom interface-border">
         <div v-if="initiative">
           <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
-            Select a Goal Team
+            SELECT GOAL TEAM
           </p>
           <div v-if="initiativeGoalTeam">
             <select
@@ -48,7 +41,7 @@
           </div>
         </div>
         <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
-          Select an Initiative
+          SELECT INITIATIVE
         </p>
         <select
           class="custom-select custom-select-sm"
@@ -65,10 +58,10 @@
           </option>
         </select>
       </div>
-      <div class="border-bottom">
+      <div class="border-bottom interface-border">
         <div v-if="initiative">
           <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
-            Pathways
+            PATHWAY
             <router-link
               :to="{ name: 'create-pathway' }"
               class="list-group-item list-group-item-action bg-light border-0 d-inline"
@@ -92,10 +85,10 @@
           </div>
         </div>
       </div>
-      <div class="border-bottom">
+      <div class="border-bottom interface-border">
         <div v-if="initiative">
           <p class="list-group-item list-group-item-action bg-light border-0 mb-0">
-            Outcomes
+            OUTCOMES
             <router-link
               :to="{ name: 'create-outcome' }"
               class="list-group-item list-group-item-action bg-light border-0 d-inline"
