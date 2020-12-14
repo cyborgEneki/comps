@@ -149,9 +149,10 @@ export default {
 
   watch: {
     // call the method if the route changes
-    $route: {
-      handler: "fetchInitiativeData",
-      immediate: true, // runs immediately with mount() instead of calling method on mount hook
+    $route(to, from) {
+      if(to.name == 'initiative') {
+        this.fetchInitiativeData();
+      };
     },
   },
 

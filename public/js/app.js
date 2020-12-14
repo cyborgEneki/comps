@@ -2537,10 +2537,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   watch: {
     // call the method if the route changes
-    $route: {
-      handler: "fetchInitiativeData",
-      immediate: true // runs immediately with mount() instead of calling method on mount hook
+    $route: function $route(to, from) {
+      if (to.name == 'initiative') {
+        this.fetchInitiativeData();
+      }
 
+      ;
     }
   },
   methods: {
