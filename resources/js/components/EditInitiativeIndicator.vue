@@ -55,55 +55,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
-
-      <div class="border mt-3">
-        <div class="mt-3 ml-3">Subcategories</div>
-        <div class="border m-3">
-          <div class="row">
-            <div class="col-md-6 col-8">
-              <div class="mt-3 pathway-outcome-form__subcategories-title">
-                Subcategories 1
-              </div>
-            </div>
-            <div class="col-md-2 offset-md-3 col-3 mr-3">
-              <button type="submit" class="btn btn-primary mt-3">Delete</button>
-            </div>
-          </div>
-          <div class="row ml-0 ml-md-3">
-            <div class="col-10 col-md-8">
-              <form class="mt-3">
-                <div class="form-group">
-                  <label for="label">Label</label>
-                  <input type="text" class="form-control" id="label" />
-                </div>
-                <div class="form-group">
-                  <label for="target-year">Target Year</label>
-                  <select class="form-control" id="target-year"></select>
-                </div>
-                <div class="form-group">
-                  <label for="target-value">Target Value</label>
-                  <input type="number" class="form-control" id="target-value" />
-                </div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Year</th>
-                      <th scope="col">Value</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-                <button class="btn btn-primary mb-3">Add Row</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-2 offset-8 col-md-2 offset-md-9">
-            <button type="submit" class="btn btn-primary mb-3 mr-4">Add</button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>

@@ -1982,58 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -2100,55 +2048,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_initiatiave__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/initiatiave */ "./resources/js/api/initiatiave.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2491,20 +2390,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -21408,173 +21293,11 @@ var render = function() {
             [_vm._v("Save")]
           )
         ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "border mt-3" }, [
-        _c("div", { staticClass: "mt-3 ml-3" }, [_vm._v("Subcategories")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "border m-3" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "row ml-0 ml-md-3" }, [
-            _c("div", { staticClass: "col-10 col-md-8" }, [
-              _c("form", { staticClass: "mt-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "target-year" } }, [
-                    _vm._v("Target Year")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.currentData.Year_Key,
-                          expression: "currentData.Year_Key"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.currentData,
-                            "Year_Key",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Select Year")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.years, function(year) {
-                        return _c("option", { key: year.Year_Key }, [
-                          _vm._v(_vm._s(year.Year))
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "target-value" } }, [
-                    _vm._v("Target Value")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.currentData.Year_Key,
-                        expression: "currentData.Year_Key"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "number", id: "target-value" },
-                    domProps: { value: _vm.currentData.Year_Key },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.currentData,
-                          "Year_Key",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("button", { staticClass: "btn btn-primary mb-3" }, [
-                  _vm._v("Add Row")
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(2)
-      ])
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 col-8" }, [
-        _c(
-          "div",
-          { staticClass: "mt-3 pathway-outcome-form__subcategories-title" },
-          [_vm._v("\n              Subcategories 1\n            ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 offset-md-3 col-3 mr-3" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary mt-3", attrs: { type: "submit" } },
-          [_vm._v("Delete")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Year")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Value")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-2 offset-8 col-md-2 offset-md-9" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary mb-3 mr-4",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("Add")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -21791,111 +21514,11 @@ var render = function() {
             [_vm._v("Save")]
           )
         ]
-      ),
-      _vm._v(" "),
-      _vm._m(0)
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "border mt-3" }, [
-      _c("div", { staticClass: "mt-3 ml-3" }, [_vm._v("Subcategories")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "border m-3" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6 col-8" }, [
-            _c(
-              "div",
-              { staticClass: "mt-3 pathway-outcome-form__subcategories-title" },
-              [_vm._v("\n              Subcategories 1\n            ")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 offset-md-3 col-3 mr-3" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary mt-3",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Delete")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row ml-0 ml-md-3" }, [
-          _c("div", { staticClass: "col-10 col-md-8" }, [
-            _c("form", { staticClass: "mt-3" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "label" } }, [_vm._v("Label")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "label" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "target-year" } }, [
-                  _vm._v("Target Year")
-                ]),
-                _vm._v(" "),
-                _c("select", {
-                  staticClass: "form-control",
-                  attrs: { id: "target-year" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "target-value" } }, [
-                  _vm._v("Target Value")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "number", id: "target-value" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Year")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Value")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody")
-              ]),
-              _vm._v(" "),
-              _c("button", { staticClass: "btn btn-primary mb-3" }, [
-                _vm._v("Add Row")
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-2 offset-8 col-md-2 offset-md-9" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary mb-3 mr-4",
-              attrs: { type: "submit" }
-            },
-            [_vm._v("Add")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -22751,41 +22374,7 @@ var render = function() {
                 2
               )
             : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "border-bottom" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0",
-                attrs: { to: { name: "milestones" } }
-              },
-              [_vm._v("Milestones")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "border-bottom" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass:
-                  "list-group-item list-group-item-action bg-light border-0",
-                attrs: { to: { name: "financial-information" } }
-              },
-              [_vm._v("Financial Information")]
-            )
-          ],
-          1
-        )
+        ])
       ])
     ]
   )

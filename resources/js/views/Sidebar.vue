@@ -119,20 +119,6 @@
           </div>
         </div>
       </div>
-      <div class="border-bottom">
-        <router-link
-          :to="{ name: 'milestones' }"
-          class="list-group-item list-group-item-action bg-light border-0"
-          >Milestones</router-link
-        >
-      </div>
-      <div class="border-bottom">
-        <router-link
-          :to="{ name: 'financial-information' }"
-          class="list-group-item list-group-item-action bg-light border-0"
-          >Financial Information</router-link
-        >
-      </div>
     </div>
   </div>
 </template>
